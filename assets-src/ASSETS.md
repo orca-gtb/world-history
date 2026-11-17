@@ -13,3 +13,9 @@
 ## Referensi gaya (tidak disimpan di repo)
 - "German Air Force in WW1 and WW2 — Animated edit (The Red Baron)": Short 9:16 buatan pihak lain, dikirim Nanda 18 Nov 2026 sebagai referensi gaya animasi dogfight. Gaya: kartun 2D cel-shaded detail (bukan pixel art). Karya berhak cipta, TIDAK dipakai/disalin; berisi lambang Nazi yang tidak boleh ada di video kita.
 - Perbandingan: animasi siluet kita (src/longform/Scenes.tsx) belum setara. Opsi peningkatan: sprite cel-shaded dari gambar garis (cek lisensi), model .glb + 3D, atau klip generator video AI (perlu label synthetic content).
+
+## Model 3D (GLB)
+| File | Lisensi | Status |
+|---|---|---|
+| BF 109 – Messerschmitt, GRIP420 (Sketchfab, bf109-grip420.glb) | **CC-BY-NC-4.0 (non-komersial)** — terbaca dari metadata file | **TIDAK BOLEH dipakai di video yang dimonetisasi.** Hanya dipakai untuk uji pribadi (tidak di-commit; ada di .gitignore). Texture membawa Balkenkreuz + swastika (dihapus di salinan uji). Gear terpasang permanen (satu mesh). |
+Syarat model pengganti: lisensi **CC0** atau **CC-BY** (kredit penulis di deskripsi). Hindari NC (non-komersial), ND (tanpa turunan), dan SA. Cek juga: texture tanpa lambang (atau bisa dihapus), gear bisa disembunyikan, ≥ 15k poligon untuk close-up.

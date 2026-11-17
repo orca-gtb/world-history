@@ -4,3 +4,7 @@ out/
 public/audio/*.wav
 *.mp4
 .DS_Store
+# Model 3D berlisensi NC / uji pribadi — JANGAN di-commit atau dipublikasikan
+public/models/
+assets-src/glb/
+out/bf109-3d-TEST-NC.mp4
