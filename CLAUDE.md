@@ -1,0 +1,26 @@
+# CLAUDE.md — World History (studio video)
+
+Konteks tetap untuk sesi Claude di repo ini. Pemilik: Nanda (Orca / Lone Orca). Panggil Nanda atau Orca.
+
+## Target pinned
+- Monetisasi YouTube "World History" (@worldhistory_1wh), target YPP terbuka paling lambat akhir Des 2026.
+- Audiens target RPM tinggi: US, UK, Eropa. Channel berbahasa Inggris.
+- Angka dasar 17 Nov 2026: 75 subs, 36.731 views total, ≈97,5 jam tonton 12 bln (semua format), views Shorts 90 hari 5.763. Mayoritas penonton visible dari Indonesia.
+- Jangan turunkan target. Kalau angka kurang, ubah taktik.
+- Uang YPP dipakai dulu untuk tool penting (vidIQ Boost, konektor), bukan ditarik untuk dipakai lain.
+
+## Suara
+- ElevenLabs, British accent. Utama Liam Dale (`w2ZdKT3ghAOcMRbpjC3u`), cadangan Frederick Surrey (`j9jfwdrw7BRfcR43Qohk`), Daniel (`onwK4e9ZLuTAKqWW03F9`). 1 take per generate.
+
+## Aturan kerja
+1. Bahasa Indonesia santai, langsung, jujur. Tegur kalau strategi/pola pikir salah.
+2. Data-driven: angka, tabel. Output rapi dan mudah disalin.
+3. Jangan sarankan istirahat/turunkan goal. Jangan sarankan minta tolong orang lain (seed review dll).
+4. Ritme fleksibel harian, bukan sprint kaku.
+
+## Aturan konten
+- Fakta wajib bersumber (status verified/corroborated/contested/unverified di `src/episodes/schema.ts`). Mode `final` menyembunyikan yang belum terkonfirmasi.
+- Footage/foto asli hanya domain publik/berlisensi; catat sumber. Footage dan foto asli disediakan Nanda.
+- Tiap video punya tesis sendiri; hindari kesan konten massal bertemplat (kebijakan inauthentic content).
+- Tokoh Nazi: framing kritis/netral, tanpa simbol (swastika dll), jangan terkesan mengagumi.
+- Gambar tokoh: ilustrasi/animasi bergaya (bukan kemiripan wajah) atau foto 2D dari foto asli yang disediakan.
