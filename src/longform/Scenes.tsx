@@ -97,6 +97,10 @@ const Caps: React.FC<{ lines?: Line[]; t: number }> = ({ lines, t }) => (
   </div>
 );
 
+const Illus: React.FC = () => (
+  <div style={{ position: "absolute", right: 24, bottom: 18, padding: "2px 12px", background: "rgba(10,16,22,0.72)", fontFamily: F.type, fontSize: 20, letterSpacing: 3, color: "#a9cdef" }}>ILLUSTRATIVE RECONSTRUCTION</div>
+);
+
 const Head: React.FC<{ kicker?: string; title?: string }> = ({ kicker, title }) => (
   <div style={{ position: "absolute", left: 50, top: 36 }}>
     {kicker && <div style={{ display: "inline-block", padding: "2px 14px", background: "rgba(10,16,22,0.8)", fontFamily: F.type, fontSize: 28, letterSpacing: 5, color: "#ffb08a" }}>{kicker}</div>}
@@ -138,6 +142,7 @@ const First: React.FC<{ t: number }> = ({ t }) => {
         {t > 21.3 && t < 22.4 && <Tag x={hk.x - 150} y={hk.y - 150} text="NEAR COLLISION" color="#ff8a70" />}
       </div>
       <Head kicker="14 OCTOBER 1942" title="First combat mission" />
+      <Illus />
       <Hud x={W - 380} y={36} title="FUEL" value={`${Math.round(fuel)}%`} color={fuel < 20 ? "#ff6a50" : C.gold} />
     </div>
   );
@@ -166,6 +171,7 @@ const Ambush: React.FC<{ t: number }> = ({ t }) => {
       <Tag x={h.x - 70} y={h.y - 90 - 20 * p} text="HARTMANN" o={rv(t, 14.8)} />
       <Tag x={yak.x - 60} y={yak.y - 90} text="TARGET" color="#ff8a70" o={rv(t, 14.8)} />
       <Head kicker="HE HELD HIS FIRE" />
+      <Illus />
       <Hud x={W - 400} y={36} title="DISTANCE TO TARGET" value={`${Math.round(D)} m`} sub={t > 19.4 ? "TWENTY METRES — OR CLOSER" : "CLOSING IN"} />
       <Caps t={t} lines={[{ t: "A short burst at point-blank range", at: 19.6 }, { t: "Then he left", at: 21.2, hi: true }]} />
     </div>
@@ -193,6 +199,7 @@ const Goebel: React.FC<{ t: number }> = ({ t }) => {
       <Tag x={p51.x - 120} y={p51.y + 70 * p51.s + 30} text="LT. GOEBEL · P-51B" color="#e6ecef" o={rv(t, 13.4)} />
       {t > 20.6 && t < 23.2 && <Tag x={p51.x - 330} y={p51.y - 130} text="CAMERA PASS" color="#a9cdef" o={rv(t, 20.6, 0.3)} />}
       <Head kicker="JUNE 1944 · ROMANIA" />
+      <Illus />
       <Caps t={t} lines={[{ t: "Hartmann bails out, out of fuel and ammunition", at: 10.5 }, { t: "Lt. Robert J. Goebel · P-51B · 31st Fighter Group", at: 13.4, hi: true }, { t: "A camera pass to record the bailout. He banks away, and waves.", at: 19.7 }]} />
     </div>
   );
@@ -214,6 +221,7 @@ const Brno: React.FC<{ t: number }> = ({ t }) => {
       <Tag x={bf.x - 70} y={bf.y - 100} text="HARTMANN" o={rv(t, 4.9)} />
       <Tag x={yak.x - 40} y={yak.y - 100} text="YAK-9" color="#ff8a70" o={rv(t, 4.9)} />
       <Head kicker="BRNO · 8 MAY 1945" />
+      <Illus />
       <Hud x={W - 380} y={36} title="ALTITUDE" value={`${alt.toLocaleString("en-US")} m`} sub="AMBUSHED FROM 12,000 FT" />
       <Caps t={t} lines={[{ t: "A Yak-9, ambushed from above", at: 5.0 }, { t: "His 352nd, and last, victory", at: 7.2, hi: true }]} />
     </div>
