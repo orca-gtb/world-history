@@ -132,9 +132,9 @@ export const IllustratedFigure: React.FC<{ look?: FigureLook; width?: number; se
 
 // Perlakuan foto 2D: duotone sepia, halftone tipis, Ken Burns pelan (zoom + geser), vignette, grain.
 // `src` = nama file di public/photos/. Tanpa src -> tampilkan `fallback` (placeholder) dengan perlakuan yang sama.
-export const PhotoPortrait: React.FC<{ src?: string; fallback?: React.ReactNode; width?: number; seed?: number; credit?: string; duration?: number; focus?: [number, number] }> = ({ src, fallback, width = 520, seed = 1, credit, duration = 150, focus = [50, 35] }) => {
+export const PhotoPortrait: React.FC<{ src?: string; fallback?: React.ReactNode; width?: number; seed?: number; credit?: string; duration?: number; focus?: [number, number]; start?: number }> = ({ src, fallback, width = 520, seed = 1, credit, duration = 150, focus = [50, 35], start = 0 }) => {
   const f = useCurrentFrame();
-  const t = Math.min(1, f / duration);
+  const t = Math.min(1, Math.max(0, (f - start) / duration));
   const e = 1 - Math.pow(1 - t, 3);
   const scale = 1.04 + 0.12 * e;
   const dx = (seed % 2 ? -1 : 1) * 14 * e;
