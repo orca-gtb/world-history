@@ -1,0 +1,114 @@
+{
+ "fps": 30,
+ "pre": 9,
+ "cardFrames": 75,
+ "endStart": 14151,
+ "endFrames": 600,
+ "total": 14751,
+ "chapters": [
+  {
+   "id": "c00",
+   "cardStart": null,
+   "start": 0,
+   "frames": 599,
+   "voStart": 9,
+   "dur": 19.04
+  },
+  {
+   "id": "c01",
+   "cardStart": 599,
+   "start": 674,
+   "frames": 1347,
+   "voStart": 683,
+   "dur": 44.0
+  },
+  {
+   "id": "c02",
+   "cardStart": 2021,
+   "start": 2096,
+   "frames": 961,
+   "voStart": 2105,
+   "dur": 31.12
+  },
+  {
+   "id": "c03",
+   "cardStart": 3057,
+   "start": 3132,
+   "frames": 1230,
+   "voStart": 3141,
+   "dur": 40.08
+  },
+  {
+   "id": "c04",
+   "cardStart": 4362,
+   "start": 4437,
+   "frames": 1203,
+   "voStart": 4446,
+   "dur": 39.2
+  },
+  {
+   "id": "c05",
+   "cardStart": 5640,
+   "start": 5715,
+   "frames": 1165,
+   "voStart": 5724,
+   "dur": 37.92
+  },
+  {
+   "id": "c06",
+   "cardStart": 6880,
+   "start": 6955,
+   "frames": 771,
+   "voStart": 6964,
+   "dur": 24.8
+  },
+  {
+   "id": "c07",
+   "cardStart": 7726,
+   "start": 7801,
+   "frames": 815,
+   "voStart": 7810,
+   "dur": 26.24
+  },
+  {
+   "id": "c08",
+   "cardStart": 8616,
+   "start": 8691,
+   "frames": 1415,
+   "voStart": 8700,
+   "dur": 46.24
+  },
+  {
+   "id": "c09",
+   "cardStart": 10106,
+   "start": 10181,
+   "frames": 855,
+   "voStart": 10190,
+   "dur": 27.6
+  },
+  {
+   "id": "c10",
+   "cardStart": 11036,
+   "start": 11111,
+   "frames": 1105,
+   "voStart": 11120,
+   "dur": 35.92
+  },
+  {
+   "id": "c11",
+   "cardStart": 12216,
+   "start": 12291,
+   "frames": 1038,
+   "voStart": 12300,
+   "dur": 33.68
+  },
+  {
+   "id": "c12",
+   "cardStart": 13329,
+   "start": 13404,
+   "frames": 747,
+   "voStart": 13413,
+   "dur": 24.0
+  }
+ ]
+}
