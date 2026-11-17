@@ -27,7 +27,7 @@ export const ACES: Ace[] = [
 export type FactRow = { label: string; value: string; status: Status; sources: Source[] };
 export const HARTMANN_FACTS: FactRow[] = [
   // Dibaca langsung dari teks Wikipedia (lead + body). Urutan = urutan narasi VO.
-  { label: "CREDITED VICTORIES", value: "352", status: "verified", sources: [SRC.wikiHartmann] },
+  { label: "AERIAL VICTORIES", value: "352", status: "verified", sources: [SRC.wikiHartmann] },
   { label: "COMBAT MISSIONS", value: "≈ 1,400", status: "verified", sources: [SRC.wikiHartmann] }, // lead: 1,404; Spick: 1,425
   { label: "LAST VICTORY", value: "8 May 1945", status: "verified", sources: [SRC.wikiHartmann] },
   { label: "UNIT", value: "JG 52 · Eastern Front", status: "verified", sources: [SRC.wikiHartmann] },
