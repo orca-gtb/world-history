@@ -205,7 +205,16 @@ for ci, c in enumerate(CH):
                 typekey(sec(base + int(r["end"] * FPS)), 0.5, 0.0, heavy=True)
         for l in card.get("lines", []) + card.get("foot", []):
             if l.get("hi"): pop(sec(base + int(l["at"] * FPS)), 0.35)
-# ledakan kecil saat hook counter 352 sudah di atas (typekey via c00)
+# adegan animasi: mesin, tembakan, benturan
+def burst(t0, n, gap=0.075, g=0.5):
+    for i in range(n):
+        m = int(0.05 * SR); tt = np.arange(m) / SR
+        add(sfx, hp(rng.standard_normal(m), 1200) * np.exp(-tt / 0.012) + lp(rng.standard_normal(m), 300) * np.exp(-tt / 0.03) * 0.6, t0 + i * gap, g, pan=rng.uniform(-0.15, 0.15))
+vs = lambda ci, ts: sec(CH[ci]["voStart"]) + ts
+engines(vs(3, 14.4), 11.5, g=0.22); whoosh(vs(3, 21.2), 0.8, 0.5); crash(vs(3, 24.9), 0.45)
+engines(vs(4, 14.6), 8.0, g=0.22); burst(vs(4, 19.6), 13)
+engines(vs(7, 10.0), 17.0, g=0.2); typekey(vs(7, 21.3), 0.7, 0.0, heavy=True); whoosh(vs(7, 22.5), 1.2, 0.35)
+engines(vs(9, 4.7), 3.8, g=0.22); burst(vs(9, 6.95), 6)
 
 def reverb(x, secs=2.2, wet=0.3):
     n = int(secs * SR); t = np.arange(n) / SR; out = np.zeros_like(x)

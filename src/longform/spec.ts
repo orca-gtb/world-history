@@ -60,9 +60,7 @@ export const CHAPTERS: ChapterSpec[] = [
     cards: [
       { k: "map", view: [8, 40, 52, 58], title: "October 1942", note: MODERN, markers: [{ lon: 40.11, lat: 44.61, label: "Maykop · Fighter Wing 52", at: 0.6, primary: true, dx: -560, dy: -90 }] },
       { k: "sil", icon: "ju87", kicker: "HIS FIRST JOB", title: "Ferrying Stukas", sub: "Ju 87 dive-bombers", lines: [{ t: "First flight: the brakes fail", at: 9.2 }, { t: "The Stuka destroys the controller's hut", at: 11.5, hi: true }] },
-      { k: "text", kicker: "14 OCTOBER 1942", title: "First combat mission", lines: [
-        { t: "Breaks away from his leader", at: 19.0 }, { t: "Nearly collides with an enemy fighter", at: 21.0 }, { t: "Runs out of fuel", at: 23.2 }, { t: "Three days with the ground crew", at: 25.5, hi: true },
-      ] },
+      { k: "scene", id: "first" },
       { k: "counter", kicker: "OCTOBER – DECEMBER 1942", label: "VICTORIES BY YEAR-END", from: 0, to: 2, at: 30.0, end: 34.0, lines: [{ t: "First victory: 22 days after that mission", at: 29.5 }] },
       { k: "photo", src: "hartmann-a.jpg", kicker: "HIS NICKNAME", title: "Bubi", sub: "“The Kid”", lines: [{ t: "Because of his youthful looks", at: 36.0 }] },
     ],
@@ -74,7 +72,7 @@ export const CHAPTERS: ChapterSpec[] = [
     cards: [
       { k: "text", kicker: "HIS TEACHER: PAULE ROßMANN", lines: [{ t: "Hold back.", at: 3.7 }, { t: "Choose a target that is not taking evasive action.", at: 4.8 }, { t: "Close in.", at: 8.1, hi: true }] },
       { k: "custom", id: "steps" },
-      { k: "counter", kicker: "HE HELD HIS FIRE UNTIL", label: "METRES — OR CLOSER", from: 0, to: 20, at: 16.6, end: 18.2, lines: [{ t: "A short burst at point-blank range", at: 19.6 }, { t: "Then he left", at: 21.2, hi: true }] },
+      { k: "scene", id: "ambush" },
       { k: "text", kicker: "GÜNTHER RALL ON HARTMANN", lines: [{ t: "A very good pilot, but not a virtuoso.", at: 22.9 }, { t: "His edge: an extremely cool mind.", at: 27.9, hi: true }] },
       { k: "text", kicker: "ERIC BROWN, BRITISH TEST PILOT, ASKED HOW", lines: [{ t: "Hartmann's answer:", at: 32.6 }, { t: "Close range, and weak Soviet defensive armament and tactics.", at: 34.0, hi: true }] },
     ],
@@ -113,7 +111,7 @@ export const CHAPTERS: ChapterSpec[] = [
     cards: [
       { k: "map", view: [18, 42, 34, 50], title: "May – June 1944", note: MODERN, tint: [{ name: "Romania", color: "#dcc693" }], markers: [{ lon: 26.03, lat: 44.94, label: "Ploiești oilfields", at: 1.0, primary: true, dx: 30, dy: 30 }] },
       { k: "sil", icon: "p51", kicker: "FIRST CONTACT", title: "P-51 Mustang", sub: "Over Romania, May 1944", lines: [{ t: "Later that June, P-51s run his Messerschmitt out of fuel", at: 6.2 }] },
-      { k: "custom", id: "goebel" },
+      { k: "scene", id: "goebel" },
     ],
     shots: [{ t: -0.3, card: 0 }, { t: 5.5, card: 1 }, { t: 9.9, card: 2 }],
   },
@@ -135,11 +133,12 @@ export const CHAPTERS: ChapterSpec[] = [
     cardTitle: { kicker: "CHAPTER 9", title: "1945", sub: "The last day" },
     cards: [
       { k: "map", view: [8, 46, 26, 52], title: "8 May 1945", note: MODERN, markers: [{ lon: 16.61, lat: 49.2, label: "Brno · last victory: a Yak-9", at: 0.6, primary: true, dx: 30, dy: -90 }] },
+      { k: "scene", id: "brno" },
       { k: "text", kicker: "THE AIRFIELD", lines: [{ t: "Soviet forces within artillery range", at: 8.6 }, { t: "His unit destroys Karaya One, 24 other Bf 109s and its ammunition", at: 12.9, hi: true }] },
       { k: "text", kicker: "SURRENDER", title: "To the U.S. 90th Infantry Division", lines: [{ t: "Hartmann chose to surrender his unit to the Americans", at: 19.5 }] },
       { k: "timeline", kicker: "MAY 1945", entries: [{ date: "8 MAY", text: "Last victory; the war in Europe ends", at: -5 }, { date: "14 MAY", text: "The Americans hand him over to the Soviet Union", at: 23.6, hi: true }] },
     ],
-    shots: [{ t: -0.3, card: 0 }, { t: 8.0, card: 1 }, { t: 18.8, card: 2 }, { t: 22.8, card: 3 }],
+    shots: [{ t: -0.3, card: 0 }, { t: 4.6, card: 1 }, { t: 8.0, card: 2 }, { t: 18.8, card: 3 }, { t: 22.8, card: 4 }],
   },
   {
     id: "c10",
