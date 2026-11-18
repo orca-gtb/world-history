@@ -8,6 +8,8 @@ import type { Icon, Line } from "./types";
 const W = 1700, H = 900;
 const bz = Easing.bezier(0.16, 1, 0.3, 1);
 const LEN: Record<Icon, number> = { bf109: 8.9, fw190: 8.95, me262: 10.6, p51: 9.8, ju87: 11.1, yak9: 8.5 };
+// Sprite cel-shaded dari model 3D CC-BY (public/sprites, dibuat scripts/render-sprites.mjs); fw190/me262 tetap siluet datar.
+const SPR: Partial<Record<Icon, { f: string; asp: number }>> = { bf109: { f: "sprites/bf109.png", asp: 1030 / 257 }, p51: { f: "sprites/p51.png", asp: 960 / 286 }, ju87: { f: "sprites/ju87.png", asp: 918 / 391 }, yak9: { f: "sprites/yak1.png", asp: 862 / 259 } };
 const ASP: Record<Icon, number> = { bf109: 700 / 206, fw190: 672 / 231, me262: 710 / 221, p51: 322 / 100, ju87: 898 / 301, yak9: 709 / 208 };
 
 export const SCENE_PANEL: React.CSSProperties = { position: "absolute", width: W, height: H, overflow: "hidden", boxSizing: "border-box", boxShadow: "0 1px 1px rgba(40,24,6,0.18), 0 4px 4px rgba(40,24,6,0.15), 0 16px 16px rgba(40,24,6,0.13), 0 32px 40px rgba(40,24,6,0.16)" };
@@ -27,8 +29,8 @@ const sk = (t: number, k: Key[]) => {
 const rv = (t: number, at: number, d = 0.5) => bz(clamp01((t - at) / d));
 
 const Plane: React.FC<{ icon: Icon; x: number; y: number; r?: number; w: number; dir: 1 | -1; opacity?: number }> = ({ icon, x, y, r = 0, w, dir, opacity = 1 }) => {
-  const h = w / ASP[icon];
-  return <Img src={staticFile(`silhouettes/${icon}.png`)} style={{ position: "absolute", left: x - w / 2, top: y - h / 2, width: w, height: h, opacity, transform: `rotate(${dir > 0 ? -r : r}deg) scaleX(${dir > 0 ? -1 : 1})`, transformOrigin: "50% 50%" }} />;
+  const sp = SPR[icon]; const h = w / (sp ? sp.asp : ASP[icon]);
+  return <Img src={staticFile(sp ? sp.f : `silhouettes/${icon}.png`)} style={{ position: "absolute", left: x - w / 2, top: y - h / 2, width: w, height: h, opacity, transform: `rotate(${dir > 0 ? -r : r}deg) scaleX(${dir > 0 ? -1 : 1})`, transformOrigin: "50% 50%" }} />;
 };
 
 const Tag: React.FC<{ x: number; y: number; text: string; color?: string; o?: number }> = ({ x, y, text, color = "#ffd36e", o = 1 }) => (

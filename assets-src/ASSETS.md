@@ -19,3 +19,17 @@
 |---|---|---|
 | BF 109 – Messerschmitt, GRIP420 (Sketchfab, bf109-grip420.glb) | **CC-BY-NC-4.0 (non-komersial)** — terbaca dari metadata file | **TIDAK BOLEH dipakai di video yang dimonetisasi.** Hanya dipakai untuk uji pribadi (tidak di-commit; ada di .gitignore). Texture membawa Balkenkreuz + swastika (dihapus di salinan uji). Gear terpasang permanen (satu mesh). |
 Syarat model pengganti: lisensi **CC0** atau **CC-BY** (kredit penulis di deskripsi). Hindari NC (non-komersial), ND (tanpa turunan), dan SA. Cek juga: texture tanpa lambang (atau bisa dihapus), gear bisa disembunyikan, ≥ 15k poligon untuk close-up.
+
+## Sprite cel-shaded (public/sprites/*.png) — dari model 3D CC-BY 4.0
+Dirender dengan `scripts/render-sprites.mjs` (src/sprites/Sprite.tsx: toon shading + outline), tekstur dibersihkan `scripts/clean-glb-insignia.py` (Balkenkreuz/tanda swastika dihapus), roda pendarat dipotong (clip) di Bf 109, P-51, Yak-1; pilot Yak-1 disembunyikan. File GLB sumber TIDAK di-commit (public/models, assets-src/glb di .gitignore).
+Syarat CC BY 4.0: kredit + tautan lisensi + sebutkan perubahan → WAJIB masuk deskripsi video:
+
+```
+3D models (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), modified (toon-shaded, textures edited, parts removed):
+• "Bf 109 G-6" by Arthur C. Galuppo — https://sketchfab.com/3d-models/bf-109-g-6-83f837ee67474a4fb2752240b71d8bab
+• "Junkers Ju 87 Stuka" by scorpion81 — https://sketchfab.com/3d-models/junkers-ju-87-stuka-80fe9909938a44159d1906a81092c006
+• "P-51-B SP" by APlainPlane — https://sketchfab.com/3d-models/p-51-b-sp-92aa0d75ff9248738452f959b8f9bed6
+• "Yak1" by manilov.ap — https://sketchfab.com/3d-models/yak1-fa960d51684f4b70acb5e4cb414941df
+```
+Catatan: sprite Soviet = Yak-1 (stand-in untuk Yak-9; model Yak-9 kiriman Nanda berlisensi CC-BY-NC → tidak dipakai). Adegan Brno memakai Yak-1 dengan label "Yak-9" di video — sebut "illustrative" (sudah ada label ILLUSTRATIVE RECONSTRUCTION).
+Yak-9 yang tepat: cari model CC0/CC-BY di Sketchfab, kirim .glb, tinggal render ulang.
