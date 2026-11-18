@@ -219,16 +219,18 @@ const firstFrame = (t: number): Frame => {
     return { cam: { pos: V(mix(-15, -11, k), 2, mix(19, 16.5, k)), look: V(0.5, 0, -3), fov: 32 }, planes: [{ o: BF, p: lead, key: "lead" }, { o: BF, p: hk, key: "hk" }],
       sky: { scroll: t * 260 }, tags: [{ p: V(-4, 1.6, -10), text: "ROßMANN", color: "#e6ecef", o: rv(t, 14.6) }, { p: V(5, -1, 2), text: "HARTMANN", o: rv(t, 14.6) }] };
   }
-  if (t < 19.3) { // dari atas-belakang: musuh di bawah
+  if (t < 19.3) { // dari atas-belakang: dua flight Yak rapi (V-echelon) di bawah, arah sama dengan Hartmann
     const k = u(t, 16.4, 19.3);
-    const hk: Pose = { pos: [0, bob(1), 0], pitch: -2, roll: 8 + Math.sin(t) * 3, spin: t * 55 };
-    const yaks: PlaneS[] = Array.from({ length: 10 }, (_, i) => {
-      const gx = (i % 5) * 7 - 34 + Math.floor(i / 5) * 3, gz = Math.floor(i / 5) * 9 - 6 + (i % 2) * 2;
-      return { o: YAK, key: `y${i}`, p: { pos: [gx + (t - 16.4) * 5, -26 + (i % 3) * 0.8, gz], yaw: 180, roll: Math.sin(t * 1.3 + i) * 4, spin: t * 50 + i } };
-    });
-    return { cam: { pos: V(mix(13, 11, k), 9, 7), look: V(-22, -24, 0), fov: 40 }, planes: [{ o: BF, p: hk, key: "hk" }, ...yaks],
+    const hk: Pose = { pos: [mix(10, 4, k), 5 + bob(1), 9], pitch: -2, roll: 8 + Math.sin(t) * 3, spin: t * 55 };
+    // tiap flight: pemimpin + 4 wingman bergeser ke belakang (+x) dan ke samping (±z)
+    const flights: [number, number, number][] = [[-30, -30, -10], [-62, -31, 14]]; // [x, y, z] pemimpin
+    const slots: [number, number][] = [[0, 0], [10, -9], [10, 9], [20, -18], [20, 18]];
+    const yaks: PlaneS[] = flights.flatMap(([fx, fy, fz], fi) => slots.map(([dx, dz], si) => ({
+      o: YAK, key: `y${fi}${si}`, p: { pos: [fx + dx + (t - 16.4) * 3, fy + (si % 2) * 0.3, fz + dz], yaw: 0, roll: Math.sin(t * 1.2 + fi * 2 + si) * 2, pitch: 0, spin: t * 50 + si * 3 },
+    })));
+    return { cam: { pos: V(mix(34, 30, k), 14, 24), look: V(-34, -27, 0), fov: 42 }, planes: [{ o: BF, p: hk, key: "hk" }, ...yaks],
       ground: { y: -260, scroll: t * 10 }, sky: { scroll: t * 160, lift: -300 },
-      tags: [{ p: V(-22, -24, 2), text: "10 ENEMY AIRCRAFT BELOW", color: "#ff8a70", o: rv(t, 16.6) }, { p: V(0, 0, 0), text: "HARTMANN", o: rv(t, 16.5) }] };
+      tags: [{ p: V(-46, -30, 2), text: "10 ENEMY AIRCRAFT BELOW", color: "#ff8a70", o: rv(t, 16.6), dy: 130 }, { p: V(7, 5, 9), text: "HARTMANN", o: rv(t, 16.5) }] };
   }
   if (t < 21.3) { // menukik: fly-by melintas kamera, ease-out
     const k = bz(u(t, 19.3, 21.3));
