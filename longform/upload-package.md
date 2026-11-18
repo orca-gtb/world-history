@@ -1,6 +1,6 @@
 # Paket upload — Erich Hartmann (long-form, 8:11)
 
-File video final: `out/hartmann-longform-fullhd-mixkit.mp4` (1920×1080, 30 fps, 491,7 dtk, −16 LUFS).
+File video final: `out/hartmann-longform-fullhd-v33.mp4` (1920×1080, 30 fps, 491,7 dtk, −16 LUFS).
 Semua teks di bawah berbahasa Inggris karena kanal berbahasa Inggris (target US/UK/EU). Tinggal salin.
 
 ## Judul (pilih satu; semua < 70 karakter)
@@ -47,6 +47,7 @@ Music: Mixkit Stock Music Free License (https://mixkit.co/license/)
 • "Echoes" by Andrew Ev
 • "Epical Drums 04" by Grigoriy Nuzhny
 • "Unforgiven" by Michael Ramir C.
+Closing section: "Ich hatt' einen Kameraden" ("The Good Comrade"), melody by Friedrich Silcher (1825), public domain; arrangement MIDI CC0 via Wikimedia Commons; synthesized for this video.
 
 Maps: Natural Earth (public domain). Borders shown are modern borders.
 Photos: [ISI SEBELUM PUBLISH: sumber + lisensi hartmann-a.jpg dan hartmann-b.jpg]
