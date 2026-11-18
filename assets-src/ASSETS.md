@@ -49,3 +49,7 @@ Unduh ulang: `curl -L https://assets.mixkit.co/music/<ID>/<ID>.mp3 -o assets-src
 Kandidat lain terunduh (dianalisis, belum dipakai): 614 Silent Descent, 605 Delirium, 612 Selpan, 633 Xanthos, 184 Vastness, 520 Ode to Loneliness, 546 The Farewell, 846 I Won't Surrender, 64 Dark Shadows, 597 Vertigo, 711 Classical 4, 678/680 Epical Drums 03/05, 625 Fragments of Bangkok, 677 Epical Drums 02, 592 Miss You, 599 Possible Dreams.
 Bangun ulang audio: `NO_PAD=1 python3 scripts/soundtrack_longform.py out/longform-sfx.wav` → `python3 scripts/music_mixkit.py out/longform-sfx.wav out/longform-bed-mixkit.wav` → `python3 scripts/mix_vo_longform.py out/longform-bed-mixkit.wav longform/vo out/longform-mix-mixkit.wav` → normalisasi −16 LUFS (ffmpeg volume + alimiter) → mux ke video.
 NCS (ncs.io) dicoba: katalog EDM, tidak cocok; tidak dipakai.
+
+## Lagu Jerman: "Ich hatt' einen Kameraden" (Silcher, 1825) — domain publik
+Melodi Friedrich Silcher (1825), teks Ludwig Uhland (1809): domain publik. Aransemen MIDI 4 suara: Wikimedia Commons "File:Ich hatt' einen Kameraden.mid", lisensi **CC0** (diunduh sendiri oleh Nanda 18 Nov 2026, disimpan di assets-src/music/kameraden.mid, tidak di-commit). Dirender dengan synth sendiri oleh `scripts/kameraden.py` (tanpa rekaman pihak lain, jadi tidak ada hak cipta rekaman). Tidak perlu kredit; boleh dicantumkan "Melody: Friedrich Silcher (1825), public domain".
+Catatan konteks: lagu duka militer Jerman, dipakai juga di upacara era Nazi. Pakai hanya di bagian tawanan/warisan (c10–c12), bukan adegan tempur.
