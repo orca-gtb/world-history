@@ -176,17 +176,20 @@ CH = _T["chapters"]
 
 # musik: pad muram berulang sepanjang video; tiap bab ganti akor, timpani di pembuka bab
 CHORDS = [["D2", "A2", "D3"], ["Bb2", "F3", "Bb3"], ["G2", "D3", "G3"], ["A2", "E3", "A3"], ["D2", "A2", "F3"], ["G2", "D3", "Bb3"]]
+import os
+NO_PAD = os.environ.get("NO_PAD") == "1"   # NO_PAD=1: tanpa pad/horn sintesis (musik diganti trek pustaka, lihat scripts/music_mixkit.py)
 t0 = 0.0; k = 0
-while t0 < DUR:
+while t0 < DUR and not NO_PAD:
     add(music, strings(CHORDS[k % len(CHORDS)], 8.0, a=2.2, r=2.6, bright=900 + 120 * (k % 3), g=0.5), t0, 1.0, pan=-0.1 if k % 2 else 0.1)
     t0 += 6.4; k += 1
 hit(0.0 + sec(100), 0.9)                       # hantaman di angka 352
 for c in CH:
     if c["cardStart"] is not None:
         timp(sec(c["cardStart"]), "D2", 0.5); rustle(sec(c["cardStart"]), 0.35); whoosh(sec(c["cardStart"]) + 0.1, 1.2, 0.3)
-for nt, off in (("A3", 0.0), ("D4", 4.0), ("F4", 8.0)): add(music, horn(nt, 3.5, 0.55), sec(CH[8]["start"]) + off, 1.0)   # bab puncak
+for nt, off in (("A3", 0.0), ("D4", 4.0), ("F4", 8.0)):   # bab puncak
+    if not NO_PAD: add(music, horn(nt, 3.5, 0.55), sec(CH[8]["start"]) + off, 1.0)
 timp(sec(_T["endStart"]), "D2", 0.6)
-add(music, strings(["D2", "A2", "D3"], 14.0, a=3.0, r=4.0, bright=700, g=0.6), sec(_T["endStart"]), 1.0)
+if not NO_PAD: add(music, strings(["D2", "A2", "D3"], 14.0, a=3.0, r=4.0, bright=700, g=0.6), sec(_T["endStart"]), 1.0)
 
 # sfx: per bab -> gerak kamera, angka (mesin tik), baris penting
 for ci, c in enumerate(CH):
