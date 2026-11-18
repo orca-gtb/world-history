@@ -2,7 +2,8 @@ import React, { useMemo } from "react";
 import * as THREE from "three";
 import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
-import { Easing, Img, staticFile } from "remotion";
+import { Easing, Img, OffthreadVideo, Sequence, staticFile } from "remotion";
+import timing from "./timing.json";
 import { C, F, clamp01 } from "../kit/theme";
 import { ToonPlane, toonMat, type ToonOpts, type Pose } from "../sprites/Toon";
 import type { Line } from "./types";
@@ -403,9 +404,28 @@ const Brno3D: React.FC<{ t: number }> = ({ t }) => {
 };
 
 // Jendela tampil kartu (detik VO, dari shots di spec.ts). Di luar jendela ±1,6 s kartu tidak terlihat -> tidak render 3D.
-const WIN = { first: [14.3, 28.8], ambush: [14.6, 22.4], goebel: [9.9, 99], brno: [4.6, 8.0] } as const;
+export const WIN = { first: [14.3, 28.8], ambush: [14.6, 22.4], goebel: [9.9, 99], brno: [4.6, 8.0] } as const;
+export const SCENE_PAD = 1.6;
 export const SceneCard3D: React.FC<{ id: "first" | "ambush" | "goebel" | "brno"; t: number }> = ({ id, t }) => {
   const [a, b] = WIN[id];
   if (t < a - 1.6 || t > b + 1.6) return <div style={{ ...PANEL, background: "linear-gradient(180deg, #5b8fc2 0%, #a6c8e2 55%, #e9f0f2 100%)" }} />;
   return id === "first" ? <First3D t={t} /> : id === "ambush" ? <Ambush3D t={t} /> : id === "goebel" ? <Goebel3D t={t} /> : <Brno3D t={t} />;
+};
+
+// Durasi klip pra-render per adegan (detik). Goebel berlangsung sampai akhir bab c07.
+const c07 = timing.chapters.find((c) => c.id === "c07")!;
+export const CLIP_SEC: Record<keyof typeof WIN, number> = {
+  first: WIN.first[1] - WIN.first[0] + 2 * SCENE_PAD, ambush: WIN.ambush[1] - WIN.ambush[0] + 2 * SCENE_PAD,
+  goebel: (c07.frames - timing.pre) / 30 - (WIN.goebel[0] - SCENE_PAD), brno: WIN.brno[1] - WIN.brno[0] + 2 * SCENE_PAD,
+};
+// Di long-form: putar klip public/scenes/<id>.mp4 (dibuat scripts/render-scenes.sh) selaras waktu VO.
+export const SceneVideo: React.FC<{ id: keyof typeof WIN }> = ({ id }) => {
+  const from = Math.round(timing.pre + (WIN[id][0] - SCENE_PAD) * 30);
+  return (
+    <div style={{ ...PANEL, filter: undefined, background: "linear-gradient(180deg, #5b8fc2 0%, #a6c8e2 55%, #e9f0f2 100%)" }}>
+      <Sequence from={from} durationInFrames={Math.ceil(CLIP_SEC[id] * 30)} layout="none">
+        <OffthreadVideo src={staticFile(`scenes/${id}.mp4`)} muted style={{ position: "absolute", inset: 0, width: W, height: H }} />
+      </Sequence>
+    </div>
+  );
 };
