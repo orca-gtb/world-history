@@ -4,7 +4,7 @@ import { C, F, clamp01 } from "../kit/theme";
 import { PhotoPortrait } from "../portrait/Portrait";
 import { COUNTRIES } from "./mapdata";
 import { makeProj, ringPath } from "./geo";
-import { SceneCard } from "./Scenes";
+import { SceneCard3D } from "./Scenes3D";
 import type { CardSpec, Icon, Line } from "./types";
 
 export const CARD_W = 1700, CARD_H = 900;
@@ -245,7 +245,7 @@ export const CardBody: React.FC<{ c: CardSpec; t: number }> = ({ c, t }) => {
         </div>
       );
     case "scene":
-      return <SceneCard id={c.id} t={t} />;
+      return <SceneCard3D id={c.id} t={t} />;
     case "custom":
       return c.id === "tulip" ? <TulipCard t={t} /> : c.id === "goebel" ? <GoebelCard t={t} /> : <StepsCard t={t} />;
   }
