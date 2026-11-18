@@ -9,13 +9,14 @@ export const CHAPTERS: ChapterSpec[] = [
     id: "c00",
     cards: [
       { k: "counter", dark: true, kicker: "ERICH HARTMANN", label: "AERIAL VICTORIES", from: 0, to: 352, at: 0.25, end: 3.4 },
+      { k: "scene", id: "teaser", kicker: "THE MAN · THE MYTH", lines: [{ t: "Much of his popular image comes from one bestselling biography", at: 6.5 }, { t: "Historians have criticised it", at: 8.9, hi: true }] },
       { k: "photo", src: "hartmann-b.jpg", kicker: "THE STORY OF", title: "Erich Hartmann", sub: "1922 – 1993", lines: [
-        { t: "The boy who learned to fly in a glider", at: 9.3 },
-        { t: "The young pilot who broke almost every rule on his first mission", at: 11.8 },
-        { t: "The prisoner who was not freed for ten years", at: 15.9, hi: true },
+        { t: "The boy who learned to fly in a glider", at: 13.4 },
+        { t: "The young pilot who broke almost every rule on his first mission", at: 16.1 },
+        { t: "The prisoner who was not freed for ten years", at: 18.8, hi: true },
       ] },
     ],
-    shots: [{ t: -0.3, card: 0, s: 1.1 }, { t: 0.2, card: 0, s: 1.28, d: 90 }, { t: 5.8, card: 1, s: 1.0, d: 40 }],
+    shots: [{ t: -0.3, card: 0, s: 1.1 }, { t: 0.2, card: 0, s: 1.28, d: 90 }, { t: 5.8, card: 1, s: 1.0, d: 40 }, { t: 12.7, card: 2, s: 1.0, d: 40 }],
   },
   {
     id: "c01",
@@ -70,11 +71,11 @@ export const CHAPTERS: ChapterSpec[] = [
     id: "c04",
     cardTitle: { kicker: "CHAPTER 4", title: "The method", sub: "See · Decide · Attack · Break" },
     cards: [
-      { k: "text", kicker: "HIS TEACHER: PAULE ROßMANN", lines: [{ t: "Hold back.", at: 3.7 }, { t: "Choose a target that is not taking evasive action.", at: 4.8 }, { t: "Close in.", at: 8.1, hi: true }] },
+      { k: "scene", id: "stalk", kicker: "HIS TEACHER: PAULE ROßMANN", lines: [{ t: "Hold back.", at: 3.7 }, { t: "Choose a target that is not taking evasive action.", at: 4.8 }, { t: "Close in.", at: 8.1, hi: true }] },
       { k: "custom", id: "steps" },
       { k: "scene", id: "ambush" },
-      { k: "text", kicker: "GÜNTHER RALL ON HARTMANN", lines: [{ t: "A very good pilot, but not a virtuoso.", at: 22.9 }, { t: "His edge: an extremely cool mind.", at: 27.9, hi: true }] },
-      { k: "text", kicker: "ERIC BROWN, BRITISH TEST PILOT, ASKED HOW", lines: [{ t: "Hartmann's answer:", at: 32.6 }, { t: "Close range, and weak Soviet defensive armament and tactics.", at: 34.0, hi: true }] },
+      { k: "scene", id: "flyby", kicker: "GÜNTHER RALL ON HARTMANN", lines: [{ t: "A very good pilot, but not a virtuoso.", at: 22.9 }, { t: "His edge: an extremely cool mind.", at: 27.9, hi: true }] },
+      { k: "scene", id: "closeup", kicker: "ERIC BROWN, BRITISH TEST PILOT, ASKED HOW", lines: [{ t: "Hartmann's answer:", at: 32.6 }, { t: "Close range, and weak Soviet defensive armament and tactics.", at: 34.0, hi: true }] },
     ],
     shots: [{ t: -0.3, card: 0 }, { t: 9.2, card: 1 }, { t: 14.6, card: 2 }, { t: 22.4, card: 3 }, { t: 30.4, card: 4 }],
   },
@@ -137,8 +138,12 @@ export const CHAPTERS: ChapterSpec[] = [
       { k: "text", kicker: "THE AIRFIELD", lines: [{ t: "Soviet forces within artillery range", at: 8.6 }, { t: "His unit destroys Karaya One, 24 other Bf 109s and its ammunition", at: 12.9, hi: true }] },
       { k: "text", kicker: "SURRENDER", title: "To the U.S. 90th Infantry Division", lines: [{ t: "Hartmann chose to surrender his unit to the Americans", at: 19.5 }] },
       { k: "timeline", kicker: "MAY 1945", entries: [{ date: "8 MAY", text: "Last victory; the war in Europe ends", at: -5 }, { date: "14 MAY", text: "The Americans hand him over to the Soviet Union", at: 23.6, hi: true }] },
+      { k: "bars", kicker: "THE 352", title: "Whose aircraft", max: 352, rows: [
+        { label: "Soviet", value: 345, at: 30.0, end: 33.0 },
+        { label: "American", value: 7, at: 34.0, end: 34.7, hi: true },
+      ] },
     ],
-    shots: [{ t: -0.3, card: 0 }, { t: 4.6, card: 1 }, { t: 8.0, card: 2 }, { t: 18.8, card: 3 }, { t: 22.8, card: 4 }],
+    shots: [{ t: -0.3, card: 0 }, { t: 4.6, card: 1 }, { t: 8.0, card: 2 }, { t: 18.8, card: 3 }, { t: 22.8, card: 4 }, { t: 27.2, card: 5 }],
   },
   {
     id: "c10",
@@ -160,7 +165,7 @@ export const CHAPTERS: ChapterSpec[] = [
     cards: [
       { k: "timeline", kicker: "THE NEW WEST GERMAN AIR FORCE", entries: [{ date: "1956", text: "Joins the new West German air force", at: 0.4 }, { date: "1959 – 62", text: "Commands Fighter Wing 71 “Richthofen”", at: 3.8, hi: true }] },
       { k: "counter", kicker: "F-104 STARFIGHTER · GERMAN PILOTS, NON-COMBAT", label: "PILOTS KILLED IN CRASHES", from: 0, to: 116, at: 13.2, end: 15.5, lines: [{ t: "Hartmann opposed the purchase over safety concerns", at: 8.2 }] },
-      { k: "timeline", kicker: "THE END OF THE STORY", entries: [{ date: "1970", text: "Forced into early retirement", at: 19.9 }, { date: "20 SEP 1993", text: "Dies, aged 71", at: 25.3 }, { date: "1997", text: "Russia clears him of all charges", at: 29.8, hi: true }] },
+      { k: "timeline", kicker: "THE END OF THE STORY", entries: [{ date: "1970", text: "Forced into early retirement", at: 19.9 }, { date: "20 SEP 1993", text: "Dies, aged 71", at: 25.3 }, { date: "1997", text: "Russia posthumously clears him of all charges", at: 29.8, hi: true }] },
     ],
     shots: [{ t: -0.3, card: 0 }, { t: 7.6, card: 1 }, { t: 19.3, card: 2 }],
   },

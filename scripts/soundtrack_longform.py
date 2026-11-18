@@ -218,6 +218,9 @@ engines(vs(3, 14.4), 11.5, g=0.22); whoosh(vs(3, 21.2), 0.8, 0.5); crash(vs(3, 2
 engines(vs(4, 14.6), 8.0, g=0.22); burst(vs(4, 19.6), 13)
 engines(vs(7, 10.0), 17.0, g=0.2); typekey(vs(7, 21.3), 0.7, 0.0, heavy=True); whoosh(vs(7, 22.5), 1.2, 0.35)
 engines(vs(9, 4.7), 3.8, g=0.22); burst(vs(9, 6.95), 6)
+engines(vs(0, 5.8), 7.1, g=0.18); whoosh(vs(0, 9.3), 0.9, 0.35)        # teaser hook (bab 0)
+engines(vs(4, -0.3), 9.5, g=0.16)                                       # stalk (Roßmann)
+engines(vs(4, 22.4), 8.0, g=0.15); engines(vs(4, 30.4), 8.8, g=0.15)    # flyby (Rall), closeup (Brown)
 
 def reverb(x, secs=2.2, wet=0.3):
     n = int(secs * SR); t = np.arange(n) / SR; out = np.zeros_like(x)

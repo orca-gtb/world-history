@@ -263,14 +263,13 @@ const firstFrame = (t: number): Frame => {
     puffs: dust, white: Math.max(0.92 * (1 - u(t, 24.1, 24.5)), 0), tags: [{ p: V(x, y, 0), text: "HARTMANN", o: 1 - clamp01((t - 24.9) / 0.5) }] };
 };
 const First3D: React.FC<{ t: number }> = ({ t }) => {
-  const fuel = 100 * (1 - clamp01((t - 21.0) / 3.4));
   const f = firstFrame(t); f.white = Math.max(f.white ?? 0, cutWhite(t, [16.4, 19.3, 21.3, 22.4]));
   return (
     <div style={PANEL}>
       <Stage f={f} seed={Math.floor(t * 30)} />
       <Head kicker="14 OCTOBER 1942" title="First combat mission" />
       <Illus />
-      <Hud x={W - 380} y={36} title="FUEL" value={`${Math.round(fuel)}%`} color={fuel < 20 ? "#ff6a50" : C.gold} />
+      {t >= 24.1 && <Hud x={W - 380} y={36} title="FUEL" value="EMPTY" color="#ff6a50" />}
     </div>
   );
 };
@@ -310,13 +309,13 @@ const ambushFrame = (t: number) => {
   return { f, D };
 };
 const Ambush3D: React.FC<{ t: number }> = ({ t }) => {
-  const { f, D } = ambushFrame(t);
+  const { f } = ambushFrame(t);
   return (
     <div style={PANEL}>
       <Stage f={f} seed={Math.floor(t * 30)} />
       <Head kicker="HE HELD HIS FIRE" />
       <Illus />
-      <Hud x={W - 400} y={36} title="DISTANCE TO TARGET" value={`${Math.round(D)} m`} sub={t > 19.4 ? "TWENTY METRES — OR CLOSER" : "CLOSING IN"} />
+      {t > 19.4 && <Hud x={W - 400} y={36} title="FIRING RANGE" value="≤ 20 m" sub="HIS OWN ACCOUNT" />}
       <Caps t={t} lines={[{ t: "A short burst at point-blank range", at: 19.6 }, { t: "Then he left", at: 21.2, hi: true }]} />
     </div>
   );
@@ -392,24 +391,53 @@ const brnoFrame = (t: number): Frame => {
     tags: [{ p: V(0, 0, 0), text: "HARTMANN", o: 1, dy: 170 }, { p: yp, text: "YAK-9", color: "#ff8a70", o: 1 - u(t, HIT + 0.3, HIT + 0.6) }] };
 };
 const Brno3D: React.FC<{ t: number }> = ({ t }) => {
-  const alt = Math.round(3700 - 3700 * 0.45 * clamp01((t - 5.4) / 1.5));
   const f = brnoFrame(t); f.white = Math.max(f.white ?? 0, cutWhite(t, [6.2]));
   return (
     <div style={PANEL}>
       <Stage f={f} seed={Math.floor(t * 30)} />
       <Head kicker="BRNO · 8 MAY 1945" />
       <Illus />
-      <Hud x={W - 380} y={36} title="ALTITUDE" value={`${alt.toLocaleString("en-US")} m`} sub="AMBUSHED FROM 12,000 FT" />
+      <Hud x={W - 380} y={36} title="ALTITUDE" value="3,700 m" sub="AMBUSHED FROM 12,000 FT" />
       <Caps t={t} lines={[{ t: "A Yak-9, ambushed from above", at: 5.0 }, { t: "His 352nd, and last, victory", at: 7.2, hi: true }]} />
     </div>
   );
 };
 
+// ======================================================================= adegan pendukung (bab 0 teaser, bab 4 pengganti kartu teks)
+const stalkFrame = (t: number): Frame => {
+  const u = t + 0.3;
+  const L: Pose = { pos: [0, Math.sin(u * 1.1) * 0.25, 0], pitch: -1, roll: 4 + Math.sin(u * 0.9) * 3, spin: t * 57 };
+  const Wg: Pose = { pos: [8, -1.2 + Math.sin(u * 1.0 + 1) * 0.25, 7.5], pitch: -1, roll: 6 + Math.sin(u * 0.8) * 3, spin: t * 55 };
+  const yk = (x: number, y: number, z: number, i: number): PlaneS => ({ o: YAK, key: `y${i}`, p: { pos: [x + u * 1.2, y + Math.sin(u + i) * 0.3, z], yaw: 0, roll: Math.sin(u * 0.7 + i) * 3, spin: t * 50 + i } });
+  return { cam: { pos: V(mix(15, 12, u / 9.5), 3.2, 21), look: V(-16, -4, -1), fov: 38 }, planes: [{ o: BF, p: L, key: "L" }, { o: BF, p: Wg, key: "W" }, yk(-62, -9, -5, 1), yk(-92, -8, 6, 2), yk(-108, -11, -13, 3)],
+    sky: { scroll: u * 320 }, ground: { y: -380, scroll: u * 40 } };
+};
+const flybyFrame = (t: number): Frame => {
+  const u = t - 22.4; const k = Easing.inOut(Easing.sin)(clamp01(u / 8));
+  const x = mix(16, -16, k);
+  return { cam: { pos: V(0, -1.5, 20), look: V(x * 0.45, 2.2, -2), fov: 34 }, planes: [{ o: BF, key: "p", p: { pos: [x, 2 + Math.sin(u * 0.9) * 0.6, -6], pitch: 1, roll: -10 + Math.sin(u * 0.8) * 6, spin: t * 57 } }], sky: { scroll: u * 150, lift: 80 } };
+};
+const closeupFrame = (t: number): Frame => {
+  const u = t - 30.4; const th = D2R(mix(28, 82, clamp01(u / 8.8)));
+  return { cam: { pos: V(-15 * Math.cos(th), 2.4, 15 * Math.sin(th)), look: V(-0.5, 0.2, 0), fov: 30 }, planes: [{ o: BF, key: "p", p: { pos: [0, 0, 0], pitch: 0, roll: 3 * Math.sin(u * 0.8), spin: t * 57 } }], sky: { scroll: u * 200, lift: 60 } };
+};
+const teaserFrame = (t: number): Frame => {
+  const u = t - 5.8; const first = u < 3.6;
+  const f = first ? brnoFrame(4.6 + u * (1.6 / 3.6)) : firstFrame(19.3 + (u - 3.6) * (2.0 / 3.5));
+  f.tags = []; f.white = Math.max(f.white ?? 0, cutWhite(u, [3.6]));
+  return f;
+};
+const EXTRA_FRAMES = { teaser: teaserFrame, stalk: stalkFrame, flyby: flybyFrame, closeup: closeupFrame } as const;
+
 // Jendela tampil kartu (detik VO, dari shots di spec.ts). Di luar jendela ±1,6 s kartu tidak terlihat -> tidak render 3D.
-export const WIN = { first: [14.3, 28.8], ambush: [14.6, 22.4], goebel: [9.9, 99], brno: [4.6, 8.0] } as const;
+export const WIN = { first: [14.3, 28.8], ambush: [14.6, 22.4], goebel: [9.9, 99], brno: [4.6, 8.0], teaser: [5.8, 12.9], stalk: [-0.3, 9.2], flyby: [22.4, 30.4], closeup: [30.4, 39.2] } as const;
 export const SCENE_PAD = 1.6;
-export const SceneCard3D: React.FC<{ id: "first" | "ambush" | "goebel" | "brno"; t: number }> = ({ id, t }) => {
+export const SceneCard3D: React.FC<{ id: keyof typeof WIN; t: number }> = ({ id, t }) => {
   const [a, b] = WIN[id];
+  if (id === "teaser" || id === "stalk" || id === "flyby" || id === "closeup") {
+    if (t < a - SCENE_PAD || t > b + SCENE_PAD) return <div style={{ ...PANEL, background: "linear-gradient(180deg, #5b8fc2 0%, #a6c8e2 55%, #e9f0f2 100%)" }} />;
+    return <div style={PANEL}><Stage f={EXTRA_FRAMES[id](t)} seed={Math.floor(t * 30)} /><Illus /></div>;
+  }
   if (t < a - 1.6 || t > b + 1.6) return <div style={{ ...PANEL, background: "linear-gradient(180deg, #5b8fc2 0%, #a6c8e2 55%, #e9f0f2 100%)" }} />;
   return id === "first" ? <First3D t={t} /> : id === "ambush" ? <Ambush3D t={t} /> : id === "goebel" ? <Goebel3D t={t} /> : <Brno3D t={t} />;
 };
@@ -419,15 +447,18 @@ const c07 = timing.chapters.find((c) => c.id === "c07")!;
 export const CLIP_SEC: Record<keyof typeof WIN, number> = {
   first: WIN.first[1] - WIN.first[0] + 2 * SCENE_PAD, ambush: WIN.ambush[1] - WIN.ambush[0] + 2 * SCENE_PAD,
   goebel: (c07.frames - timing.pre) / 30 - (WIN.goebel[0] - SCENE_PAD), brno: WIN.brno[1] - WIN.brno[0] + 2 * SCENE_PAD,
+  teaser: WIN.teaser[1] - WIN.teaser[0] + 2 * SCENE_PAD, stalk: WIN.stalk[1] - WIN.stalk[0] + 2 * SCENE_PAD,
+  flyby: WIN.flyby[1] - WIN.flyby[0] + 2 * SCENE_PAD, closeup: WIN.closeup[1] - WIN.closeup[0] + 2 * SCENE_PAD,
 };
 // Di long-form: putar klip public/scenes/<id>.mp4 (dibuat scripts/render-scenes.sh) selaras waktu VO.
-export const SceneVideo: React.FC<{ id: keyof typeof WIN }> = ({ id }) => {
+export const SceneVideo: React.FC<{ id: keyof typeof WIN; kicker?: string; lines?: Line[]; t?: number }> = ({ id, kicker, lines, t = 0 }) => {
   const from = Math.round(timing.pre + (WIN[id][0] - SCENE_PAD) * 30);
   return (
     <div style={{ ...PANEL, filter: undefined, background: "linear-gradient(180deg, #5b8fc2 0%, #a6c8e2 55%, #e9f0f2 100%)" }}>
       <Sequence from={from} durationInFrames={Math.ceil(CLIP_SEC[id] * 30)} layout="none">
         <OffthreadVideo src={staticFile(`scenes/${id}.mp4`)} muted style={{ position: "absolute", inset: 0, width: W, height: H }} />
       </Sequence>
+      {(kicker || lines) && <><Head kicker={kicker} /><Caps t={t} lines={lines} /></>}
     </div>
   );
 };

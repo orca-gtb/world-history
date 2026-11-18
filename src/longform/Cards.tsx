@@ -245,7 +245,7 @@ export const CardBody: React.FC<{ c: CardSpec; t: number }> = ({ c, t }) => {
         </div>
       );
     case "scene":
-      return <SceneVideo id={c.id} />;
+      return <SceneVideo id={c.id} kicker={c.kicker} lines={c.lines} t={t} />;
     case "custom":
       return c.id === "tulip" ? <TulipCard t={t} /> : c.id === "goebel" ? <GoebelCard t={t} /> : <StepsCard t={t} />;
   }
