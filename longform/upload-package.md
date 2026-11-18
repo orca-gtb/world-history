@@ -1,6 +1,6 @@
 # Paket upload — Erich Hartmann (long-form, 8:11)
 
-File video final: `out/hartmann-longform-fullhd-v33.mp4` (1920×1080, 30 fps, 491,7 dtk, −16 LUFS).
+File video final: `out/hartmann-longform-fullhd-v34.mp4` (1920×1080, 30 fps, 485,3 dtk, −16 LUFS).
 Semua teks di bawah berbahasa Inggris karena kanal berbahasa Inggris (target US/UK/EU). Tinggal salin.
 
 ## Judul (pilih satu; semua < 70 karakter)
@@ -16,21 +16,21 @@ Erich Hartmann is widely cited with 352 aerial victories, more than any other fi
 
 CHAPTERS
 0:00 Cold open
-0:20 1922–1937: Weissach, China, gliders
-1:07 1940–1942: Training
-1:42 1942: The Eastern Front
-2:25 The method: See, Decide, Attack, Break
-3:08 1943: Kursk to the Knight's Cross
-3:49 1943–1944: The Black Devil
+0:26 1922–1937: Weissach, China, gliders
+1:13 1940–1942: Training
+1:46 1942: The Eastern Front
+2:29 The method: See, Decide, Attack, Break
+3:11 1943: Kursk to the Knight's Cross
+3:51 1943–1944: The Black Devil
 4:18 1944: Romania
 4:47 1944: The peak
-5:37 1945: The last day
-6:08 1945–1955: Captivity
-6:47 1956–1997: After the war
-7:24 Epilogue: The man and the myth
+5:35 1945: The last day
+6:13 1945–1955: Captivity
+6:52 1956–1997: After the war
+7:28 Epilogue: The man and the myth
 
 A NOTE ON SOURCES
-Victory totals and several anecdotes about Hartmann differ between sources, and some come from a biography that historians have criticised for borrowing from wartime propaganda. We use the commonly cited figures and flag the disputed stories as such in the narration. Main source for the facts: the English Wikipedia article "Erich Hartmann" and the references it cites.
+Of the 352 victories, 345 were Soviet aircraft and 7 were American (per the English Wikipedia article). Victory totals and several anecdotes about Hartmann differ between sources, and some come from a biography that historians have criticised for borrowing from wartime propaganda. We use the commonly cited figures and flag the disputed stories as such in the narration. Main source for the facts: the English Wikipedia article "Erich Hartmann" and the references it cites.
 
 This video is an animated reconstruction. Aircraft, cockpits and scenes are illustrations, not footage. Narration is AI-generated.
 
