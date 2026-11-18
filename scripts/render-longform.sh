@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Render long-form per segmen (bisa dilanjutkan: segmen yang sudah ada dilewati), lalu gabung + mux audio master.
 # Pakai: scripts/render-longform.sh [scale]   (scale default 1 = Full HD)
+# Adegan 3D diputar dari klip public/scenes/*.mp4 -> jalankan scripts/render-scenes.sh dulu bila adegan berubah.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 SC=${1:-1}
@@ -13,7 +14,7 @@ for ((s=0; s<T; s+=STEP)); do
   e=$((s+STEP-1)); ((e>=T)) && e=$((T-1))
   f=$OUT/p$(printf %02d $i).mp4
   if [ ! -s "$f" ]; then
-    npx remotion render src/longform/index.tsx HartmannLong "$f.tmp.mp4" --frames=$s-$e --scale=$SC --muted --gl=swangle --codec=h264 --crf=18 --concurrency=4 --pixel-format=yuv420p --browser-executable=$BR >/dev/null 2>&1
+    npx remotion render src/longform/index.tsx HartmannLong "$f.tmp.mp4" --frames=$s-$e --scale=$SC --muted --gl=angle --codec=h264 --crf=18 --concurrency=4 --pixel-format=yuv420p --browser-executable=$BR >/dev/null 2>&1
     mv "$f.tmp.mp4" "$f"
   fi
   echo "file 'p$(printf %02d $i).mp4'" >> $OUT/list.txt
