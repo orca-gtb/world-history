@@ -221,6 +221,10 @@ engines(vs(9, 4.7), 3.8, g=0.22); burst(vs(9, 6.95), 6)
 engines(vs(0, 5.8), 7.1, g=0.18); whoosh(vs(0, 9.3), 0.9, 0.35)        # teaser hook (bab 0)
 engines(vs(4, -0.3), 9.5, g=0.16)                                       # stalk (Roßmann)
 engines(vs(4, 22.4), 8.0, g=0.15); engines(vs(4, 30.4), 8.8, g=0.15)    # flyby (Rall), closeup (Brown)
+engines(vs(1, 34.8), 9.2, g=0.16)                                       # Alfred, Ju 87
+engines(vs(3, 5.2), 7.0, g=0.17); crash(vs(3, 12.2), 0.5); whoosh(vs(3, 12.1), 0.6, 0.3)   # Ferrying Stukas: rem blong, hancur
+engines(vs(7, 5.5), 5.5, g=0.18)                                        # Mustang
+engines(vs(8, 37.9), 8.3, f_start=60.0, f_end=60.0, g=0.10)             # unit di darat (idle)
 
 def reverb(x, secs=2.2, wet=0.3):
     n = int(secs * SR); t = np.arange(n) / SR; out = np.zeros_like(x)

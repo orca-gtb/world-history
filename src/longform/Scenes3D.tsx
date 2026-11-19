@@ -25,6 +25,8 @@ const D2R = THREE.MathUtils.degToRad;
 
 export const BF: ToonOpts = { model: "bf109g6", base: [0, -90, 0], clipY: -0.58, hideBox: [2.6, 4.8, -0.9, 0.45], prop: { x: -4.47, y: 0.33, r: 1.5, blades: 3 } };
 export const YAK: ToonOpts = { model: "yak1", base: [0, 0, 0], hide: "pilot", clipY: -0.66, prop: { x: -3.35, y: 0.46, r: 1.5, blades: 3 } };
+export const JU87: ToonOpts = { model: "ju87", base: [0, -90, 0], prop: { x: -4.05, y: 0.35, r: 1.7, blades: 3 } };
+export const BFG: ToonOpts = { model: "bf109g6", base: [0, -90, 0], prop: { x: -4.47, y: 0.33, r: 1.5, blades: 3 } }; // roda pendarat TIDAK dipotong (untuk adegan darat)
 export const P51: ToonOpts = { model: "p51b", base: [0, -90, 0], clipY: -0.9, prop: { x: -4.3, y: 0.12, r: 1.55, blades: 4 } };
 
 // ------------------------------------------------------------ spesifikasi frame
@@ -34,7 +36,7 @@ type Tag = { p: V3; text: string; color?: string; o: number; dy?: number };
 type Frame = {
   cam: Cam; planes: PlaneS[];
   tracers?: { a: V3; b: V3 }[]; glows?: { p: V3; s: number; o: number }[]; puffs?: { p: V3; s: number; o: number; dark: number; tint?: "dust" }[];
-  chute?: { p: V3; sway: number }; ground?: { y: number; scroll: number; rep?: number };
+  chute?: { p: V3; sway: number }; ground?: { y: number; scroll: number; rep?: number; tint?: number }; extras?: React.ReactNode;
   sky: { scroll: number; lift?: number; fg?: boolean; tone?: "day" | "late" };
   white?: number; shake?: number; tags?: Tag[];
 };
@@ -96,9 +98,9 @@ const fieldTex = (() => {
     t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(24, 24); t.anisotropy = 8; return t;
   };
 })();
-const Ground: React.FC<{ y: number; scroll: number; rep?: number }> = ({ y, scroll, rep = 24 }) => {
+const Ground: React.FC<{ y: number; scroll: number; rep?: number; tint?: number }> = ({ y, scroll, rep = 24, tint = 0xffffff }) => {
   const tile = 4000 / rep;
-  const mat = useMemo(() => { const tx = fieldTex().clone(); tx.repeat.set(rep, rep); tx.needsUpdate = true; return toonMat(0xffffff, { map: tx }); }, [rep]);
+  const mat = useMemo(() => { const tx = fieldTex().clone(); tx.repeat.set(rep, rep); tx.needsUpdate = true; return toonMat(tint, { map: tx }); }, [rep, tint]);
   return <mesh position={[((scroll % tile) + tile) % tile, y, 0]} rotation={[-Math.PI / 2, 0, 0]} material={mat}><planeGeometry args={[4000, 4000]} /></mesh>;
 };
 
@@ -149,7 +151,8 @@ const Stage: React.FC<{ f: Frame; seed: number }> = ({ f, seed }) => {
         <hemisphereLight args={["#ffffff", "#8a8f99", 0.6]} />
         <directionalLight position={[-6, 12, 14]} intensity={2.4} />
         <directionalLight position={[8, -4, 6]} intensity={0.5} color="#a9cdef" />
-        {f.ground && <Ground y={f.ground.y} scroll={f.ground.scroll} rep={f.ground.rep} />}
+        {f.ground && <Ground y={f.ground.y} scroll={f.ground.scroll} rep={f.ground.rep} tint={f.ground.tint} />}
+        {f.extras}
         {f.planes.map((pl) => <ToonPlane key={pl.key} {...pl.o} {...pl.p} />)}
         {f.chute && <Chute p={f.chute.p} sway={f.chute.sway} />}
         {(f.tracers ?? []).map((tr, i) => { const m = new THREE.Mesh(tracerGeo, tracerMat); m.position.copy(tr.a); m.quaternion.setFromUnitVectors(V(1, 0, 0), tr.b.clone().sub(tr.a).normalize()); return <primitive key={`t${i}`} object={m} />; })}
@@ -427,14 +430,61 @@ const teaserFrame = (t: number): Frame => {
   f.tags = []; f.white = Math.max(f.white ?? 0, cutWhite(u, [3.6]));
   return f;
 };
-const EXTRA_FRAMES = { teaser: teaserFrame, stalk: stalkFrame, flyby: flybyFrame, closeup: closeupFrame } as const;
+// ---- pengganti kartu siluet (bab 1, 3, 7, 8)
+const hutParts = (u: number, impact: number): React.ReactNode => {
+  const m = toonMat(0x9a8760), r = toonMat(0x6d5b3f), hull = new THREE.MeshBasicMaterial({ color: 0x15100c, side: THREE.BackSide });
+  const parts: { s: [number, number, number]; p: [number, number, number]; m: THREE.Material; v: [number, number, number]; w: number }[] = [
+    { s: [4, 0.2, 4], p: [0, -1.75, 0], m: r, v: [0, 0, 0], w: 0 }, // lantai
+    { s: [0.2, 2.4, 4], p: [-2, -0.55, 0], m: m, v: [-2.2, 3.5, -1], w: 3 }, { s: [0.2, 2.4, 4], p: [2, -0.55, 0], m: m, v: [4.5, 4.5, 1], w: -4 },
+    { s: [4, 2.4, 0.2], p: [0, -0.55, -2], m: m, v: [0.6, 2.8, -4], w: 2 }, { s: [4, 2.4, 0.2], p: [0, -0.55, 2], m: m, v: [1.2, 3.2, 4.5], w: -2 },
+    { s: [4.6, 0.3, 4.6], p: [0, 0.8, 0], m: r, v: [-1, 6, 0.4], w: 4 },
+  ];
+  return parts.map((q, i) => {
+    const a = Math.max(0, u - impact); const g = 9.8 * 1.2;
+    const pos: [number, number, number] = [q.p[0] + q.v[0] * a * 1.6, Math.max(-1.75 + q.s[1] / 2, q.p[1] + q.v[1] * a - 0.5 * g * a * a), q.p[2] + q.v[2] * a];
+    const rot = q.w * a * 1.5;
+    return <mesh key={i} position={pos} rotation={[rot * 0.3, rot * 0.2, rot]} material={q.m}><boxGeometry args={q.s} /><mesh scale={1.03} material={hull}><boxGeometry args={q.s} /></mesh></mesh>;
+  });
+};
+const alfredFrame = (t: number): Frame => {
+  const u = t - 34.8; const k = Easing.inOut(Easing.sin)(clamp01(u / 9.2));
+  return { cam: { pos: V(0, 0, 21), look: V(mix(6, -6, k) * 0.5, 0.4, 0), fov: 34 }, planes: [{ o: JU87, key: "j", p: { pos: [mix(15, -15, k), Math.sin(u * 0.7) * 0.5, 0], pitch: -4, roll: 8 + Math.sin(u * 0.6) * 3, spin: t * 52 } }],
+    ground: { y: -80, scroll: u * 12, tint: 0xe2c68c }, sky: { scroll: u * 120, lift: 120, tone: "late" } };
+};
+const ferryFrame = (t: number): Frame => {
+  const u = t - 5.2; const touch = 2.6, hit = 7.0;
+  const gy = -1.75;
+  const px = u < touch ? mix(28, 8, u / touch) : u < hit ? mix(8, -9.2, (u - touch) / (hit - touch)) : mix(-9.2, -12.6, 1 - Math.pow(1 - clamp01((u - hit) / 1.8), 2));
+  const py = u < touch ? mix(6.2, 0, Easing.in(Easing.quad)(u / touch)) : 0;
+  const bounce = u > touch && u < touch + 0.5 ? Math.sin(((u - touch) / 0.5) * Math.PI) * 0.25 : 0;
+  const pitch = u < touch ? mix(-3, 6, u / touch) : u < hit ? 3 : mix(3, -4, clamp01((u - hit) / 0.6));
+  const dust = u > touch ? trail(u, touch, (tt) => V(tt < hit ? mix(8, -9.2, (tt - touch) / (hit - touch)) + 3 : -10, gy + 0.2, 0.6), V(2.2, 0.9, 1.5), 1.1, 1 / 22, 0.5, 2.0).map((q) => ({ ...q, tint: "dust" as const })) : [];
+  const boom = u > hit ? Array.from({ length: 10 }, (_, i) => { const a = u - hit; if (a > 1.8) return null; return { p: V(-12 + (rnd(i) - 0.5) * 4 + a * (rnd(i + 4) - 0.5) * 6, gy + 0.6 + a * 3 * rnd(i + 9), (rnd(i + 2) - 0.5) * 4), s: 0.9 + a * 2.4, o: Math.max(0, 0.95 - a / 1.8), dark: 0.2, tint: "dust" as const }; }).filter(Boolean) as { p: V3; s: number; o: number; dark: number; tint: "dust" }[] : [];
+  return { cam: { pos: V(-4, 0.6, 22), look: V(-4, 0, 0), fov: 36 }, shake: u > hit && u < hit + 0.5 ? 0.45 : 0,
+    planes: [{ o: JU87, key: "j", p: { pos: [px, py + bounce + gy + 1.75, 0], pitch, roll: 0, spin: u < touch ? t * 52 : t * 30 } }],
+    ground: { y: gy, scroll: 0, rep: 260 }, sky: { scroll: u * 8, lift: 40 }, puffs: [...dust, ...boom], extras: <group position={[-12, 0, 0]}>{hutParts(u, hit)}</group> };
+};
+const mustangFrame = (t: number): Frame => {
+  const u = t - 5.5; const k = Easing.inOut(Easing.sin)(clamp01((u + 1.6) / 7.6));
+  const mk = (dx: number, dy: number, dz: number, key: string, roll: number): PlaneS => ({ o: P51, key, p: { pos: [mix(46, -46, k) + dx, 2 + dy, dz], pitch: 1, roll, spin: t * 58 } });
+  return { cam: { pos: V(0, -0.5, 26), look: V(mix(14, -14, k) * 0.4, 2, 0), fov: 32 }, planes: [mk(0, 0, 0, "a", -8), mk(14, -1.2, -4, "b", -5)],
+    ground: { y: -260, scroll: u * 30 }, sky: { scroll: u * 70, lift: 60 } };
+};
+const staysFrame = (t: number): Frame => {
+  const u = t - 37.9; const k = clamp01(u / 8.3);
+  const row: PlaneS[] = [0, 1, 2].map((i) => ({ o: BFG, key: `b${i}`, p: { pos: [i * 2.5, -0.75, -i * 10], yaw: 8 - i * 3, pitch: 0, roll: 0, spin: t * 22 + i } }));
+  return { cam: { pos: V(mix(15, 9, k), mix(1.6, 1.2, k), mix(15, 12, k)), look: V(-2, 0.2, -8), fov: 38 }, planes: row,
+    ground: { y: -2.0, scroll: 0, rep: 200, tint: 0xdfe7c4 }, sky: { scroll: u * 6, lift: 30, tone: "late" } };
+};
+const EXTRA_FRAMES = { alfred: alfredFrame, ferry: ferryFrame, mustang: mustangFrame, stays: staysFrame, teaser: teaserFrame, stalk: stalkFrame, flyby: flybyFrame, closeup: closeupFrame } as const;
 
 // Jendela tampil kartu (detik VO, dari shots di spec.ts). Di luar jendela ±1,6 s kartu tidak terlihat -> tidak render 3D.
-export const WIN = { first: [14.3, 28.8], ambush: [14.6, 22.4], goebel: [9.9, 99], brno: [4.6, 8.0], teaser: [5.8, 12.9], stalk: [-0.3, 9.2], flyby: [22.4, 30.4], closeup: [30.4, 39.2] } as const;
+import WINDOWS from "./scene-windows.json";
+export const WIN = WINDOWS; // sumber tunggal: src/longform/scene-windows.json (dipakai juga scripts/render-scenes.sh)
 export const SCENE_PAD = 1.6;
 export const SceneCard3D: React.FC<{ id: keyof typeof WIN; t: number }> = ({ id, t }) => {
   const [a, b] = WIN[id];
-  if (id === "teaser" || id === "stalk" || id === "flyby" || id === "closeup") {
+  if (id === "teaser" || id === "stalk" || id === "flyby" || id === "closeup" || id === "alfred" || id === "ferry" || id === "mustang" || id === "stays") {
     if (t < a - SCENE_PAD || t > b + SCENE_PAD) return <div style={{ ...PANEL, background: "linear-gradient(180deg, #5b8fc2 0%, #a6c8e2 55%, #e9f0f2 100%)" }} />;
     return <div style={PANEL}><Stage f={EXTRA_FRAMES[id](t)} seed={Math.floor(t * 30)} /><Illus /></div>;
   }
@@ -449,6 +499,8 @@ export const CLIP_SEC: Record<keyof typeof WIN, number> = {
   goebel: (c07.frames - timing.pre) / 30 - (WIN.goebel[0] - SCENE_PAD), brno: WIN.brno[1] - WIN.brno[0] + 2 * SCENE_PAD,
   teaser: WIN.teaser[1] - WIN.teaser[0] + 2 * SCENE_PAD, stalk: WIN.stalk[1] - WIN.stalk[0] + 2 * SCENE_PAD,
   flyby: WIN.flyby[1] - WIN.flyby[0] + 2 * SCENE_PAD, closeup: WIN.closeup[1] - WIN.closeup[0] + 2 * SCENE_PAD,
+  alfred: WIN.alfred[1] - WIN.alfred[0] + 2 * SCENE_PAD, ferry: WIN.ferry[1] - WIN.ferry[0] + 2 * SCENE_PAD,
+  mustang: WIN.mustang[1] - WIN.mustang[0] + 2 * SCENE_PAD, stays: WIN.stays[1] - WIN.stays[0] + 2 * SCENE_PAD,
 };
 // Di long-form: putar klip public/scenes/<id>.mp4 (dibuat scripts/render-scenes.sh) selaras waktu VO.
 export const SceneVideo: React.FC<{ id: keyof typeof WIN; kicker?: string; lines?: Line[]; t?: number }> = ({ id, kicker, lines, t = 0 }) => {

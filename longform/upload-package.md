@@ -1,6 +1,6 @@
 # Paket upload — Erich Hartmann (long-form, 8:11)
 
-File video final: `out/hartmann-longform-fullhd-v34.mp4` (1920×1080, 30 fps, 485,3 dtk, −16 LUFS).
+File video final: `out/hartmann-longform-fullhd-v35.mp4` (1920×1080, 30 fps, 485,3 dtk, −16 LUFS).
 Semua teks di bawah berbahasa Inggris karena kanal berbahasa Inggris (target US/UK/EU). Tinggal salin.
 
 ## Judul (pilih satu; semua < 70 karakter)
@@ -40,7 +40,7 @@ CREDITS
 • "Junkers Ju 87 Stuka" by scorpion81 — https://sketchfab.com/3d-models/junkers-ju-87-stuka-80fe9909938a44159d1906a81092c006
 • "P-51-B SP" by APlainPlane — https://sketchfab.com/3d-models/p-51-b-sp-92aa0d75ff9248738452f959b8f9bed6
 • "Yak1" by manilov.ap — https://sketchfab.com/3d-models/yak1-fa960d51684f4b70acb5e4cb414941df
-The Soviet fighter in the Brno scene is a Yak-1 shown as a stand-in for the Yak-9.
+Aircraft are illustrative stand-ins: the Bf 109 is a G-6 model (the wing flew G-series types in 1942), and the Soviet fighter in the Brno scene is a Yak-1 standing in for the Yak-9.
 
 Music: Mixkit Stock Music Free License (https://mixkit.co/license/)
 • "Fallen (Asper)" and "We Will Get It" by Eugenio Mininni

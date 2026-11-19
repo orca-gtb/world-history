@@ -15,7 +15,7 @@ export type CardSpec =
   | { k: "sil"; icon: Icon; kicker?: string; title: string; sub?: string; lines?: Line[]; flip?: boolean }
   | { k: "bars"; kicker: string; title: string; rows: { label: string; value: number; at: number; end: number; unit?: string; hi?: boolean }[]; max: number; foot?: Line[] }
   | { k: "photo"; src: string; kicker?: string; title: string; sub?: string; lines?: Line[] }
-  | { k: "scene"; id: "first" | "ambush" | "goebel" | "brno" | "teaser" | "stalk" | "flyby" | "closeup"; kicker?: string; lines?: Line[] }
+  | { k: "scene"; id: "first" | "ambush" | "goebel" | "brno" | "teaser" | "stalk" | "flyby" | "closeup" | "alfred" | "ferry" | "mustang" | "stays"; kicker?: string; lines?: Line[] }
   | { k: "custom"; id: "tulip" | "goebel" | "steps" };
 
 export type Shot = { t: number; card: number; s?: number; d?: number; dx?: number; dy?: number };

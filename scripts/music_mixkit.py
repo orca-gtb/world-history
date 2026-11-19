@@ -32,6 +32,23 @@ for i, (tid, t0, off, name) in enumerate(PLAN):
     g[:fi] = np.sin(np.linspace(0, np.pi / 2, fi)) ; g[-int(XF * SR):] = np.cos(np.linspace(0, np.pi / 2, int(XF * SR)))
     s0 = int(t0 * SR); e = min(N, s0 + n); music[:, s0:e] += (seg * g)[:, : e - s0]
     print(f"{t0:6.1f}s-{t1:6.1f}s  {name} (#{tid}, offset {off:.0f}s)")
+# ---- peta dinamika (#8): hening/puncak. (waktu detik, dB) linear antar titik. Tidak mengubah SFX/narasi.
+SPEC = json.load(open("longform/spec.json"))
+def vo(cid): return ch[cid]["voStart"] / fps
+def counter301():
+    for c in SPEC[8]["cards"]:
+        if c["k"] == "counter" and c.get("to") == 301: return vo("c08") + c["at"], vo("c08") + c["end"]
+    return None
+ENV = [(0.0, -10.0), (5.6, -10.0), (6.8, 0.0)]                    # hook: musik menahan diri di bawah counter 352, naik di kalimat berikutnya
+ENV += [(vo("c06") + 0.8, 0.0), (vo("c06") + 2.0, -7.0), (vo("c06") + 8.5, -7.0), (vo("c06") + 10.0, 0.0)]   # hening: sebelum black tulip
+c3 = counter301()
+if c3: ENV += [(c3[0] - 1.0, 0.0), (c3[0] + 0.8, 3.5), (c3[1] + 2.0, 3.5), (c3[1] + 4.0, 0.0)]            # puncak: 301 dalam sehari
+ENV += [(vo("c09") + 6.2, 0.0), (vo("c09") + 7.0, 3.5), (vo("c09") + 9.0, 3.5), (vo("c09") + 11.0, 0.0)]   # puncak: kemenangan terakhir (Brno)
+ENV += [(vo("c11") - 15.0, 0.0), (vo("c11") - 9.0, -5.0), (vo("c11") - 6.0, -5.0), (vo("c11") + 1.0, 0.0)]                          # sebelum Silcher: turun lalu lagu masuk
+ENV.sort()
+tt = np.arange(N) / SR; env_db = np.interp(tt, [e[0] for e in ENV], [e[1] for e in ENV], left=0.0, right=0.0)
+music *= (10 ** (env_db / 20)).astype(np.float32)[None, :]
+print("peta dinamika:", [(round(a, 1), b) for a, b in ENV])
 end = int(DUR * SR); fo = int(4.0 * SR); music[:, end - fo:end] *= np.linspace(1, 0, fo) ** 1.5
 mix = music + sfx * SFX_GAIN
 wavfile.write(sys.argv[2], SR, (np.clip(mix, -1, 1).T * 32767).astype(np.int16)); print("bed mixkit ok", round(DUR, 1))
