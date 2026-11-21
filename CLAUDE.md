@@ -27,3 +27,8 @@ Konteks tetap untuk sesi Claude di repo ini. Pemilik: Nanda (Orca / Lone Orca). 
 - Preferensi Nanda (18 Nov 2026): JANGAN pakai kata/cap "credited", "not proven", "confirmed" di dalam video; caveat/perdebatan taruh di deskripsi atau komentar disematkan. Pakai istilah "aerial victories". Tidak ada stempel.
 - Zoom kamera hanya untuk momen penting (angka hook, objek kunci seperti tulip). Selebihnya kamera meluncur tanpa mengubah skala.
 - Siluet pesawat: pakai profil samping berlengkung (src/aces/Profiles.tsx), bukan ikon garis lurus. Digambar dari proporsi, bandingkan dengan 3-view referensi sebelum publish.
+
+## Jurnal (data penting per video)
+- Folder `jurnal/` berisi entri per video (data, posisi di video, status D/K/I/?, sumber, kenapa penting, risiko). Kalau Nanda menyebut nama video dan bertanya kenapa suatu data penting, buka `jurnal/<video>.md` lebih dulu, lalu `longform/source-ledger.md` untuk detail sumber.
+- Rencana upload + metadata: `upload/UPLOAD-PLAN.md`.
+- Skill lokal repo: `.claude/skills/wtf-hook-akademi` (hook) dan `.claude/skills/art-of-storytelling` (naskah/cerita). Pakai untuk hook dan struktur sebelum menulis skrip baru.
