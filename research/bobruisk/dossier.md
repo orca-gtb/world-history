@@ -138,3 +138,21 @@ Untuk saat ini hanya garis kasar yang bisa disebut: sektor utara Rogachev–Zhlo
 2. Marker pilot: 13–14 marker (Jerman: 9th Army, XXXV, XXXXI Pz, LV, 20th Pz, 12th Pz, 707th/383rd/134th, garnisun Bobruisk; Soviet: 3rd, 48th, 65th, 28th, KMG, 9th Tank Corps, 16th Air Army).
 3. Sebelum animasi, butuh: (a) peta Commons dari Nanda (bagian 6); (b) satu sumber tambahan untuk posisi divisi (Glantz bila Angie bisa akses); (c) keputusan tampilan "belum diketahui" (marker abu-abu di titik tidak pasti atau dihilangkan).
 4. Kebijakan visual: tanpa simbol Nazi pada marker Jerman (kotak abu-abu/gelap dengan tanda eselon dan ikon tipe), tanpa wajah.
+
+## 11. Pembaruan 22 Nov 2026: peta referensi dari Nanda/Angie
+| File (research/bobruisk/maps) | Isi | Status pemakaian |
+|---|---|---|
+| ref-24-27jun.png | Peta Wikipedia (Jerman) "Operation bagration bobruisk operation june 24-27 1944": garis awal 24 Jun 04:00, garis 25/26/27 Jun 21:00, panah Soviet, label divisi Jerman | **Dipakai** sebagai referensi posisi (jiplakan tangan, bukan ditampilkan) |
+| ref-27jun-1jul.png | Tahap akhir: kantong (timur s.d. 28 Jun, barat s.d. 29 Jun), 1st Gds Tank Corps, 9th(?) Tank Corps, 1st Mech Corps, 12th PzD, temu 1 Jul 13:00 dekat Marina Gorka, Gruppe Lindig/Bickel | Belum dipakai (tahap setelah 27 Jun) |
+| ref-westpoint-bagration-overview.jpg | Peta West Point (US Army), Bagration 22 Jun–19 Agt: komandan tiap Army (mis. 48 Romanenko, 28 Luchinsky, 65 Batov, 3 Gorbatov) | Pembanding tingkat Army; menguatkan nama komandan bertanda M di bagian 3 |
+| ref-soviet-belorussian-op.jpg | Peta Soviet "Белорусская наступательная операция 23 июня–29 августа 1944" | Pembanding garis 22 Jun, 28 Jun, 4 Jul |
+| ref-minsk-pocket.jpg, ref-mogilev.jpg, ref-vitebsk.jpg | Peta Wikipedia (Jerman) untuk sektor lain | Untuk video lanjutan |
+| photos/ref-*.jpg | Foto kendaraan Jerman yang hancur | **Lisensi belum diketahui. Jangan dipakai di video** sampai sumber dan lisensi tercatat |
+
+Georeferensi peta 24-27 Jun: affine dari 10 kota bersumber (Wikipedia), rms 15 px ≈ 3 km sebelum koreksi, lalu koreksi IDW sehingga kota kontrol tepat (`scripts/georef-bobruisk.py`). Garis, kantong, dan panah = jiplakan tangan → **perkiraan, presisi ±3–7 km**. Cocok untuk tingkat Army/Corps, tidak untuk posisi resimen.
+
+Temuan baru dari peta:
+- Divisi Jerman yang dilabeli pada 24–25 Jun: 707, 57, 134, 45 (sebagian, dua lokasi), 296, 6 ID, 20 PzD; sisa 35/129/102 ID di selatan (LV AK); "Gruppe Oberst Schirmer". Posisi awal divisi jadi **didukung peta** (V-peta), pergerakan hariannya tetap U.
+- Label korps di utara terbaca "XXXI PzK." padahal Wikipedia menyebut XXXXI Panzer Corps di tengah. **Ketidaksesuaian**, belum dipakai.
+- Peta referensi 2 menyebut kantong "bis 28 Juni (ost) / 29 Juni (west)": cocok dengan tanggal jatuhnya Bobruisk 29 Jun.
+- Nama komandan Soviet dari peta West Point: 48 Romanenko, 28 Luchinsky (dua sumber sekarang: ingatanku + peta West Point → naik dari M ke K).
