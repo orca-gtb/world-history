@@ -156,3 +156,13 @@ Temuan baru dari peta:
 - Label korps di utara terbaca "XXXI PzK." padahal Wikipedia menyebut XXXXI Panzer Corps di tengah. **Ketidaksesuaian**, belum dipakai.
 - Peta referensi 2 menyebut kantong "bis 28 Juni (ost) / 29 Juni (west)": cocok dengan tanggal jatuhnya Bobruisk 29 Jun.
 - Nama komandan Soviet dari peta West Point: 48 Romanenko, 28 Luchinsky (dua sumber sekarang: ingatanku + peta West Point → naik dari M ke K).
+
+## 12. Cek fakta kutipan dan angka (22 Nov 2026, dari catatan kaki artikel Wikipedia)
+| Item | Sumber yang dikutip | Status | Pemakaian |
+|---|---|---|---|
+| Kutipan Grossman "Men are walking over German corpses…" | Beevor & Vinogradova (eds.), *A Writer at War*, hlm. 273 | D (buku terbit; belum kubaca langsung) | Boleh, dengan atribusi "Vasily Grossman, war correspondent" |
+| "Good to see you — Ninth Army no longer exists!" | Adair, *Hitler's Greatest Defeat*, hlm. 135 | K (satu sumber) | Boleh dengan atribusi; jangan diperkuat |
+| "7,000 guns, mortars and Katyusha" (24 Jun) | **tanpa catatan kaki** di artikel | K lemah | Jangan sebut angka; cukup "massive artillery barrage" |
+| Korban Jerman (50.000 tewas / 20.000 tawanan / 12.000 lolos) | kotak info bertanda "citation needed"; kalimat di badan tanpa catatan kaki | K lemah | Tampilkan sebagai rentang dengan "estimates vary" di deskripsi, atau tidak ditampilkan |
+| Korban Soviet 7.061 tewas/hilang | arsip ЦАМО РФ ф. 233, оп. 2356, д. 256 | D (arsip; belum kubaca) | Boleh dengan atribusi |
+| Garis 22 Jun di sektor Bobruisk | sama dengan garis awal 24 Jun 04:00 (serangan sektor ini mulai 24 Jun; 22 Jun = sektor utara) | V | Fase "22 Jun" di peta teater saja |
