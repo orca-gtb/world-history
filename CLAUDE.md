@@ -26,6 +26,7 @@ Konteks tetap untuk sesi Claude di repo ini. Pemilik: Nanda (Orca / Lone Orca). 
 - Gambar tokoh: ilustrasi/animasi bergaya (bukan kemiripan wajah) atau foto 2D dari foto asli yang disediakan.
 - Preferensi Nanda (18 Nov 2026): JANGAN pakai kata/cap "credited", "not proven", "confirmed" di dalam video; caveat/perdebatan taruh di deskripsi atau komentar disematkan. Pakai istilah "aerial victories". Tidak ada stempel.
 - Zoom kamera hanya untuk momen penting (angka hook, objek kunci seperti tulip). Selebihnya kamera meluncur tanpa mengubah skala.
+- Gambar still dari Angie (rekonstruksi AI/ilustrasi) TIDAK boleh diberi animasi apa pun (asap, api, tracer, kilatan, guncangan, push-in). Tampil diam; boleh dipotong (cut) ke crop diam. Hidupkan lewat suara dan teks (preferensi Nanda 22 Nov 2026).
 - Siluet pesawat: pakai profil samping berlengkung (src/aces/Profiles.tsx), bukan ikon garis lurus. Digambar dari proporsi, bandingkan dengan 3-view referensi sebelum publish.
 
 ## Jurnal (data penting per video)

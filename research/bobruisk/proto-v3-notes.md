@@ -14,7 +14,10 @@ File: `out/bobruisk-proto-v3.mp4` · Kode: `src/conquer/ProtoV3.tsx` · Mix: `sc
 SOVIET FORCES BREAK THROUGH → THE ROUTE WEST IS CUT → XXXV CORPS IS ENCIRCLED → THE BREAKOUT BEGINS (still) → Only part of them get through (still) → 20TH PANZER LEADS THE WAY OUT → BOBRUISK FALLS.
 Koreksi fakta terhadap contoh Angie: "XXV Corps" → **XXXV Corps**; "THE EASTERN ROUTE IS CUT" → **"THE ROUTE WEST IS CUT"** (kantong berada di timur Berezina; yang terputus adalah jalan ke barat menyeberangi sungai).
 
-## Still hidup (9 dtk, sebelumnya 12)
+## Still (9 dtk) — DIREVISI 22 Nov: tanpa animasi apa pun (permintaan Nanda)
+Gambar tampil diam: framing A (seluruh gambar) lalu satu potongan ke crop diam B (1,4×) saat ledakan dekat. Asap, api, tracer, kilatan, guncangan, dan push-in DIHAPUS. Hidup lewat suara dan teks. Isi lama di bawah hanya arsip:
+
+### (arsip) Still hidup versi awal
 - Framing A (4,5 dtk): seluruh gambar, dorong pelan 1,00→1,05 + geser lateral.
 - Potongan ke framing B (4,5 dtk) **tepat saat ledakan dekat**: kilatan, guncangan 0,35 dtk, crop 1,4× ke pelari dan truk.
 - Asap bergerak (4 gumpalan kabur naik/bergeser), 3 titik api berkedip, 16 tracer dari kiri/kanan (pengejar di luar frame).
@@ -23,5 +26,5 @@ Koreksi fakta terhadap contoh Angie: "XXV Corps" → **XXXV Corps**; "THE EASTER
 ## Audio
 Preset jarak tetap (far/mid/near). Ledakan dekat + desis disinkronkan ke potongan A→B (18,5 dtk), momen teredam 1,05 dtk setelahnya. Level per detik: peta wide −28, operasional −23..−29, kantong −20..−26, still −12..−23.
 
-## Keputusan untuk Nanda
+## Keputusan untuk Nanda (SELESAI: push-in di still dihapus)
 - **Aturan kanal (CLAUDE.md):** "zoom kamera hanya untuk momen penting; selebihnya kamera meluncur tanpa ubah skala". Masukan Angie meminta push-in pelan di still dan zoom bertingkat di peta. Zoom di peta = momen penting (terobosan, kantong) → sesuai aturan. **Push-in 5% di still melanggar aturan secara harfiah.** Pilihan: (a) pertahankan push-in, (b) ganti dengan geser lateral saja. Mudah diubah.

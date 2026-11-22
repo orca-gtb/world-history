@@ -120,40 +120,21 @@ const Arrow: React.FC<{ pts: P[]; a: number; b: number; t: number; k: number; up
 // ---------- STILL: rekonstruksi AI (Angie v1, digrading ke palet peta) ----------
 // Still hidup: 2 framing (A lebar dengan dorong pelan, B potongan dekat), asap bergerak, api berkedip, tracer, kilatan saat ledakan dekat.
 const IMGW = 1920, IMGH = 1080;
-const FIRES: [number, number, number][] = [[1688, 442, 150], [1389, 425, 90], [1250, 330, 60]];
-const Tracer: React.FC<{ t: number; t0: number; from: P; to: P }> = ({ t, t0, from, to }) => {
-  const u = (t - t0) / 0.45; if (u < 0 || u > 1) return null;
-  const a = [from[0] + (to[0] - from[0]) * u, from[1] + (to[1] - from[1]) * u], b = [from[0] + (to[0] - from[0]) * Math.max(0, u - 0.18), from[1] + (to[1] - from[1]) * Math.max(0, u - 0.18)];
-  return <line x1={b[0]} y1={b[1]} x2={a[0]} y2={a[1]} stroke="#ffcf7a" strokeWidth={4} strokeLinecap="round" opacity={0.9} />;
-};
-const TRACERS: [number, P, P][] = Array.from({ length: 16 }, (_, i) => { const left = i % 2 === 0; const t0 = 0.3 + i * 0.52 + random(`tr${i}`) * 0.2; const y = 300 + random(`ty${i}`) * 250;
-  return [t0, left ? [-40, y] : [1960, y + 40], left ? [700 + random(`tx${i}`) * 300, y + 60] : [1150 - random(`tx${i}`) * 250, y + 90]] as [number, P, P]; });
 const Still: React.FC<{ t: number }> = ({ t }) => {
-  const ls = t - PT.still; const inB = t >= PT.cutB; const lb = t - PT.cutB;
+  const inB = t >= PT.cutB; const lb = t - PT.cutB;
   // framing: A = seluruh gambar, dorong 1.00→1.05 + geser; B = potongan dekat (1.4x) pada pelari + truk, geser pelan
-  const sc = inB ? 1.4 + lb * 0.008 : 1.0 + 0.05 * io(cl(ls, 0, PT.cutB - PT.still));
-  const fx = inB ? 1150 : 960 - ls * 4, fy = inB ? 640 : 560;
-  const shake = Math.max(0, 1 - Math.abs(t - PT.cutB) / 0.35) * 10;
+  // Gambar Angie TIDAK dianimasikan (permintaan Nanda 22 Nov 2026): framing diam, tanpa overlay.
+  // Satu potongan (cut) ke crop diam yang lebih dekat; tidak ada gerak, asap, api, tracer, kilatan, atau guncangan.
+  const sc = inB ? 1.4 : 1.0;
+  const fx = inB ? 1150 : 960, fy = inB ? 640 : 540;
+  const shake = 0; void lb;
   const tx = IMGW / 2 - fx * sc + (random(`sx${Math.floor(t * 30)}`) - 0.5) * shake, ty = IMGH / 2 - fy * sc + (random(`sy${Math.floor(t * 30)}`) - 0.5) * shake;
-  const flash = Math.max(0, 1 - Math.abs(t - PT.cutB + 0.05) / 0.25);
+  const flash = 0;
   const beats: [number, number, string, string][] = [[PT.still + 0.6, PT.cutB - 0.3, "28 JUNE 1944 · WEST OF BOBRUISK", "THE BREAKOUT BEGINS"], [PT.cutB + 0.8, PT.back, "", "Only part of them get through."]];
   return (
     <AbsoluteFill style={{ background: "#2a2722", overflow: "hidden" }}>
       <div style={{ position: "absolute", left: 0, top: 0, width: IMGW, height: IMGH, transformOrigin: "0 0", transform: `translate(${tx}px,${ty}px) scale(${sc})` }}>
         <Img src={staticFile("stills/retreat.jpg")} style={{ position: "absolute", width: IMGW, height: IMGH }} />
-        <svg width={IMGW} height={IMGH} style={{ position: "absolute", left: 0, top: 0 }}>
-          <defs>
-            <filter id="smk" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40" /></filter>
-            <radialGradient id="fire"><stop offset="0" stopColor="#ffd28a" stopOpacity="0.9" /><stop offset="0.5" stopColor="#ff7a2a" stopOpacity="0.35" /><stop offset="1" stopColor="#ff5a1a" stopOpacity="0" /></radialGradient>
-          </defs>
-          {/* asap: gumpalan kabur yang naik dan bergeser */}
-          {[[1300, 260, 260, 0.22], [1600, 200, 300, 0.25], [1050, 230, 200, 0.16], [1750, 330, 220, 0.2]].map(([x, y, r, a], i) => (
-            <ellipse key={i} cx={x + ls * (8 + i * 3)} cy={y - ls * (5 + i * 2)} rx={r * (1 + ls * 0.02)} ry={r * 0.55} fill="#3d3a36" opacity={a} filter="url(#smk)" />))}
-          {/* api berkedip */}
-          {FIRES.map(([x, y, r], i) => { const n = 0.65 + 0.35 * Math.sin(t * 13 + i * 2) * Math.sin(t * 7.3 + i); return <ellipse key={i} cx={x} cy={y} rx={r * (0.9 + 0.15 * n)} ry={r * 0.7 * (0.9 + 0.15 * n)} fill="url(#fire)" opacity={0.55 * n} style={{ mixBlendMode: "screen" }} />; })}
-          {/* tracer dari kiri dan kanan (pengejar di luar frame) */}
-          {TRACERS.map(([t0, a, b], i) => <Tracer key={i} t={ls} t0={t0} from={a} to={b} />)}
-        </svg>
       </div>
       <AbsoluteFill style={{ background: `rgba(255,236,200,${0.55 * flash})` }} />
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(12,16,20,0.55) 0%, rgba(12,16,20,0) 30%)" }} />
