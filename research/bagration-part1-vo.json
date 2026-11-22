@@ -1,0 +1,80 @@
+[
+ {
+  "id": "p1_0",
+  "title": "COLD OPEN",
+  "text": "Twenty-second of June, nineteen forty-four. Three years to the day after Germany invaded the Soviet Union. Along a front of hundreds of kilometres in Belarus, the guns open fire. Within two weeks, Germany's Army Group Centre will lose twenty-five divisions and some three hundred thousand men. Historians call it possibly the greatest defeat the German army ever suffered. This is how the trap was set.",
+  "chars": 402
+ },
+ {
+  "id": "p1_1",
+  "title": "THE BULGE",
+  "text": "By the summer of nineteen forty-four, the war in the east has turned. In the south, the Red Army has driven the Germans out of most of Ukraine. In the north, Army Group North has been pushed back. Between them, Army Group Centre still holds a great bulge of territory in Belarus, pointing east, towards Moscow. It looks strong on the map. It is not. To meet the attack they expect in the south, the Germans have moved away a third of its artillery, and almost nine out of ten of its tanks. In some sectors, there are fewer than a hundred and fifty soldiers for every kilometre of front.",
+  "chars": 586
+ },
+ {
+  "id": "p1_1b",
+  "title": "FORTRESSES",
+  "text": "And Hitler has given an order that will matter more than any number. Key towns across Belarus are declared fortresses: Vitebsk, Orsha, Mogilev, Bobruisk, Minsk. They are to be held at all costs, even if surrounded. One army commander, General Hans Jordan, sees the danger clearly. If the Soviets attack, he warns, his army must either fight a mobile defence, or see its front smashed.",
+  "chars": 384
+ },
+ {
+  "id": "p1_2",
+  "title": "THE DECEPTION",
+  "text": "The German high command is certain the next blow will fall in Ukraine, against Field Marshal Walter Model's army group. Most of their reserves are waiting there. The Soviets know this, and they use it. Their method has a name: maskirovka. Not just camouflage, but deception on a strategic scale. Four Soviet tank armies are left in the south, where the Germans can see them. In Belarus, troops and tanks move at night, and hide by day. The plan is a double bluff. Strike the centre first. Force the Germans to rush their armour north. Then strike again in the south.",
+  "chars": 566
+ },
+ {
+  "id": "p1_2b",
+  "title": "THE WARNINGS",
+  "text": "The deception is not perfect. By early June, Army Group Centre's own staff can see a large Soviet build-up in front of them. On the fourteenth of June, its chief of staff warns Berlin that the attack will hit both wings of the army group. Five days later, they count the Soviet aircraft massing against them: four and a half thousand, out of eleven thousand on the entire front. The high command sees no reason to change its mind. And the Soviet strategic reserves, the armies waiting behind the front, are never detected at all.",
+  "chars": 529
+ },
+ {
+  "id": "p1_3",
+  "title": "THE NAME AND THE ODDS",
+  "text": "The operation is named after Pyotr Bagration, a Russian general who fell fighting Napoleon in eighteen-twelve. Against Army Group Centre, the Soviet high command gathers well over a million and a half men, thousands of tanks, and nearly eight thousand aircraft. Facing them: fewer than half a million German combat troops, with only a few hundred tanks.",
+  "chars": 353
+ },
+ {
+  "id": "p1_3b",
+  "title": "THE PLAN",
+  "text": "The Soviet plan follows a doctrine they call deep battle. First, break through the front line. Then, instead of stopping, send fresh tank and mechanised forces deep into the enemy's rear, to surround entire armies. In Belarus, that means two great pincers: one around Vitebsk in the north, one around Bobruisk in the south, while the centre holds the German Fourth Army in place.",
+  "chars": 379
+ },
+ {
+  "id": "p1_4",
+  "title": "RAIL WAR",
+  "text": "Before a single Soviet gun fires, the war begins behind the German lines. From the nineteenth of June, partisans plant explosive charges along the railways of Belarus. Many are found and cleared. Enough are not. Trains stop. Supplies stall.",
+  "chars": 240
+ },
+ {
+  "id": "p1_5",
+  "title": "22 JUNE",
+  "text": "On the night of the twenty-first, Soviet patrols probe the German lines, and bombers strike the roads and railways behind them. At dawn, the artillery opens on a scale never seen before. Within hours, the front is broken almost everywhere.",
+  "chars": 239
+ },
+ {
+  "id": "p1_6",
+  "title": "VITEBSK",
+  "text": "In the north, the city of Vitebsk sits in a salient, a bulge within the bulge. It is held by the Third Panzer Army, and Hitler has declared it a fortress. Two Soviet fronts strike either side of it. By the twenty-fourth of June, the city is surrounded, and the German Fifty-Third Corps is trapped inside. One division, the Two Hundred and Sixth Infantry, is ordered to stay in the city and fight to the last man. Permission for the rest to retreat arrives, but too late. The corps commander, General Friedrich Gollwitzer, orders everyone out at once, abandoning the heavy guns. The breakout runs straight into Soviet roadblocks. A column from the Fourth Luftwaffe Field Division gets clear of the city, only to be destroyed in the forests to the west. Within days, the Fifty-Third Corps, almost thirty thousand men, has ceased to exist.",
+  "chars": 836
+ },
+ {
+  "id": "p1_7",
+  "title": "ORSHA",
+  "text": "To the south, the main highway from Moscow to Minsk runs through Orsha. The Germans know it matters, and its defences here run deeper than almost anywhere else. Soviet engineers go in first, clearing paths through the minefields for the Eleventh Guards Army. Orsha falls on the twenty-sixth of June. Two days later, Soviet tanks have reached the Berezina river, far behind the German lines.",
+  "chars": 390
+ },
+ {
+  "id": "p1_8",
+  "title": "MOGILEV",
+  "text": "In the centre stands the German Fourth Army, holding the tip of the bulge, east of the Dnieper. Its strongest formation, the Thirty-Ninth Panzer Corps, guards Mogilev and the road through the marshes. The Soviet Forty-Ninth Army attacks it head on, and pays heavily. Here the Soviet task is different: not to break through, but to hold the Fourth Army in place while the trap closes around it. On the twenty-fifth, the army's commander, Kurt von Tippelskirch, asks to withdraw. He is refused. He pulls back anyway. His superior orders him back into positions that no longer exist. Only on the twenty-sixth does Hitler allow a retreat to the Berezina. By then, it is late. On the evening of the twenty-seventh, the Soviet Forty-Ninth Army crosses the Dnieper and fights its way into Mogilev that night.",
+  "chars": 801
+ },
+ {
+  "id": "p1_9",
+  "title": "INTO THE TRAP",
+  "text": "By day, the roads to the Berezina belong to the Soviet air force. Soviet tank columns cut across them. The Fourth Army reaches the river on the thirtieth of June, and crosses under heavy bombardment. It believes it is escaping. It is retreating into a trap. And far to the south, at Bobruisk, the second jaw is already closing.",
+  "chars": 327
+ }
+]
