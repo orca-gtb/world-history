@@ -18,6 +18,9 @@ TOWNS = {  # nama: lon, lat (Wikipedia), px di peta ref atau None
     "Svetlogorsk": (D(29, 44), D(52, 38), (538, 628)),
     "Oktyabrsky": (D(28, 53), D(52, 38, 50), (258, 629)),
     "Kalinkovichi": (D(29, 20), D(52, 7.5), (409, 897)),
+    "Slutsk": (D(27, 34), D(53, 2), None),
+    "Minsk": (D(27, 33, 31), D(53, 54, 2), None),
+    "Mogilev": (D(30, 21), D(53, 55), None),
 }
 ctl = [(k, v) for k, v in TOWNS.items() if v[2]]
 A = np.array([[v[0], v[1], 1] for _, v in ctl]); B = np.array([v[2] for _, v in ctl], float)

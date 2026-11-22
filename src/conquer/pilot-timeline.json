@@ -1,0 +1,211 @@
+{
+ "total": 201.0,
+ "vo": {
+  "a1": {
+   "start": 2.0,
+   "dur": 28.45
+  },
+  "a2": {
+   "start": 32.5,
+   "dur": 23.95
+  },
+  "a3": {
+   "start": 58.0,
+   "dur": 18.36
+  },
+  "a4": {
+   "start": 79.0,
+   "dur": 18.29
+  },
+  "a5": {
+   "start": 99.0,
+   "dur": 21.55
+  },
+  "a6": {
+   "start": 122.5,
+   "dur": 20.77
+  },
+  "a7": {
+   "start": 146.0,
+   "dur": 15.73
+  },
+  "a8": {
+   "start": 164.5,
+   "dur": 33.15
+  }
+ },
+ "segments": [
+  {
+   "t0": 0.0,
+   "t1": 4.4,
+   "kind": "still",
+   "id": "01_battlefield_aftermath"
+  },
+  {
+   "t0": 4.4,
+   "t1": 31.25,
+   "kind": "map",
+   "id": "I"
+  },
+  {
+   "t0": 31.25,
+   "t1": 37.6,
+   "kind": "still",
+   "id": "02_soviet_artillery"
+  },
+  {
+   "t0": 37.6,
+   "t1": 57.05,
+   "kind": "map",
+   "id": "II"
+  },
+  {
+   "t0": 57.05,
+   "t1": 60.4,
+   "kind": "still",
+   "id": "03_infantry_breakthrough"
+  },
+  {
+   "t0": 60.4,
+   "t1": 69.4,
+   "kind": "map",
+   "id": "III"
+  },
+  {
+   "t0": 69.4,
+   "t1": 77.9,
+   "kind": "still",
+   "id": "04_soviet_armored_exploitation"
+  },
+  {
+   "t0": 77.9,
+   "t1": 84.4,
+   "kind": "still",
+   "id": "05_marsh_terrain"
+  },
+  {
+   "t0": 84.4,
+   "t1": 112.7,
+   "kind": "map",
+   "id": "IV-V"
+  },
+  {
+   "t0": 112.7,
+   "t1": 121.75,
+   "kind": "still",
+   "id": "06_german_encirclement"
+  },
+  {
+   "t0": 121.75,
+   "t1": 132.7,
+   "kind": "map",
+   "id": "VI"
+  },
+  {
+   "t0": 132.7,
+   "t1": 144.8,
+   "kind": "still",
+   "id": "07_german_retreat_breakout"
+  },
+  {
+   "t0": 144.8,
+   "t1": 154.4,
+   "kind": "still",
+   "id": "08_urban_battle"
+  },
+  {
+   "t0": 154.4,
+   "t1": 158.4,
+   "kind": "still",
+   "id": "08b_urban_retreat_street"
+  },
+  {
+   "t0": 158.4,
+   "t1": 174.2,
+   "kind": "map",
+   "id": "VII-VIII"
+  },
+  {
+   "t0": 174.2,
+   "t1": 182.5,
+   "kind": "still",
+   "id": "01_battlefield_aftermath"
+  },
+  {
+   "t0": 182.5,
+   "t1": 194.5,
+   "kind": "map",
+   "id": "VIII-end"
+  },
+  {
+   "t0": 194.5,
+   "t1": 201.0,
+   "kind": "title",
+   "id": ""
+  }
+ ],
+ "dips": [
+  4.4,
+  31.25,
+  37.6,
+  57.05,
+  60.4,
+  69.4,
+  77.9,
+  84.4,
+  112.7,
+  121.75,
+  132.7,
+  144.8,
+  154.4,
+  158.4,
+  174.2,
+  182.5,
+  194.5
+ ],
+ "ev": {
+  "theatre_in": 4.4,
+  "zoom_sector": 12.6,
+  "german_units": 20.5,
+  "jordan": 23.0,
+  "soviet_units": 37.6,
+  "plan_arrows": 40.0,
+  "first_assault": 45.0,
+  "thrown_back": 48.0,
+  "guns_again": 54.6,
+  "n_break": 60.4,
+  "tank_corps": 67.5,
+  "s_cross": 84.4,
+  "kmg": 91.0,
+  "jaws_close": 99.0,
+  "ring": 101.0,
+  "air": [
+   108.9,
+   109.7,
+   110.4,
+   111.2,
+   112.0
+  ],
+  "breakout_order": 121.75,
+  "breakout": 125.8,
+  "pz12": 126.5,
+  "falls": 158.6,
+  "part_out": 164.5,
+  "minsk": 183.0,
+  "zoom_out": 186.4
+ },
+ "quotes": [
+  {
+   "t0": 134.0,
+   "t1": 144.4,
+   "text": "\u201cGood to see you. Ninth Army no longer exists.\u201d",
+   "by": "Ninth Army chief of staff, 28 June 1944 (according to one account)"
+  },
+  {
+   "t0": 175.6,
+   "t1": 182.2,
+   "text": "\u201cA cauldron of death was boiling here.\u201d",
+   "by": "Vasily Grossman, Soviet war correspondent"
+  }
+ ]
+}
