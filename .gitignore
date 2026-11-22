@@ -10,3 +10,5 @@ assets-src/glb/
 out/bf109-3d-TEST-NC.mp4
 # Musik stok Mixkit (jangan di-commit; unduh ulang lewat ID di assets-src/ASSETS.md)
 assets-src/music/
+
+research/*/src/
