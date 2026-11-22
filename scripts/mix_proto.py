@@ -38,7 +38,7 @@ for i, (f, st, of, du, g, fi, fo, lp, pan) in enumerate(CUES):
     chain = f"[{i}]aresample=48000,aformat=channel_layouts=stereo,atrim={of}:{of+du},asetpts=PTS-STARTPTS,afade=t=in:d={fi},afade=t=out:st={max(0,du-fo)}:d={fo},volume={g}dB"
     if lp: chain += f",lowpass=f={lp}"
     l, r = (1 - max(0, pan)), (1 + min(0, pan))
-    chain += f",pan=stereo|c0={l:.2f}*c0|c1={r:.2f}*c1,adelay={int(st*1000)}|{int(st*1000)},apad=whole_dur={D}[a{i}]"
+    chain += f",pan=stereo|c0={l:.2f}*c0|c1={r:.2f}*c1,asetpts=PTS-STARTPTS+{st}/TB,aresample=async=1:first_pts=0,apad=whole_dur={D}[a{i}]"
     fil.append(chain)
 fil.append("".join(f"[a{i}]" for i in range(len(CUES))) + f"amix=inputs={len(CUES)}:normalize=0:duration=longest,atrim=0:{D},afade=t=out:st={D-1.6}:d=1.6,volume={GAIN}dB,alimiter=limit=0.8:level=0[out]")
 args += ["-filter_complex", ";".join(fil), "-map", "[out]", "-ar", "48000", "out/conquer/proto-audio.wav"]

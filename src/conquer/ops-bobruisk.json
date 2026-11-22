@@ -734,6 +734,28 @@
     28.6285,
     52.928
    ]
+  ],
+  "breakout": [
+   [
+    29.2128,
+    53.1634
+   ],
+   [
+    29.1365,
+    53.2409
+   ],
+   [
+    29.0373,
+    53.3237
+   ],
+   [
+    28.925,
+    53.3962
+   ],
+   [
+    28.8082,
+    53.4638
+   ]
   ]
  },
  "labels_ref": {
@@ -797,5 +819,6 @@
    29.3129,
    52.3545
   ]
- }
+ },
+ "note2": "breakout: hand trace of reference map 'Operation bagration bobruisk operation final stage' (Wikipedia), georef on 5 towns, rms 28.6 px"
 }

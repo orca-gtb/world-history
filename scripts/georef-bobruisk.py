@@ -60,5 +60,16 @@ out = {
     "features": {k: [px2ll(*p) for p in v] for k, v in F.items()},
     "labels_ref": {k: px2ll(*v) for k, v in LAB.items()},
 }
+# --- peta referensi 2 (27 Jun 21:00 - 1 Jul): panah terobosan Jerman "Teile XXXV. A.K. / XXXXI. Pz. K." ---
+T2 = {"Bobruisk": (780, 612), "Osipovichi": (462, 492), "Kirovsk": (921, 502), "Klichev": (838, 303), "Starye Dorogi": (248, 712)}
+A2 = np.array([[TOWNS[k][0], TOWNS[k][1], 1] for k in T2]); B2 = np.array(list(T2.values()), float)
+M2 = np.linalg.lstsq(A2, B2, rcond=None)[0]; R2 = A2 @ M2 - B2
+Minv2 = np.linalg.inv(M2[:2]); off2 = M2[2]
+def px2ll_2(x, y):
+    p = np.array([x, y], float); d = np.hypot(*(B2 - p).T) + 1e-6; w = 1 / d ** 2
+    p = p + (w[:, None] * R2).sum(0) / w.sum(); lo, la = (p - off2) @ Minv2
+    return [round(float(lo), 4), round(float(la), 4)]
+out["features"]["breakout"] = [px2ll_2(*q) for q in [(772, 600), (745, 530), (705, 455), (660, 390), (615, 330)]]
+out["note2"] = "breakout: hand trace of reference map 'Operation bagration bobruisk operation final stage' (Wikipedia), georef on 5 towns, rms %.1f px" % float(np.sqrt((np.hypot(*R2.T) ** 2).mean()))
 json.dump(out, open("src/conquer/ops-bobruisk.json", "w"), indent=1)
 print(out["note"]); print("Bobruisk check", px2ll(362, 346), out["towns"]["Bobruisk"])
