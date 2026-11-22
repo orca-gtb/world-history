@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "lemo-opuscar": {
+      "source": "lemomo-ai/lemo-opuscar",
+      "commit": "f9e204293930952b61ba921cd8944d05f121beee",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/lemo-opuscar/SKILL.md",
+      "computedHash": "5bacd1b5b158501bae3cd00d1492a9bd9437c45096c6a5d21235f3b767520835"
+    }
+  }
+}
