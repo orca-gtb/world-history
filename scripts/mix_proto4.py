@@ -21,7 +21,7 @@ C = [
  ("war-field-explosion.mp3", 11.1, 0.0, 2.5, -12, 0.02, 1.0, "mid", -0.1, "map"),
  ("bomb-distant-explotion.mp3", 11.8, 0.0, 2.0, -10, 0.02, 0.8, "mid", 0.4, "map"),
  ("explosion-in-battle.mp3", 12.4, 0.5, 1.6, -13, 0.02, 0.8, "mid", -0.4, "map"),
- ("cinematic-wind-swoosh.mp3", 13.1, 0.0, 1.5, -12, 0.05, 0.3, None, 0, "map"),
+ ("cinematic-wind-swoosh.mp3", 13.2, 0.0, 1.5, -12, 0.05, 0.3, None, 0, "map"),
  # ---- STILL 14.0-23.0 (near; J-cut 1 dtk) ----
  ("wind-blowing-ambience.mp3", T0 - 1.0, 2.0, 10.4, -14, 1.0, 1.0, None, 0, "bed"),
  ("thunder-rumble.mp3", T0 - 1.0, 1.0, 11.0, -12, 1.0, 1.5, 150, 0, "bed"),
@@ -44,7 +44,7 @@ C = [
  ("stone-debris-falling.mp3", T0 + 4.7, 0.5, 2.5, 4, 0.05, 0.8, None, 0.3, "dry"),
  ("bomb-distant-explotion.mp3", T0 + 7.2, 0.0, 2.0, -12, 0.02, 0.8, None, -0.4, "bed"),
  # ---- KEMBALI WIDE 23-31 (far, L-cut) ----
- ("cinematic-wind-swoosh.mp3", 23.1, 0.0, 1.5, -12, 0.05, 0.3, None, 0, "map"),
+ ("cinematic-wind-swoosh.mp3", 23.2, 0.0, 1.5, -12, 0.05, 0.3, None, 0, "map"),
  ("deep-cinematic-wind-hum.mp3", 23.0, 20.0, 8.0, -20, 1.0, 1.5, None, 0, "map"),
  ("el-battle-distant.mp3", 23.2, 9.0, 7.8, 10, 1.2, 2.0, "far", 0, "map"),
  ("el-mg-distant.mp3", 24.8, 4.7, 1.2, -16, 0.05, 0.4, "far", -0.3, "map"),

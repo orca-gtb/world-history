@@ -46,7 +46,7 @@ const off = (p: P, dx: number, dy: number): P => [p[0] + dx, p[1] + dy];
 const RED = "#c8261c", RED_FILL = "#f3d3cb", DE = "#2a3038", DE_FILL = "#d6d6cf";
 
 // ---------- jadwal (detik) — juga dipakai scripts/mix_proto.py ----------
-export const PT = { d26: 1.2, follow: 4.4, map27: 8.4, ring: 8.8, toStill: 13.0, still: 14.0, cutB: 18.5, back: 23.0, map28: 24.0, fall: 27.4, end: 29.8 };
+export const PT = { d26: 1.2, follow: 4.4, map27: 8.4, ring: 8.8, toStill: 13.0, still: 14.0, cutB: 18.5, back: 23.4, map28: 24.0, fall: 27.4, end: 29.8 };
 export const AIR = [9.8, 10.5, 11.1, 11.8, 12.4]; // kilatan serangan udara
 const pc = (() => { const p = fp("pocket_27jun"); return [p.reduce((s, q) => s + q[0], 0) / p.length, p.reduce((s, q) => s + q[1], 0) / p.length] as P; })();
 const parichi = pj(TW["Parichi"]), rog = pj(TW["Rogachev"]);
@@ -181,7 +181,10 @@ export const ProtoV3: React.FC = () => {
   const p26 = fp("pocket_26jun"), p27 = fp("pocket_27jun");
   const o26 = cl(t, 3.0, 0.8) * (1 - cl(t, PT.ring, 0.6));
   const ring = io(cl(t, PT.ring, 1.4));
-  const stillO = cl(t, PT.still - 0.6, 0.8) * (1 - cl(t, PT.back, 0.9));
+  // transisi gelap perlahan (dip to black) peta↔gambar: redup 0,7 dtk, hitam 0,2 dtk, terang 0,7 dtk
+  const dip = (a: number) => cl(t, a, 0.7) * (1 - cl(t, a + 0.9, 0.7));
+  const blk = Math.max(dip(12.9), dip(22.6));
+  const stillO = t >= 13.7 && t < 23.4 ? 1 : 0;
   const date = t < PT.d26 ? "25 JUNE 1944 · 21:00" : t < 5.4 ? "26 JUNE 1944 · 21:00" : t < PT.map28 ? "27 JUNE 1944 · 21:00" : t < PT.fall ? "28 JUNE 1944" : "29 JUNE 1944";
   const fadeOut = 1 - cl(t, PT.end, 1.0);
   return (
@@ -253,6 +256,7 @@ export const ProtoV3: React.FC = () => {
         {/* still */}
         {stillO > 0 && <AbsoluteFill style={{ opacity: stillO }}><Still t={t} /></AbsoluteFill>}
       </AbsoluteFill>
+      <AbsoluteFill style={{ background: "#000", opacity: blk }} />
       <Vignette amount={0.45} />
       <FilmGrain strength={0.16} />
     </AbsoluteFill>
