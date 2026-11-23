@@ -1,4 +1,4 @@
-# Bagration Part 1 "The Trap" — catatan produksi v1 (22 Nov 2026)
+# Bagration Part 1 "The Trap" — catatan produksi v2 (23 Nov 2026)
 
 | Item | Nilai |
 |---|---|
@@ -44,3 +44,29 @@ P1-01 sudah dipakai. P1-02..P1-10 masih PLACEHOLDER di `public/stills/bagration/
   galat maks 0,26° bujur) + sektor selatan dari pilot Bobruisk.
 - Sungai & rel: Natural Earth 10m (domain publik), rel dipotong hanya di belakang garis Jerman.
 - Posisi unit perkiraan; ada label "POSITIONS APPROXIMATE · AFTER PERIOD MAPS".
+
+---
+## v2 (23 Nov 2026)
+| Item | v1 | v2 |
+|---|---|---|
+| Durasi | 7:26 | **9:46** (586 dtk) |
+| Narasi | 6:41 | 8:22 (+8 klip, 1.505 karakter) |
+| Garis depan | statis 22 Juni, poligon kaku | **bergerak per sektor** 22→24→26→28→30 Juni, dihaluskan (Chaikin + kurva), wilayah direbut jadi merah |
+| Gambar | 1 asli + 9 placeholder | 9 asli dari Angie (P1-01..07, 09, 10) + P1-01b; **P1-08 (zeni) belum ada**, adegannya pakai peta |
+
+### Narasi tambahan (semua dari Wikipedia: Operation Bagration, Vitebsk–Orsha offensive, Mogilev offensive)
+- p1_2c: 6th Guards Army tidak terdeteksi tentara Jerman di front (V).
+- p1_6a: keberhasilan terbesar di sektor Vitebsk; 43rd Army menjebol pertahanan utara kota dalam hitungan jam (V).
+- p1_6b: Hitler ingin perwira staf diterjunkan ke Vitebsk; Reinhardt membatalkannya dengan mengancam terjun sendiri (V, diparafrase).
+- p1_6c: 3rd Panzer Army hancur dalam hitungan hari, celah besar di selatan Vitebsk (V).
+- p1_7a: jalan raya dipegang 78th Sturm Division, diperkuat artileri dan assault gun (V).
+- p1_7b: tank penyapu ranjau (PT-34), hari pertama minim kemajuan, celah di rawa utara (1st Guards Rifle Div), 26 Juni pertahanan runtuh (V).
+- p1_8a: peringatan komandan batalion; Martinek mengutip peribahasa "Whom God would destroy, he first strikes blind"; tidak diteruskan (V).
+- p1_8b: Mogilev jatuh 28 Juni bersama garnisunnya; Martinek tewas dalam serangan udara malam itu; jalan penuh pasukan dan pengungsi (V).
+
+### Garis depan per tanggal
+`scripts/build-p1-fronts.py` → `research/bagration/fronts-p1.json`. Perkiraan dari peta Soviet + peta Vitebsk/Mogilev/Minsk berlabel tanggal.
+Tiap sektor (Vitebsk, Orsha, Mogilev, Bobruisk) bergerak saat babnya diceritakan, jadi antar-bab bisa "beda tanggal" per sektor. HUD menampilkan tanggal bab.
+
+### Kredit
+Sisa setelah v2: ±4.330 (reset ±22 Des 2026). Perluasan Part 2 (±5.000) TIDAK cukup sebelum reset.

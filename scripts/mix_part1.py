@@ -6,6 +6,14 @@ import json, subprocess, sys, os
 TL = json.load(open("src/conquer/part1-timeline.json"))
 D = TL["total"]; G = float(sys.argv[1]) if len(sys.argv) > 1 else 0.0
 S = "assets-src/sfx/"; E = TL["ev"]; SEG = TL["segments"]
+SG = {}
+for _s in SEG: SG.setdefault(_s["id"], _s["t0"])
+SG2 = [s_["t0"] for s_ in SEG if s_["id"] == "P1-05"][-1]
+RM = TL["remap"]
+def R(x):
+    for (a, b), (c, d) in zip(RM, RM[1:]):
+        if x <= c: return b + (x - a) * (d - b) / ((c - a) or 1)
+    return x
 C = []
 def add(f, t0, of, du, g, fi=0.3, fo=0.8, pr=None, pan=0): C.append((f, t0, of, du, g, fi, fo, pr, pan))
 def bed(f, t0, t1, g, pr, loop=24.0, off=0.0):
@@ -39,21 +47,24 @@ for i in range(8): add("el-artillery-battery.mp3", 15.0 + i * 0.4, 0.0, 2.0, -7,
 add("far-away-war-explosions.mp3", 31.5, 0.0, 3.0, -16, 0.1, 1.5, "far")  # di bawah kartu judul
 
 # ---------- P1-04 parit fajar (sepi, menunggu) ----------
-T = 67.2
+T = SG["P1-04"]
 add("wind-in-the-forest.mp3", T - 0.6, 3.0, 9.0, -11, 0.8, 1.2)
 add("el-gear-rattle.mp3", T + 1.0, 1.0, 4.0, 2, 0.4, 1.0, None, -0.3)
 add("el-breathing.mp3", T + 2.0, 0.0, 4.5, -6, 0.6, 1.0, None, 0.2)
 # ---------- P1-01 meja staf ----------
-T = 104.0
+T = SG["P1-01"]
 add("radio-noise-static-and-crackles.mp3", T - 0.4, 3.0, 9.5, -22, 0.6, 1.2, 3500, -0.3)
 add("thunder-rumble.mp3", T - 0.4, 2.0, 9.5, -17, 1.0, 1.2, 150)
 add("el-gear-rattle.mp3", T + 3.0, 2.0, 3.0, -2, 0.3, 0.8, None, 0.3)
+T = SG["P1-01b"]  # staf Soviet merencanakan
+add("radio-noise-static-and-crackles.mp3", T - 0.4, 12.0, 5.5, -23, 0.6, 1.0, 3500, 0.3)
+add("el-gear-rattle.mp3", T + 1.0, 6.0, 3.0, -4, 0.3, 0.8, None, -0.3)
 # ---------- P1-02 tank berkamuflase, senja ----------
-T = 128.9
+T = SG["P1-02"]
 add("wind-in-the-forest.mp3", T - 0.6, 10.0, 6.0, -12, 0.6, 1.0)
 add("el-tanks-advance.mp3", T - 0.4, 1.0, 5.8, -12, 0.8, 1.2, "mid", 0.2)
 # ---------- P1-03 partisan di rel (malam) ----------
-T = 234.5
+T = SG["P1-03"]
 add("el-night-forest.mp3", T - 0.6, 2.0, 12.5, 12, 0.8, 1.2)
 add("el-footsteps-mud.mp3", T + 0.8, 1.0, 4.0, -3, 0.4, 0.8, None, -0.2)
 add("el-gear-rattle.mp3", T + 3.5, 4.0, 3.0, -1, 0.3, 0.8, None, 0.3)
@@ -63,38 +74,36 @@ for i, dt in enumerate([1.4, 2.3, 3.1, 4.0, 4.6]):
     add(("distant-war-explosions.mp3", "far-away-war-explosions.mp3")[i % 2], E["rail"] + dt, 0.0, 2.5, -12, 0.05, 1.0, "far", (-0.4, 0.3, 0, 0.5, -0.2)[i])
 add("el-train-brake.mp3", E["trains"] - 0.6, 0.4, 5.5, -4, 0.1, 1.5, "mid", 0.2)
 # ---------- 21–22 Juni: malam, pesawat, lalu fajar ----------
-add("el-night-forest.mp3", 255.5, 14.0, 10.5, 10, 1.0, 2.0)
+add("el-night-forest.mp3", E["v5"] - 0.5, 14.0, 10.5, 10, 1.0, 2.0)
 add("el-aircraft-distant.mp3", E["probe"] + 1.5, 0.0, 8.0, -8, 1.5, 2.0, "far", 0.2)
 for i, dt in enumerate([3.2, 4.4, 5.3, 6.5]): add("bomb-distant-explotion.mp3", E["probe"] + dt, 0.0, 2.5, -14, 0.05, 1.0, "far", (-0.4, 0.3, -0.1, 0.4)[i])
-add("el-katyusha.mp3", E["dawn"] - 0.2, 0.0, 7.0, -8, 0.05, 1.5, "far", -0.2)
-for i in range(10): add("el-artillery-battery.mp3", E["dawn"] + 0.3 + i * 0.35, 0.0, 2.0, -5, 0.0, 1.0, "far", ((i * 0.37) % 1.0) - 0.5)
+add("el-katyusha.mp3", SG2 - 0.1, 0.0, 6.0, -13, 0.05, 1.5, None, -0.2)
+for i in range(10): add("el-artillery-battery.mp3", E["dawn"] + 0.3 + i * 0.35, 0.0, 2.0, -13 if i < 7 else -6, 0.0, 1.0, None if i < 7 else "far", ((i * 0.37) % 1.0) - 0.5)
 add("thunder-rumble.mp3", E["dawn"], 0.0, 10.0, -10, 0.3, 2.0, 150)
 # ---------- Vitebsk ----------
 add("el-mg-distant.mp3", E["surr"] - 1.0, 0.0, 1.6, -13, 0.05, 0.4, "mid", -0.3)
 add("explosion-in-battle.mp3", E["surr"] + 0.5, 0.0, 2.5, -14, 0.0, 1.0, "mid", 0.3)
-T = 294.6  # P1-06 kota terbakar
+T = SG["P1-06"]  # P1-06 kota terbakar
 add("el-fire-burning.mp3", T - 0.6, 2.0, 7.5, 8, 0.6, 1.2, None, 0.3)
 add("el-urban-battle.mp3", T - 0.4, 3.0, 7.0, -14, 0.6, 1.2, "mid", 0)
 add("stone-debris-falling.mp3", T + 2.0, 0.5, 2.5, -6, 0.05, 0.8, None, -0.3)
 add("el-mg-distant.mp3", E["bo"] + 0.5, 4.7, 1.2, -14, 0.05, 0.4, "mid", -0.3)
 add("distant-war-explosions.mp3", E["bo"] + 2.0, 0.0, 3.0, -12, 0.1, 1.0, "mid", 0.3)
-T = 315.3  # P1-07 terobosan di hutan
+T = SG["P1-07"]  # P1-07 terobosan di hutan
 add("wind-in-the-forest.mp3", T - 0.6, 20.0, 8.0, -14, 0.6, 1.2)
 add("el-footsteps-mud.mp3", T - 0.2, 0.5, 7.5, 0, 0.4, 1.0, None, -0.3)
-add("el-mg-distant.mp3", T + 0.6, 0.0, 1.6, -8, 0.05, 0.3, None, -0.6)
-add("el-shouts.mp3", T + 2.0, 0.2, 1.5, -10, 0.05, 0.4, "mid", 0.4)
-add("el-mg-distant.mp3", T + 3.4, 4.7, 1.2, -9, 0.05, 0.3, None, 0.6)
+add("el-mg-distant.mp3", T + 0.6, 0.0, 1.6, -12, 0.05, 0.3, None, -0.6)
+add("el-shouts.mp3", T + 2.0, 0.2, 1.5, -13, 0.05, 0.4, "mid", 0.4)
+add("el-mg-distant.mp3", T + 3.4, 4.7, 1.2, -12, 0.05, 0.3, None, 0.6)
 add("el-shell-whistle.mp3", T + 4.6, 0.0, 1.32, -12, 0.02, 0.1, None, 0.5)
-add("war-field-explosion.mp3", T + 5.9, 0.0, 2.0, -9, 0.0, 1.2, None, 0.5)
+add("war-field-explosion.mp3", T + 5.9, 0.0, 2.0, -12, 0.0, 1.2, None, 0.5)
 # ---------- Orsha ----------
 for i in range(6): add("el-artillery-battery.mp3", E["depth"] + 0.5 + i * 0.5, 0.0, 2.0, -8, 0.0, 1.0, "far", (-0.3, 0.4, 0, -0.5, 0.2, 0.5)[i])
-T = 341.5  # P1-08 zeni
-add("wind-blowing-ambience.mp3", T - 0.6, 5.0, 7.0, -16, 0.6, 1.2)
-add("el-footsteps-mud.mp3", T + 0.2, 3.0, 5.5, -2, 0.4, 0.8, None, 0.2)
-add("el-gear-rattle.mp3", T + 0.8, 5.0, 4.0, 1, 0.3, 0.8, None, -0.2)
-add("far-away-war-explosions.mp3", T + 2.5, 0.0, 3.0, -12, 0.05, 1.0, "mid", 0.5)
+# Orsha di peta (jauh): ledakan ranjau dibersihkan, lalu tembakan saat celah terbuka
+for i, dt in enumerate([0.4, 1.6, 2.5]): add("far-away-war-explosions.mp3", E["mines"] + dt, 0.0, 2.5, -13, 0.05, 1.0, "far", (-0.3, 0.3, 0)[i])
+add("el-mg-distant.mp3", E["breach"] + 0.6, 0.0, 1.6, -15, 0.05, 0.4, "far", 0.3)
 add("el-tanks-advance.mp3", E["berez"] - 0.3, 5.0, 4.5, -8, 0.6, 1.0, "far", 0)
-T = 355.0  # P1-09 jalan raya terbakar
+T = SG["P1-09"]  # P1-09 jalan raya terbakar
 add("el-fire-burning.mp3", T - 0.6, 8.0, 4.8, 7, 0.5, 1.0, None, -0.3)
 add("el-tanks-advance.mp3", T - 0.4, 8.0, 4.6, -8, 0.5, 1.0, "mid", 0.4)
 # ---------- Mogilev ----------
@@ -102,19 +111,21 @@ add("el-mg-distant.mp3", E["a49"] + 0.5, 0.0, 1.6, -12, 0.05, 0.4, "far", 0.4)
 add("explosion-in-battle.mp3", E["a49"] + 1.2, 0.0, 2.5, -13, 0.0, 1.0, "far", 0.3)
 add("distant-war-explosions.mp3", E["a49"] + 2.8, 0.0, 3.0, -13, 0.1, 1.0, "far", 0.5)
 add("radio-noise-static-and-crackles.mp3", E["tipp"] - 0.5, 8.0, 13.0, -27, 1.0, 1.5, 3500, 0)
-T = 403.0  # P1-10 menyeberang Dnieper di bawah tembakan
+T = SG["P1-10"]  # P1-10 menyeberang Dnieper di bawah tembakan
 add("el-mg-distant.mp3", T + 0.2, 0.0, 1.6, -9, 0.05, 0.3, None, -0.5)
 add("el-shell-whistle.mp3", T + 1.6, 0.0, 1.32, -12, 0.02, 0.1, None, 0.4)
 add("explosion-in-battle.mp3", T + 2.9, 0.0, 2.5, -9, 0.0, 1.2, None, 0.4)
 add("el-shouts.mp3", T + 3.8, 0.2, 1.5, -12, 0.05, 0.4, "mid", -0.3)
 add("el-mg-distant.mp3", T + 5.2, 4.7, 1.2, -10, 0.05, 0.3, None, 0.5)
+add("el-aircraft-distant.mp3", E["mkill"] - 1.5, 0.0, 7.0, -8, 1.0, 1.5, "far", -0.2)
+add("bomb-distant-explotion.mp3", E["mkill"] + 1.2, 0.0, 2.5, -14, 0.05, 1.0, "far", 0.2)
 # ---------- ke Berezina ----------
 add("el-aircraft-distant.mp3", E["roads"] - 1.0, 0.0, 11.0, -9, 1.5, 2.0, "mid", 0.15)
 for i in range(6):
     add(("bomb-drop-impact.mp3", "explosion-in-battle.mp3", "war-field-explosion.mp3")[i % 3], E["roads"] + 0.5 + i * 1.1, 0.0, 2.4, -17, 0.02, 0.9, "mid", (-0.3, 0.3, -0.1, 0.4, -0.4, 0.2)[i])
 add("el-tanks-advance.mp3", E["cut"] - 0.3, 6.0, 5.0, -9, 0.6, 1.2, "far", -0.2)
 add("wind-blowing-ambience.mp3", E["trap"] - 0.5, 10.0, 13.0, -16, 1.5, 3.0)
-add("wind-blowing-ambience.mp3", 436.0, 25.0, 9.5, -19, 1.5, 3.0)
+add("wind-blowing-ambience.mp3", E["endcard"] + 0.4, 25.0, 9.5, -19, 1.5, 3.0)
 
 # swoosh hanya peta -> still
 for a, b in zip(SEG, SEG[1:]):
@@ -142,11 +153,12 @@ args = ["ffmpeg", "-v", "error", "-y"]; fil = []; sfx = []
 for i, st in enumerate(stems):
     args += ["-i", st]; fil.append(f"[{i}]aformat=channel_layouts=stereo[s{i}]"); sfx.append(f"[s{i}]")
 n = len(stems); vo = TL["vo"]; vi = []
-for j, (k, v) in enumerate(vo.items()):
-    args += ["-i", f"vo-bagration-p1/{k}.mp3"]
-    fil.append(f"[{n+j}]aresample=48000,aformat=channel_layouts=stereo,volume=2dB,asetpts=PTS-STARTPTS+{v['start']}/TB,aresample=async=1:first_pts=0,apad=whole_dur={D},atrim=0:{D}[v{j}]"); vi.append(f"[v{j}]")
+for j, v in enumerate(vo):
+    args += ["-i", f"vo-bagration-p1/{v['file']}.mp3"]
+    fil.append(f"[{n+j}]aresample=48000,aformat=channel_layouts=stereo,atrim={v['ss']}:{v['to']},asetpts=PTS-STARTPTS,afade=t=out:st={max(0, v['dur'] - 0.06)}:d=0.06,volume=2dB,asetpts=PTS-STARTPTS+{v['start']}/TB,aresample=async=1:first_pts=0,apad=whole_dur={D},atrim=0:{D}[v{j}]"); vi.append(f"[v{j}]")
 args += ["-stream_loop", "1", "-i", "assets-src/music/565.mp3"]; mi = n + len(vo)
-lv = [(0, -28), (13.9, -27), (29.3, -22), (35, -27), (113, -26), (181, -25), (234.5, -28), (256, -26), (264, -24), (275, -25), (331, -26), (359, -26), (410.7, -24), (430, -24), (436, -26), (444, -60)]
+lv0 = [(0, -28), (13.9, -27), (29.3, -22), (35, -27), (113, -26), (181, -25), (234.5, -28), (256, -26), (264, -24), (275, -25), (331, -26), (359, -26), (410.7, -24), (430, -24), (436, -26), (444, -60)]
+lv = [(round(R(a), 2), x) for a, x in lv0]
 expr = "-60"
 for (a, x), (b, y) in zip(lv, lv[1:]): expr = f"if(between(t,{a},{b}),{x}+({y}-{x})*(t-{a})/({b}-{a}),{expr})"
 fil.append(f"[{mi}]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{D},asetpts=PTS-STARTPTS,volume='pow(10,({expr})/20)':eval=frame,afade=t=in:d=3,apad=whole_dur={D},atrim=0:{D}[mus]")
