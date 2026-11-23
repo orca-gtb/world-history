@@ -27,23 +27,22 @@ def bed(f, t0, t1, g, pr, loop=24.0, off=0.0):
 for s in SEG:
     if s["kind"] != "map": continue
     a, b = s["t0"] - 0.5, s["t1"] + 0.6
+    a = max(a, 2.0)
     add("deep-cinematic-wind-hum.mp3", a, (a * 7) % 30, min(60, b - a), -19, 1.5, 1.5)
     if b - a > 60: add("deep-cinematic-wind-hum.mp3", a + 60, 5, b - a - 60, -19, 1.5, 1.5)
     if s["t0"] >= 246:  # perang sudah dimulai di peta
         pr = "mid" if s["id"] in ("vitebsk",) else "far"
         bed("el-battle-distant.mp3", max(a, E["dawn"]) if s["id"] == "attack" else a, b, 7 if pr == "far" else 2, pr)
-    if s["id"] == "open": bed("el-battle-distant.mp3", a, b, 6, "far")
+    if s["id"] == "open": bed("el-battle-distant.mp3", E["losses"] - 4.8, b, 6, "far")
 # radio staf saat peringatan dan perencanaan (sangat pelan)
 add("radio-noise-static-and-crackles.mp3", E["buildup"] - 1, 0, 24, -31, 1.5, 2.0, 3500)
 
-# ---------- 0: cold open (P1-05 malam, artileri) ----------
-add("el-katyusha.mp3", 0.6, 0.0, 7.0, -9, 0.05, 1.5, None, -0.2)
-add("el-katyusha.mp3", 7.5, 5.8, 6.5, -12, 0.3, 1.5, "mid", 0.3)
-for i, dt in enumerate([0.2, 1.1, 2.6, 3.4, 5.0, 6.2, 8.1, 9.3, 11.0, 12.2]):
-    add("el-artillery-battery.mp3", dt, 0.0, 2.2, -11 - (i % 3) * 2, 0.0, 1.2, None, (-0.5, 0.4, -0.1, 0.5, -0.3, 0.2, -0.4, 0.3, 0, -0.2)[i])
-add("thunder-rumble.mp3", 0.0, 0.0, 14.0, -10, 0.5, 1.5, 160)
-# peta pembuka: artileri jauh sepanjang front
-for i in range(8): add("el-artillery-battery.mp3", 15.0 + i * 0.4, 0.0, 2.0, -7, 0.0, 1.0, "far", (-0.5, 0.3, -0.2, 0.5, 0, -0.4, 0.2, 0.4)[i])
+# ---------- 0: pembuka gelap (malam) lalu peta: artileri jauh ----------
+add("el-night-forest.mp3", 0.0, 0.0, E["losses"] - 4.0, 3, 2.0, 2.5)
+G0 = E["losses"] - 4.6  # "the guns open fire"
+add("el-katyusha.mp3", G0 - 0.3, 0.0, 7.0, -8, 0.05, 2.0, "far", -0.2)
+for i in range(10): add("el-artillery-battery.mp3", G0 + i * 0.45, 0.0, 2.0, -8, 0.0, 1.0, "far", ((i * 0.37) % 1.0) - 0.5)
+add("thunder-rumble.mp3", G0, 0.0, 16.0, -12, 0.5, 2.5, 150)
 add("far-away-war-explosions.mp3", 31.5, 0.0, 3.0, -16, 0.1, 1.5, "far")  # di bawah kartu judul
 
 # ---------- P1-04 parit fajar (sepi, menunggu) ----------
@@ -77,7 +76,8 @@ add("el-train-brake.mp3", E["trains"] - 0.6, 0.4, 5.5, -4, 0.1, 1.5, "mid", 0.2)
 add("el-night-forest.mp3", E["v5"] - 0.5, 14.0, 10.5, 10, 1.0, 2.0)
 add("el-aircraft-distant.mp3", E["probe"] + 1.5, 0.0, 8.0, -8, 1.5, 2.0, "far", 0.2)
 for i, dt in enumerate([3.2, 4.4, 5.3, 6.5]): add("bomb-distant-explotion.mp3", E["probe"] + dt, 0.0, 2.5, -14, 0.05, 1.0, "far", (-0.4, 0.3, -0.1, 0.4)[i])
-add("el-katyusha.mp3", SG2 - 0.1, 0.0, 6.0, -13, 0.05, 1.5, None, -0.2)
+add("el-katyusha.mp3", SG2 + 0.2, 0.0, 6.5, 2, 0.05, 1.5, None, -0.25)
+add("el-katyusha.mp3", SG2 + 2.4, 5.8, 5.5, -8, 0.3, 1.5, None, 0.3)
 for i in range(10): add("el-artillery-battery.mp3", E["dawn"] + 0.3 + i * 0.35, 0.0, 2.0, -13 if i < 7 else -6, 0.0, 1.0, None if i < 7 else "far", ((i * 0.37) % 1.0) - 0.5)
 add("thunder-rumble.mp3", E["dawn"], 0.0, 10.0, -10, 0.3, 2.0, 150)
 # ---------- Vitebsk ----------
@@ -135,12 +135,13 @@ for a, b in zip(SEG, SEG[1:]):
 os.makedirs("out/conquer/p1sfx", exist_ok=True)
 def cue(i, x):
     f, t0, of, du, g, fi, fo, pr, pan = x
+    if t0 < 0: of, du, t0 = of - t0, du + t0, 0.0
     ch = f"[{i}]aresample=48000,aformat=channel_layouts=stereo,atrim={of}:{of+du},asetpts=PTS-STARTPTS,afade=t=in:d={fi},afade=t=out:st={max(0, du-fo)}:d={fo},volume={g}dB"
     if pr == "far": ch += ",lowpass=f=1100,lowpass=f=1100,highpass=f=40,aecho=0.8:0.6:70|140:0.35|0.22"
     elif pr == "mid": ch += ",lowpass=f=3200,aecho=0.8:0.55:45:0.22"
     elif pr: ch += f",lowpass=f={pr}"
     l, r = 1 - max(0, pan), 1 + min(0, pan)
-    return ch + f",pan=stereo|c0={l:.2f}*c0|c1={r:.2f}*c1,adelay={int(round(t0*1000))}:all=1,apad=whole_dur={D},atrim=0:{D}[s{i}]"
+    return ch + f",pan=stereo|c0={l:.2f}*c0|c1={r:.2f}*c1,asetpts=PTS-STARTPTS+{t0}/TB,aresample=async=1:first_pts=0,apad=whole_dur={D},atrim=0:{D}[s{i}]"
 B = 20; stems = []
 for bi in range(0, len(C), B):
     part = C[bi:bi+B]; a2 = ["ffmpeg", "-v", "error", "-y"]

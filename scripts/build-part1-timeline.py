@@ -4,9 +4,9 @@ import json, subprocess
 def dur(k): return float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f"vo-bagration-p1/{k}.mp3"]))
 CH = 5.2   # jeda antar bab (peta/gambar bernapas)
 IN = 0.55  # jeda sisipan
-SEQ = [("gap", 1.5), ("p1_0",), ("gap", 0.4), ("title", 5.7), ("gap", 0.5),
+SEQ = [("gap", 2.4), ("p1_0",), ("gap", 0.4), ("title", 5.7), ("gap", 0.5),
   ("p1_1",), ("gap", CH), ("p1_1b",), ("gap", CH), ("p1_2",), ("gap", CH), ("p1_2b",), ("gap", 0.7), ("p1_2c",), ("gap", CH),
-  ("p1_3",), ("gap", CH), ("p1_3b",), ("gap", CH), ("p1_4",), ("gap", CH), ("p1_5",), ("gap", CH),
+  ("p1_3",), ("gap", CH), ("p1_3b",), ("gap", CH), ("p1_4",), ("gap", CH), ("p1_5", 0, 7.95), ("gap", 2.6), ("p1_5", 7.95, None), ("gap", CH),
   ("p1_6", 0, 13.59), ("gap", IN), ("p1_6a",), ("gap", IN), ("p1_6", 13.59, 26.52), ("gap", IN), ("p1_6b",), ("gap", IN), ("p1_6", 26.52, None), ("gap", 0.9), ("p1_6c",), ("gap", CH),
   ("p1_7", 0, 10.62), ("gap", IN), ("p1_7a",), ("gap", IN), ("p1_7", 10.62, 16.93), ("gap", IN), ("p1_7b",), ("gap", IN), ("p1_7", 16.93, None), ("gap", CH),
   ("p1_8", 0, 12.14), ("gap", IN), ("p1_8a",), ("gap", 0.8), ("p1_8", 12.14, None), ("gap", 0.9), ("p1_8b",), ("gap", CH),
@@ -42,19 +42,19 @@ ev = dict(
   a49=o("p1_8", 12.26), task=o("p1_8", 16.82), tipp=o("p1_8", 25.29), refused=o("p1_8", 30.52), anyway=o("p1_8", 31.78), back=o("p1_8", 33.33), hitler=o("p1_8", 37.68), late2=o("p1_8", 42.0), cross=o("p1_8", 43.79),
   mfall=o("p1_8b", 0.1), garrison=o("p1_8b", 2.38), mkill=o("p1_8b", 6.83),
   roads=o("p1_9", 0.2), cut=o("p1_9", 4.53), reach=o("p1_9", 7.17), escape=o("p1_9", 12.99), trap=o("p1_9", 14.98), jaw=o("p1_9", 17.31), end9=end("p1_9"),
-  v1=st("p1_1"), v1b=st("p1_1b"), v2=st("p1_2"), v2b=st("p1_2b"), v3=st("p1_3"), v3b=st("p1_3b"), v4=st("p1_4"), v5=st("p1_5"), v6=st("p1_6"), v7=st("p1_7"), v8=st("p1_8"), v9=st("p1_9"),
+  v0=st("p1_0"), v1=st("p1_1"), v1b=st("p1_1b"), v2=st("p1_2"), v2b=st("p1_2b"), v3=st("p1_3"), v3b=st("p1_3b"), v4=st("p1_4"), v5=st("p1_5"), v6=st("p1_6"), v7=st("p1_7"), v8=st("p1_8"), v9=st("p1_9"),
   title=marks["title"][0], endcard=marks["end"][0])
 E_ = ev
-B = [("still", "P1-05", 0.0), ("map", "open", E_["losses"] - 0.0), ("title", "title", E_["title"]), ("map", "bulge", E_["title"] + 5.7),
+B = [("map", "open", 0.0), ("title", "title", E_["title"]), ("map", "bulge", E_["title"] + 5.7),
      ("still", "P1-04", E_["sectors"] - 0.5), ("map", "fortress", E_["v1b"] - 0.2), ("still", "P1-01", E_["v2"] - 0.5), ("map", "decept", E_["v2"] + 8.5),
      ("still", "P1-02", E_["night"] - 0.5), ("map", "plan", E_["bluff"]), ("still", "P1-01b", E_["v3b"] - 0.6), ("map", "plan2", E_["brk"] - 0.1),
-     ("still", "P1-03", E_["v4"] - 0.5), ("map", "attack", E_["v4"] + 11.5), ("still", "P1-05", E_["dawn"] - 0.2), ("map", "attack2", E_["broken"] - 0.4), ("map", "vit", E_["v6"] - 0.8),
+     ("still", "P1-03", E_["v4"] - 0.5), ("map", "attack", E_["v4"] + 11.5), ("still", "P1-05", E_["dawn"] - 2.9), ("map", "attack2", E_["broken"] - 0.4), ("map", "vit", E_["v6"] - 0.8),
      ("still", "P1-06", E_["d206"] - 0.5), ("map", "vit2", E_["para"] - 0.3), ("still", "P1-07", E_["lw4"] - 0.3), ("map", "ors", E_["gone"] - 0.2),
      ("still", "P1-09", E_["racing"] - 0.3), ("map", "ors2", E_["orsha"] - 0.3), ("map", "mog", E_["v8"] - 0.4), ("still", "P1-10", E_["cross"] - 0.5),
      ("map", "trap", E_["mfall"] - 0.3), ("card", "end", E_["endcard"])]
 segs = [{"t0": round(b[2], 2), "t1": round(B[i + 1][2] if i + 1 < len(B) else TOTAL, 2), "kind": b[0], "id": b[1]} for i, b in enumerate(B)]
 segs = [s for s in segs if s["t1"] > s["t0"]]
-dips = [s["t0"] for a, s in zip(segs, segs[1:]) if not (a["kind"] == "map" and s["kind"] == "map")]
+dips = sorted([s["t0"] for a, s in zip(segs, segs[1:]) if not (a["kind"] == "map" and s["kind"] == "map")] + [round(ev["v7"] - 2.6, 2), round(ev["v8"] - 2.6, 2)])
 # merge map->map (no dip)
 json.dump({"total": TOTAL, "vo": vo, "segments": segs, "dips": dips, "ev": ev}, open("src/conquer/part1-timeline.json", "w"), indent=1)
 print("TOTAL", TOTAL, "VO", round(sum(v["dur"] for v in vo), 1)); [print(s) for s in segs]

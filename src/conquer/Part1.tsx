@@ -38,18 +38,21 @@ const HWY = gs([[32.05, 54.78], [31.4, 54.62], [30.95, 54.56], [30.42, 54.51], [
 const SEC = FRONTS.sectors as unknown as Record<string, number[][][]>;
 const DT = FRONTS.dates as number[];
 const lin = (a: number, b: number, u: number) => a + (b - a) * u;
-const CLOCK: Record<string, [number, number][]> = {
-  N: [[E.fronts, 22], [E.surr, 24], [E.late, 24], [E.gone, 26], [E.berez, 26], [E.berez + 4, 28], [E.trap - 3, 28], [E.trap + 2, 30]],
-  O: [[E.headway, 22], [E.breach + 1, 24], [E.orsha - 0.5, 24], [E.orsha + 1.5, 26], [E.berez, 26], [E.berez + 4, 28], [E.trap - 3, 28], [E.trap + 2, 30]],
-  M: [[E.a49, 22], [E.a49 + 2, 24], [E.hitler, 24], [E.hitler + 3, 26], [E.mfall - 0.2, 26], [E.mfall + 2, 28], [E.trap - 3, 28], [E.trap + 2, 30]],
-  S: [[E.jaw, 22], [E.jaw + 3.5, 28]],
-};
+// SATU kalender untuk semua sektor (peta = tanggal di HUD). Tiap bab mulai dari tanggal awalnya;
+// lompatan mundur terjadi di balik layar gelap (dip) saat pindah bab.
+const DATEKEYS: [number, number][] = [
+  [E.fronts, 22], [E.surr, 24], [E.late, 24], [E.gone, 27],
+  [E.v7 - 2.65, 27], [E.v7 - 2.55, 23], [E.breach, 23], [E.breach + 2, 24], [E.racing, 24], [E.orsha + 1.5, 26], [E.berez, 26], [E.berez + 4, 28],
+  [E.v8 - 2.65, 28], [E.v8 - 2.55, 23], [E.a49, 23], [E.a49 + 2, 24], [E.hitler, 24], [E.hitler + 3, 26], [E.cross, 26], [E.cross + 3, 27.5], [E.mfall, 27.5], [E.mfall + 2, 28],
+  [E.mkill + 1, 28], [E.reach, 30],
+];
+const dateAt = (t: number) => (t < DATEKEYS[0][0] ? 22 : t >= DATEKEYS[DATEKEYS.length - 1][0] ? 30 : (() => { for (let i = 1; i < DATEKEYS.length; i++) if (t <= DATEKEYS[i][0]) { const [a, x] = DATEKEYS[i - 1], [b, y] = DATEKEYS[i]; return lin(x, y, io(clamp01((t - a) / (b - a || 1)))); } return 30; })());
 const secAt = (k: string, d: number): number[][] => {
   const A = SEC[k]; let i = 0; while (i < DT.length - 2 && d > DT[i + 1]) i++;
   const u = clamp01((d - DT[i]) / (DT[i + 1] - DT[i]));
   return A[i].map((q, j) => [lin(q[0], A[i + 1][j][0], u), lin(q[1], A[i + 1][j][1], u)]);
 };
-const frontAt = (t: number): P[] => [...["N", "O", "M", "S"].flatMap((k) => secAt(k, keyed(CLOCK[k], t, lin))), ...(FRONTS.tail as number[][])].map((q) => pj(q));
+const frontAt = (d: number): P[] => [...["N", "O", "M", "S"].flatMap((k) => secAt(k, d)), ...(FRONTS.tail as number[][])].map((q) => pj(q));
 const BAKED = new Set(["P1-01", "P1-01b", "P1-03", "P1-04", "P1-05", "P1-06", "P1-07"]); // label AI sudah tertanam dari Angie
 
 // ---------- kamera ----------
@@ -65,14 +68,14 @@ const V = {
   end: { z: 1.05, c: g(28.9, 53.65) } as Cam,
 };
 const CAM: [number, Cam][] = [
-  [R(13.9), { z: 0.95, c: g(29.6, 54.2) }], [R(29.3), V.th],
+  [0, { z: 1.12, c: g(29.6, 54.2) }], [E.title - 1, { z: 0.95, c: g(29.6, 54.2) }], [R(29.3), V.th],
   [R(35.0), V.wide], [E.moved - 0.5, V.wide], [E.moved + 3, { z: 0.62, c: g(28.0, 53.2) }], [R(67.2), { z: 0.62, c: g(28.0, 53.2) }],
   [R(75.3), V.th], [R(104), V.th],
   [R(113.0), V.wide], [R(144.6), V.wide], [E.buildup - 0.5, V.wide], [E.buildup + 2.5, V.th],
   [E.name, V.th], [E.name + 2, V.th2], [R(234.5), V.th2],
   [R(246.5), V.rail], [R(255.0), V.rail], [R(257.5), V.th], [E.broken + 3, V.th],
-  [E.vit + 3.5, V.vit], [R(315.3), V.vit], [R(322.8), V.vit], [R(330.5), V.vit], [E.hwy + 3, V.ors], [E.v8 - 3.5, V.ors],
-  [E.v8 + 0.5, V.mog], [E.mkill - 1, V.mog], [E.mkill + 3, V.ber], [E.jaw - 1, V.ber], [E.jaw + 3, V.end],
+  [E.vit + 3.5, V.vit], [R(315.3), V.vit], [R(322.8), V.vit], [E.v7 - 2.7, V.vit], [E.v7 - 2.5, V.ors], [E.v8 - 2.7, V.ors],
+  [E.v8 - 2.5, V.mog], [E.mkill - 1, V.mog], [E.mkill + 3, V.ber], [E.jaw - 1, V.ber], [E.jaw + 3, V.end],
 ];
 
 // ---------- unit ----------
@@ -185,8 +188,12 @@ export const Part1: React.FC = () => {
   const wide = 1 - clamp01((z - 0.55) / 0.25);
   const dip = Math.max(0, ...TL.dips.map((b: number) => cl(t, b - 0.8, 0.7) * (1 - cl(t, b + 0.1, 0.7))));
   const d = [...DATES].reverse().find(([a]) => t >= a)!;
-  const frontDraw = io(cl(t, R(13.9), 3.5));
-  const FL = frontAt(t);
+  const frontDraw = io(cl(t, 2.6, 3.5));
+  const D = dateAt(t);
+  const FL = frontAt(D);
+  const vitIsl = clamp01((D - 23.7) / 0.4) * (1 - clamp01((D - 26.7) / 0.4));
+  const bobIsl = clamp01((D - 26.4) / 0.5) * (1 - clamp01((D - 28.6) / 0.5));
+  const BOBP = T("Bobruisk");
   const SOVBOX = [g(45, 48.3), g(45, 57.8), g(28.55, 57.8)].map((q) => `L${q[0]},${q[1]}`).join("") + "Z";
   const night = t > R(255) && t < R(268) ? cl(t, R(255.3), 1.2) * (1 - cl(t, E.dawn, 3.5)) : 0;
   const vitRing = io(cl(t, E.surr, 1.4));
@@ -213,7 +220,8 @@ export const Part1: React.FC = () => {
               </g>}
               {/* wilayah Soviet (sebelum 22 Juni) */}
               <path d={smooth(FL) + SOVBOX} fill={RED} opacity={0.2 * frontDraw} />
-              {t > E.surr && t < E.gone + 4 && <ellipse cx={vc[0]} cy={vc[1]} rx={(1.15 - 0.15 * vitRing) * 56} ry={(1.15 - 0.15 * vitRing) * 38} fill="#cdc59c" opacity={0.92 * vitRing * (1 - cl(t, E.gone, 3))} />}
+              {vitIsl > 0 && <ellipse cx={vc[0]} cy={vc[1]} rx={56} ry={38} fill="#cdc59c" opacity={0.92 * vitIsl} />}
+              {bobIsl > 0 && <g opacity={bobIsl}><ellipse cx={BOBP[0] - 12} cy={BOBP[1] - 4} rx={44} ry={30} fill="#cdc59c" opacity={0.92} /><ellipse cx={BOBP[0] - 12} cy={BOBP[1] - 4} rx={50} ry={35} fill="none" stroke={RED} strokeWidth={5 / k} strokeDasharray={`${3 / k} ${8 / k}`} strokeLinecap="round" /></g>}
               {/* Army Group Centre disorot */}
               <path d={smooth(AGC, true)} fill={`rgba(42,48,56,${0.16 * on(t, E.between, E.strong + 5, 0.8)})`} stroke={DE} strokeWidth={3 / k} strokeDasharray={`${12 / k} ${8 / k}`} opacity={on(t, E.between, R(67.2), 0.8)} />
               {/* sungai */}
@@ -260,7 +268,7 @@ export const Part1: React.FC = () => {
               <path d={smooth(FL)} fill="none" stroke={RED} strokeWidth={5 / k} strokeLinejoin="round" strokeDasharray={`${len(FL) * frontDraw} ${len(FL) * 2}`} opacity={0.9} />
               <path d={smooth(FL)} fill="none" stroke={DE} strokeWidth={2 / k} strokeLinejoin="round" strokeDasharray={`${len(FL) * frontDraw} ${len(FL) * 2}`} transform={`translate(${-5 / k},0)`} opacity={0.55} />
               {/* pembuka: kilatan artileri sepanjang front */}
-              {[R(15.0), E.dawn].map((t0, gi) => ARTY.map((a, i) => { const q = cl(t, t0 + a.d * (gi ? 1.2 : 1), 0.8); if (q <= 0 || q >= 1) return null; const p = along(FRONT.slice(0, 36), 0.02 + a.u * 0.96); return <g key={`${gi}-${i}`}>{flash([p[0] - 14 / k, p[1]], q, k)}</g>; }))}
+              {[E.losses - 4.6, E.dawn].map((t0, gi) => ARTY.map((a, i) => { const q = cl(t, t0 + a.d * (gi ? 1.2 : 1), 0.8); if (q <= 0 || q >= 1) return null; const p = along(FRONT.slice(0, 36), 0.02 + a.u * 0.96); return <g key={`${gi}-${i}`}>{flash([p[0] - 14 / k, p[1]], q, k)}</g>; }))}
               {/* OKH memperkirakan serangan di selatan */}
               {t > R(113) && t < R(128.9) && <g opacity={on(t, R(113.5), R(128.9))}>
                 <Arrow pts={[g(29.8, 49.5), g(27.8, 49.3), g(25.7, 49.4)]} a={R(113.8)} b={R(116)} t={t} k={k} dash width={11} />
@@ -377,7 +385,8 @@ export const Part1: React.FC = () => {
         </AbsoluteFill>
       )}
       {seg.kind === "still" && <Still id={seg.id} />}
-      {t < R(13.5) && <div style={{ position: "absolute", left: 60, bottom: 60, fontFamily: F.type, fontSize: 26, letterSpacing: 8, color: C.gold, textShadow: "0 2px 10px #000", opacity: rv(t, 1.0, 0.8) * (1 - cl(t, R(6.5), 0.8)) }}>BELARUS · 22 JUNE 1944</div>}
+      {/* pembuka: gelap 2 detik lalu terang */}
+      <AbsoluteFill style={{ background: "#000", opacity: 1 - cl(t, 2.0, 1.6), pointerEvents: "none" }} />
       {seg.kind === "title" && <AbsoluteFill style={{ background: "#000", justifyContent: "center", alignItems: "center" }}>
         <div style={{ opacity: rv(t, seg.t0 + 0.3, 1.0) * (1 - cl(t, seg.t1 - 1.0, 0.8)), textAlign: "center" }}>
           <div style={{ fontFamily: F.type, fontSize: 30, letterSpacing: 12, color: C.gold }}>OPERATION BAGRATION · PART 1</div>
