@@ -13,6 +13,8 @@ type Pt = [number, number];
 const R = (s: string) => random(s);
 const ev = (id: string, k: string): number[] => ((EV as unknown as Record<string, Record<string, number[]>>)[id]?.[k]) ?? [];
 const sinw = (t: number, f: number, ph = 0) => Math.sin((t * f + ph) * Math.PI * 2);
+const since1 = (lt: number, list: number[]): number | undefined => { let m: number | undefined; for (const a of list) { const q = lt - a; if (q >= 0 && (m === undefined || q < m)) m = q; } return m; };
+const decay = (lt: number, list: number[], k: number) => list.reduce((s, a) => (lt >= a ? s + Math.exp(-(lt - a) * k) : s), 0);
 
 type Look = { top: string; mid: string; bot: string; far: string; mid2: string; near: string; ground: string; glow?: string; glowX?: number; glowY?: number; glowR?: number; fog: string };
 const LOOK: Record<string, Look> = {
@@ -49,7 +51,7 @@ const Grass: React.FC<{ y: number; t: number; seed: string; fill: string; n?: nu
 
 // prajurit: origin di kaki, menghadap kanan (dir -1 = kiri). Helm Soviet (kubah bulat) vs Jerman (kubah + rok melebar).
 type Pose = "walk" | "run" | "crouch" | "stand" | "sit" | "carry" | "wade";
-const Soldier: React.FC<{ x: number; y: number; s: number; side: "SU" | "DE"; ph: number; pose: Pose; fill: string; dir?: 1 | -1; rifle?: boolean }> = ({ x, y, s, side, ph, pose, fill, dir = 1, rifle = true }) => {
+const Soldier: React.FC<{ x: number; y: number; s: number; side: "SU" | "DE"; ph: number; pose: Pose; fill: string; dir?: 1 | -1; rifle?: boolean; shadow?: boolean }> = ({ x, y, s, side, ph, pose, fill, dir = 1, rifle = true, shadow = true }) => {
   const sw = Math.sin(ph), run = pose === "run", walkish = pose === "walk" || run || pose === "carry" || pose === "wade";
   const lean = run ? 16 : pose === "crouch" ? 22 : walkish ? 5 : 0;
   const hipY = pose === "crouch" ? -30 : pose === "sit" ? -14 : -40;
@@ -64,8 +66,10 @@ const Soldier: React.FC<{ x: number; y: number; s: number; side: "SU" | "DE"; ph
     : `M${hd[0] - 11},${hd[1] + 5} L${hd[0] - 8},${hd[1] - 1} A8 7.5 0 0 1 ${hd[0] + 8},${hd[1] - 1} L${hd[0] + 10},${hd[1] + 3} L${hd[0] + 4},${hd[1] + 2} L${hd[0] - 4},${hd[1] + 2.5} Z`;
   const gun: [Pt, Pt] = pose === "carry" ? [[sh[0] - 14, sh[1] + 4], [sh[0] - 24, sh[1] - 26]] : run || pose === "crouch" ? [[sh[0] - 4, sh[1] + 14], [sh[0] + 34, sh[1] - 2]] : pose === "sit" ? [[sh[0] + 14, 0], [sh[0] + 22, sh[1] - 18]] : [[sh[0] - 9, sh[1] + 20], [sh[0] + 14, sh[1] - 22]];
   const arm: Pt = pose === "carry" ? [sh[0] + 4, sh[1] - 16] : [gun[0][0] * 0.4 + gun[1][0] * 0.6, gun[0][1] * 0.4 + gun[1][1] * 0.6];
+  const br = walkish ? 1 : 1 + 0.014 * Math.sin(ph);
   return (
-    <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill} stroke={fill} strokeLinecap="round" strokeLinejoin="round">
+    <g transform={`translate(${x},${y}) scale(${s * dir},${s * br})`} fill={fill} stroke={fill} strokeLinecap="round" strokeLinejoin="round">
+      {shadow && <ellipse cx={4} cy={1} rx={22} ry={3.6} fill="rgba(0,0,0,0.3)" stroke="none" />}
       {legs.map((l, i) => <polyline key={i} points={l.map((p) => p.join(",")).join(" ")} fill="none" strokeWidth={7} />)}
       <path d={coat} strokeWidth={4} />
       <line x1={0} y1={hipY} x2={sh[0]} y2={sh[1]} strokeWidth={11} />
@@ -79,28 +83,32 @@ const Soldier: React.FC<{ x: number; y: number; s: number; side: "SU" | "DE"; ph
   );
 };
 
-// T-34 (76 mm, kubah heksagonal 1943): origin tengah bawah, menghadap kanan.
-const T34: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1; riders?: number; seed?: string; t?: number }> = ({ x, y, s, fill, rot, dir = 1, riders = 0, seed = "t", t = 0 }) => (
-  <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill}>
-    <rect x={-152} y={-42} width={304} height={42} rx={21} />
-    <path d="M-150,-48 L-140,-68 L98,-68 L150,-42 L150,-34 L-152,-34 Z" />
-    <path d="M-44,-68 L-32,-98 L44,-100 L66,-84 L66,-68 Z" />
-    <rect x={-6} y={-108} width={22} height={10} rx={3} />
-    <rect x={62} y={-90} width={108} height={7} rx={2} />
-    <rect x={150} y={-92} width={14} height={11} rx={2} />
-    {[-112, -56, 0, 56, 112].map((wx, i) => (
-      <g key={i} transform={`translate(${wx},-20) rotate(${(rot * 180) / Math.PI})`}>
-        <circle r={17} fill="#3a352c" />
-        <line x1={-15} y1={0} x2={15} y2={0} stroke={fill} strokeWidth={3} />
-        <line x1={0} y1={-15} x2={0} y2={15} stroke={fill} strokeWidth={3} />
-        <circle r={5} fill={fill} />
-      </g>))}
-    {Array.from({ length: riders }, (_, i) => <Soldier key={i} x={-120 + i * 38} y={-66} s={0.82} side="SU" ph={0} pose="sit" fill={fill} rifle={R(`${seed}r${i}`) > 0.3} />)}
-    {riders > 0 && <rect x={-150} y={-74 + Math.sin(t * 9) * 0.6} width={2} height={1} fill="none" />}
-  </g>
-);
+// T-34 (76 mm, kubah heksagonal 1943): origin tengah bawah, menghadap kanan. shot = detik sejak tembakan terakhir (undefined = belum menembak).
+const T34: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1; riders?: number; seed?: string; shot?: number }> = ({ x, y, s, fill, rot, dir = 1, riders = 0, seed = "t", shot }) => {
+  const rc = shot !== undefined ? 14 * Math.exp(-shot * 9) : 0;
+  return (
+    <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill}>
+      <ellipse cx={0} cy={2} rx={175} ry={9} fill="rgba(0,0,0,0.3)" />
+      <rect x={-152} y={-42} width={304} height={42} rx={21} />
+      <path d="M-150,-48 L-140,-68 L98,-68 L150,-42 L150,-34 L-152,-34 Z" />
+      <path d="M-44,-68 L-32,-98 L44,-100 L66,-84 L66,-68 Z" />
+      <rect x={-6} y={-108} width={22} height={10} rx={3} />
+      <g transform={`translate(${-rc},0)`}><rect x={62} y={-90} width={108} height={7} rx={2} /><rect x={150} y={-92} width={14} height={11} rx={2} /></g>
+      {[-112, -56, 0, 56, 112].map((wx, i) => (
+        <g key={i} transform={`translate(${wx},-20) rotate(${(rot * 180) / Math.PI})`}>
+          <circle r={17} fill="#3a352c" />
+          <line x1={-15} y1={0} x2={15} y2={0} stroke={fill} strokeWidth={3} />
+          <line x1={0} y1={-15} x2={0} y2={15} stroke={fill} strokeWidth={3} />
+          <circle r={5} fill={fill} />
+        </g>))}
+      {Array.from({ length: riders }, (_, i) => <Soldier key={i} x={-120 + i * 38} y={-66} s={0.82} side="SU" ph={0} pose="sit" fill={fill} rifle={R(`${seed}r${i}`) > 0.3} shadow={false} />)}
+      {shot !== undefined && shot < 0.6 && <Flash x={178 - rc} y={-88} q={shot} r={150} />}
+    </g>
+  );
+};
 const Truck: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1; rails?: number; cover?: boolean }> = ({ x, y, s, fill, rot, dir = 1, rails, cover }) => (
   <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill}>
+    <ellipse cx={0} cy={2} rx={140} ry={7} fill="rgba(0,0,0,0.28)" />
     <path d="M60,-34 L60,-70 L92,-70 L100,-52 L128,-50 L132,-34 Z" />
     <rect x={-110} y={-40} width={168} height={8} />
     {cover ? <path d="M-110,-40 L-110,-82 Q-30,-96 50,-82 L50,-40 Z" /> : <rect x={-110} y={-58} width={164} height={18} />}
@@ -114,6 +122,7 @@ const Truck: React.FC<{ x: number; y: number; s: number; fill: string; rot: numb
 );
 const Howitzer: React.FC<{ x: number; y: number; s: number; fill: string; recoil: number; elev?: number }> = ({ x, y, s, fill, recoil, elev = 24 }) => (
   <g transform={`translate(${x},${y}) scale(${s},${s})`} fill={fill} stroke={fill}>
+    <ellipse cx={-40} cy={1} rx={100} ry={6} fill="rgba(0,0,0,0.28)" stroke="none" />
     <line x1={0} y1={-24} x2={-120} y2={0} strokeWidth={9} strokeLinecap="round" />
     <path d="M-6,-70 L22,-74 L24,-26 L-4,-22 Z" />
     <g transform={`translate(10,-48) rotate(${-elev})`}><rect x={-40 - recoil * 22} y={-7} width={150} height={14} rx={3} /><rect x={-48 - recoil * 22} y={-9} width={46} height={18} rx={4} /></g>
@@ -125,6 +134,7 @@ const Horse: React.FC<{ x: number; y: number; s: number; fill: string; ph: numbe
   const L = (hx: number, ang: number) => <polyline points={`${hx},-48 ${hx + Math.sin(ang) * 22},-26 ${hx + Math.sin(ang) * 26},0`} fill="none" stroke={fill} strokeWidth={6} strokeLinecap="round" />;
   return (
     <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill}>
+      <ellipse cx={0} cy={2} rx={62} ry={5} fill="rgba(0,0,0,0.28)" />
       <path d="M-46,-56 C-48,-72 -16,-76 14,-70 C26,-68 34,-82 42,-98 L56,-96 C62,-90 58,-84 52,-78 C44,-64 38,-56 32,-50 C20,-42 -30,-42 -44,-46 Z" />
       <path d="M-46,-62 Q-60,-50 -58,-30" fill="none" stroke={fill} strokeWidth={4} />
       {L(-36, a)}{L(-26, b)}{L(20, b)}{L(28, a)}
@@ -133,6 +143,7 @@ const Horse: React.FC<{ x: number; y: number; s: number; fill: string; ph: numbe
 };
 const Cart: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1 }> = ({ x, y, s, fill, rot, dir = 1 }) => (
   <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill} stroke={fill}>
+    <ellipse cx={0} cy={2} rx={85} ry={6} fill="rgba(0,0,0,0.28)" stroke="none" />
     <path d="M-60,-62 L60,-62 L54,-34 L-54,-34 Z" strokeWidth={2} />
     <line x1={60} y1={-40} x2={110} y2={-46} strokeWidth={5} />
     {[-30, 34].map((wx, i) => <g key={i} transform={`translate(${wx},-22) rotate(${(rot * 180) / Math.PI})`}><circle r={22} fill="none" strokeWidth={4} />{[0, 45, 90, 135].map((q) => <line key={q} x1={-20} x2={20} y1={0} y2={0} strokeWidth={2} transform={`rotate(${q})`} />)}</g>)}
@@ -157,11 +168,38 @@ const Il2: React.FC<{ x: number; y: number; s: number; fill: string; ang: number
 const Smoke: React.FC<{ x: number; y: number; t: number; seed: string; n?: number; rise?: number; drift?: number; r0?: number; r1?: number; color?: string; a?: number; rate?: number }> = ({ x, y, t, seed, n = 10, rise = 420, drift = 160, r0 = 20, r1 = 120, color = "smk", a = 0.55, rate = 0.07 }) => (
   <g>{Array.from({ length: n }, (_, i) => { const age = ((t * rate + i / n + R(`${seed}o`)) % 1); const wob = Math.sin((age * 3 + R(`${seed}${i}`)) * 6) * 18; return <circle key={i} cx={x + drift * age + wob} cy={y - rise * age} r={r0 + r1 * age} fill={`url(#${color})`} opacity={a * Math.sin(Math.PI * Math.min(1, age * 1.15))} />; })}</g>
 );
+const Embers: React.FC<{ x: number; y: number; t: number; seed: string; n?: number; rise?: number; drift?: number; r?: number }> = ({ x, y, t, seed, n = 8, rise = 240, drift = 60, r = 2.6 }) => (
+  <g>{Array.from({ length: n }, (_, i) => {
+    const age = (t * 0.35 + i / n + R(`${seed}e${i}`)) % 1;
+    const px = x + (R(`${seed}x${i}`) - 0.5) * 50 + Math.sin((age * 4 + i) * 2) * drift * age, py = y - rise * age;
+    const o = Math.sin(Math.PI * age) * (0.6 + 0.4 * Math.sin(t * 20 + i * 3));
+    return <circle key={i} cx={px} cy={py} r={r * (1 - age * 0.5)} fill="#ffb347" opacity={Math.max(0, o)} />;
+  })}</g>
+);
 const Fire: React.FC<{ x: number; y: number; t: number; seed: string; s?: number }> = ({ x, y, t, seed, s = 1 }) => {
   const f = 0.75 + 0.25 * Math.sin(t * 13 + R(seed) * 9) * Math.sin(t * 7.3 + R(seed + "b") * 5);
   return (<g transform={`translate(${x},${y}) scale(${s})`}>
     <circle r={150 * f} fill="url(#glow)" opacity={0.75} style={{ mixBlendMode: "screen" }} />
-    {[0, 1, 2, 3, 4].map((i) => { const h = (40 + 30 * R(`${seed}f${i}`)) * (0.8 + 0.3 * Math.sin(t * (9 + i) + i)); return <ellipse key={i} cx={(i - 2) * 11} cy={-h / 2} rx={12} ry={h / 2} fill={i % 2 ? "#ffb347" : "#e8552a"} opacity={0.85} />; })}
+    {[-26, -13, 0, 13, 26].map((tx, i) => {
+      const h = (46 + 34 * R(`${seed}f${i}`)) * (0.8 + 0.3 * Math.sin(t * (9 + i) + i)), sw = Math.sin(t * (5 + i) + i * 1.7) * 7, w = 11 + 4 * R(`${seed}w${i}`);
+      const d = `M${tx - w},0 C${tx - w},${-h * 0.45} ${tx + sw * 0.4 - w * 0.3},${-h * 0.6} ${tx + sw},${-h} C${tx + sw * 0.6 + w * 0.3},${-h * 0.6} ${tx + w},${-h * 0.4} ${tx + w},0 Z`;
+      return <g key={i}><path d={d} fill={i % 2 ? "#ff9a3c" : "#e8552a"} opacity={0.92} /><path d={d} fill="#ffd98a" opacity={0.85} transform={`translate(${tx},0) scale(0.5,0.6) translate(${-tx},0)`} /></g>;
+    })}
+    <Embers x={0} y={-40} t={t} seed={seed} />
+  </g>);
+};
+const Ash: React.FC<{ t: number; seed: string; n?: number; fill?: string }> = ({ t, seed, n = 36, fill = "rgba(70,64,58,0.55)" }) => (
+  <g>{Array.from({ length: n }, (_, i) => {
+    const age = (t * 0.04 * (0.6 + R(`${seed}v${i}`)) + R(`${seed}a${i}`)) % 1;
+    const px = ((R(`${seed}x${i}`) * 2100 + t * (14 + 8 * R(`${seed}w${i}`))) % 2100) - 90 + Math.sin(t * 0.9 + i) * 14, py = age * 1150 - 50;
+    return <ellipse key={i} cx={px} cy={py} rx={2.6 + 2 * R(`${seed}r${i}`)} ry={1.6} fill={fill} transform={`rotate(${(t * 60 + i * 40) % 360} ${px} ${py})`} />;
+  })}</g>
+);
+const Pine: React.FC<{ x: number; y: number; h: number; fill: string; t: number; seed: string }> = ({ x, y, h, fill, t, seed }) => {
+  const w = h * 0.2, sway = Math.sin(t * 0.5 + R(seed) * 6) * 5;
+  return (<g fill={fill}>
+    <rect x={x - h * 0.018} y={y - h * 0.16} width={h * 0.036} height={h * 0.16} />
+    {[0, 1, 2, 3, 4].map((k) => { const yb = y - h * 0.1 - k * h * 0.17, wk = w * (1 - k * 0.17), xa = x + sway * (k / 4); return <path key={k} d={`M${x - wk},${yb} L${xa},${yb - h * 0.36} L${x + wk},${yb} Z`} />; })}
   </g>);
 };
 // kilatan: q = waktu sejak kejadian
@@ -268,7 +306,7 @@ const CAPS: Record<string, Cap[]> = {
   pocketB: [{ a: 1.0, b: 9.6, kick: "27 JUNE 1944", head: "SOVIET BOMBERS OVER THE POCKET" }],
   citadel: [
     { a: 1.2, b: 7.8, kick: "THREE YEARS EARLIER · 28 JUNE 1941", head: "GERMAN TROOPS TAKE BOBRUISK" },
-    { a: 8.4, b: 15.6, kick: "DULAG 131 · IN THE OLD FORTRESS", head: "AN ESTIMATED 30,000–40,000 SOVIET PRISONERS OF WAR DIED HERE" },
+    { a: 8.4, b: 15.6, kick: "DULAG 131 · IN THE OLD CITADEL", head: "AN ESTIMATED 30,000–40,000 SOVIET PRISONERS OF WAR DIED HERE" },
     { a: 16.2, b: 23.2, kick: "THE JEWS OF BOBRUISK", head: "SOME 20,000 WERE SHOT AND BURIED IN MASS GRAVES" },
   ],
   ruins: [{ a: 0.8, b: 12.2, kick: "BOBRUISK · 29 JUNE 1944", head: "THE RED ARMY ENTERS A CITY IN RUINS", pos: "tl" }],
@@ -317,7 +355,12 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
   const L = LOOK[lk];
   const pan = panOf(lt, dur, base === "citadel" ? 160 : base === "road" ? 120 : 240);
   const t = lt;
-  const sky = (<><rect width={1920} height={1080} fill="url(#sky)" />{L.glow && <rect width={1920} height={1080} fill="url(#horizon)" />}</>);
+  const heavy = [...ev(id, "blast"), ...ev(id, "salvo"), ...ev(id, "impact"), ...ev(id, "fire")], light = [...ev(id, "gun"), ...ev(id, "flash"), ...ev(id, "flare")];
+  const hv = Math.min(1.4, decay(lt, heavy, 6)), lg = Math.min(1, decay(lt, light, 10));
+  const shk = hv * 5 + lg * 1.8, sx = Math.sin(lt * 83.1) * shk, sy = Math.cos(lt * 67.7) * shk * 0.7;
+  const pulse = Math.min(0.28, hv * 0.14 + lg * 0.07);
+  const ashN = ({ ruins: 40, aftermath: 40, city: 26, pocket: 24, breakout: 22 } as Record<string, number>)[base] ?? 0;
+  const sky = (<><rect x={-30} y={-30} width={1980} height={1140} fill="url(#sky)" />{L.glow && <rect x={-30} y={-30} width={1980} height={1140} fill="url(#horizon)" />}</>);
   let body: React.ReactNode = null;
 
   if (base === "trench") {
@@ -329,9 +372,9 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
       <Lay d={0.35} pan={pan}><Ground y={775} fill={L.mid2} seed="tg" amp={6} />{fl.map((q, i) => <Flare key={i} x={1300} y={770} q={q} />)}</Lay>
       <Fog t={t} y={770} h={110} />
       <Lay d={0.9} pan={pan}>
-        <Soldier x={560} y={905} s={2.7} side="DE" ph={0} pose="stand" fill={L.near} />
-        <Soldier x={900} y={960} s={2.6} side="DE" ph={0} pose="sit" fill={L.near} />
-        <Soldier x={1250} y={910} s={2.7} side="DE" ph={0} pose="stand" fill={L.near} rifle={false} />
+        <Soldier x={560} y={905} s={2.7} side="DE" ph={t * 2.1} pose="stand" fill={L.near} />
+        <Soldier x={900} y={960} s={2.6} side="DE" ph={t * 1.7 + 1} pose="sit" fill={L.near} />
+        <Soldier x={1250} y={910} s={2.7} side="DE" ph={t * 1.9 + 2} pose="stand" fill={L.near} rifle={false} />
         <g fill={L.near}><path d="M1360,780 L1560,770 L1566,778 L1364,790 Z" /><line x1={1510} y1={776} x2={1540} y2={820} stroke={L.near} strokeWidth={6} /><line x1={1510} y1={776} x2={1488} y2={820} stroke={L.near} strokeWidth={6} /></g>
         <path d={`M-400,820 ${Array.from({ length: 34 }, (_, i) => `Q${-400 + i * 100 + 50},${800 - (i % 3) * 6} ${-400 + (i + 1) * 100},820`).join(" ")} L2900,1100 L-400,1100 Z`} fill={L.near} />
         <Grass y={812} t={t} seed="tgr" fill={L.near} h={40} />
@@ -383,7 +426,7 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
       </Lay>
     </>);
   } else if (base === "armor") {
-    const B = id === "armorB"; const bl = since(t, ev(id, "blast"));
+    const B = id === "armorB"; const bl = since(t, ev(id, "blast")); const fires = ev(id, "fire");
     const v = 95, xs = [-200, 330, 860, 1390];
     body = (<>
       {sky}
@@ -392,11 +435,11 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
         <Ground y={760} fill={L.mid2} seed="kg" amp={4} />
         {xs.map((x0, i) => { const x = x0 + t * v; return <g key={i}>
           <Smoke x={x - 190} y={752} t={t} seed={`kd${i}`} n={6} rise={90} drift={-260} r0={30} r1={90} color="smkL" a={0.55} rate={0.25} />
-          <T34 x={x} y={772} s={0.9} fill={L.mid2} rot={x / 17} riders={i % 2 ? 3 : 2} seed={`k${i}`} t={t} />
+          <T34 x={x} y={772} s={0.9} fill={L.mid2} rot={x / 17} riders={i % 2 ? 3 : 2} seed={`k${i}`} shot={since1(t, fires.filter((_, k) => k % xs.length === i))} />
         </g>; })}
         {bl.map((q, i) => <Blast key={i} x={1650} y={770} q={q} s={0.8} seed={`kb${i}`} fill={L.mid2} />)}
       </Lay>
-      {B ? <Lay d={1.0} pan={pan}><Trees seed="kn" y={1100} h={430} x0={-700} x1={260} fill={L.near} step={30} /><Trees seed="kn2" y={1100} h={430} x0={1800} x1={2900} fill={L.near} step={30} /><Ground y={1000} fill={L.near} seed="kng" amp={8} /></Lay>
+      {B ? <Lay d={1.0} pan={pan}>{[[90, 900], [330, 640], [1700, 700], [1900, 920], [2150, 620]].map(([px, ph], i) => <Pine key={i} x={px} y={1110} h={ph} fill={L.near} t={t} seed={`kp${i}`} />)}<Ground y={1000} fill={L.near} seed="kng" amp={8} /></Lay>
         : <Lay d={1.0} pan={pan}><Ground y={960} fill={L.near} seed="kn" amp={10} /><Wreck x={300} y={975} s={1.5} fill={L.near} /><Smoke x={330} y={880} t={t} seed="kw" n={7} rise={400} drift={140} r0={20} r1={100} a={0.55} /><Grass y={965} t={t} seed="kgr" fill={L.near} h={46} /></Lay>}
       <Fog t={t} y={780} h={140} />
     </>);
@@ -468,7 +511,7 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
       <Lay d={0.45} pan={pan}>
         <Ruins seed="cm" y={830} fill={L.mid2} win="#e07a3a" n={8} x0={-400} hmax={460} t={t} burn />
         {[200, 1200].map((x, i) => <Fire key={i} x={x} y={640} t={t} seed={`cfi${i}`} s={1.3} />)}
-        {!B && <T34 x={-150 + t * 110} y={860} s={0.95} fill={L.mid2} rot={(t * 110) / 17} />}
+        {!B && <T34 x={-150 + t * 110} y={860} s={0.95} fill={L.mid2} rot={(t * 110) / 17} shot={since1(t, ev(id, "fire"))} />}
         {bl.map((q, i) => <Blast key={i} x={900 + i * 500} y={850} q={q} s={0.9} seed={`cb${i}${id}`} fill={L.mid2} />)}
       </Lay>
       <Lay d={1.0} pan={pan}>
@@ -526,7 +569,9 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
   return (
     <svg width={1920} height={1080} style={{ position: "absolute" }}>
       <Defs L={L} />
-      {body}
+      <g transform={`translate(${sx.toFixed(2)},${sy.toFixed(2)})`}>{body}</g>
+      {ashN > 0 && <Ash t={lt} seed={`ash${base}`} n={ashN} fill={lk === "day" ? "rgba(70,64,58,0.5)" : "rgba(210,150,100,0.55)"} />}
+      {pulse > 0.004 && <rect width={1920} height={1080} fill={L.glow ?? "#fff0cf"} opacity={pulse} style={{ mixBlendMode: "screen" }} />}
       <rect width={1920} height={1080} fill="rgba(90,70,45,0.10)" style={{ mixBlendMode: "multiply" }} />
     </svg>
   );

@@ -56,3 +56,65 @@ operation bagration, bobruisk offensive, bobruisk 1944, battle of bobruisk, germ
 - Playlist: "Operation Bagration" (urutan Part 1 → Part 2).
 - **End screen** (20 dtk terakhir, mulai 7:54): video kanan atas = Part 1 (sampai Part 3 tayang), tombol Subscribe kanan bawah. Teks "NEXT: THE CAULDRON" ada di kiri atas, area kanan sengaja kosong.
 - Komentar disematkan (saran): "The capture of Bobruisk on 28 June 1941 and the breakout on 28 June 1944 fall on the same date. Corrections and better sources welcome. Part 3: The Cauldron (Minsk) is next."
+
+---
+
+## CAPTION (post pendek: Community YouTube, Facebook, TikTok, IG) - siap salin, bisa dimodif Dio
+
+**Versi utama**
+> June 1944. A German army is surrounded in the marshes of Belarus, and within days it is largely destroyed. By one account it lost nearly 80,000 men.
+> Part 2 of Operation Bagration follows the southern jaw of the trap at Bobruisk: Rokossovsky's two attacks, Batov's log roads through the marsh, and the breakout that ended on 28 June.
+> Three years earlier, on the same date, German troops had captured the city.
+> Part 2 is out now. Part 1: The Trap is on the channel.
+> #OperationBagration #WW2 #EasternFront #History
+
+**Versi 1 baris (hook, untuk TikTok/Reels/Shorts)**
+- "In June 1944 a whole German army vanished in the marshes of Belarus."
+- "Bobruisk fell on 28 June, the same date the Germans took it in 1941."
+
+## DESKRIPSI FINAL (tempel utuh ke YouTube Studio)
+
+```
+In six days at the end of June 1944, the German Ninth Army was surrounded at Bobruisk and largely destroyed. By one account it lost nearly 80,000 men, 65,000 of them taken prisoner.
+
+Part 2 of 4: Rokossovsky's two attacks through the Belarusian marshes, Batov's log roads, the pocket east of Bobruisk, the breakout of 28 June, and the city German troops had captured on the same date three years earlier.
+
+CHAPTERS
+0:00 Cold open: the southern jaw
+0:23 Bobruisk and the Ninth Army
+0:52 The odds
+1:09 Ninth Army: from Kursk to Bobruisk
+1:27 Two attacks, one target
+1:51 23 June: the first assault fails
+2:02 The guns fire again
+2:15 The north breaks through
+2:48 9th Tank Corps through the gap
+2:59 Batov's 65th Army in the marsh
+3:55 The jaws close
+4:18 The pocket
+4:42 28 June: the breakout
+5:10 Three years earlier: Dulag 131
+5:37 Bobruisk falls
+6:09 The cost
+7:06 Six days on one map
+7:44 Next: Minsk
+
+NOTES AND SOURCES
+Facts come from English Wikipedia's articles on the Bobruisk offensive, Operation Bagration, the 9th Army (Wehrmacht) and Babruysk, which cite David Glantz and Jonathan House among others. We could not open the books themselves, so treat this as a secondary-source summary.
+- Ninth Army losses (about 80,000, of them about 65,000 prisoners) are one account's figures. The Soviet figure of 7,061 killed or missing is the Russian archive figure as quoted on Wikipedia.
+- "Stalin wanted a single main attack" is the usual account and rests on few sources.
+- The 23 June attack near Rogachev and the repeated artillery preparation come from a single source.
+- "Ninth Army no longer exists" is attributed to the army's chief of staff by one account.
+- Dulag 131: an estimated 30,000 to 40,000 Soviet prisoners died; some 20,000 Jews of Bobruisk were shot. Both are estimates.
+- Bobruisk's population: 84,000 in 1939, about 28,000 after the war.
+- Unit positions and front lines on the maps are approximate, redrawn from period maps.
+
+PRODUCTION
+Maps and animated scenes are original vector animation (illustrative reconstructions, not footage). Narration is a synthetic voice. Music and sound effects: Mixkit and ElevenLabs.
+
+Part 1, The Trap: [tempel link Part 1]
+
+#OperationBagration #WW2 #EasternFront
+```
+
+**Komentar disematkan:** "Bobruisk was captured by German troops on 28 June 1941, and the Ninth Army's breakout came on 28 June 1944. Corrections and better sources welcome. Part 3: The Cauldron (Minsk) is next."

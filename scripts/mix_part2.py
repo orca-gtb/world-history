@@ -222,6 +222,39 @@ new("el-fire-burning.mp3", z("aftermathB"), 15.0, zl("aftermathB"), -3, 1.0, 1.2
 new("el-tanks-advance.mp3", z("road"), 8.0, 16.0, -9, 1.5, 3.0, "far", -0.2)
 new("wind-blowing-ambience.mp3", z("road"), 45.0, zl("road"), -14, 1.5, 3.0, None, 0)
 
+# ---------- tembakan tank (sinkron dengan Diorama lewat dio-events.json) + drone kartu judul ----------
+for k in ("armorA", "armorB", "city"):
+    for i, q in enumerate(DEV[k].get("fire", [])):
+        new(("war-field-explosion.mp3", "explosion-in-battle.mp3")[i % 2], z(k) + q - 0.02, 0.0, 2.6, -8, 0.0, 0.9, "mid", (-0.3, 0.2, 0.4, -0.1)[i % 4])
+TT = next(x for x in SC if x["kind"] == "title")
+new("deep-cinematic-wind-hum.mp3", TT["t0"] - 0.3, 6.0, TT["t1"] - TT["t0"] + 0.6, -23, 1.0, 1.2, None, 0)
+
+# ---------- perbaikan audit: (1) bed lebih panjang dari filenya disambung crossfade, (2) dentuman berulang diberi offset berbeda ----------
+FD = {f: float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", S + f])) for f in {c[0] for c in C}}
+def fix(cues):
+    out = []
+    for f, t0, of, du, g, fi, fo, pr, pan in cues:
+        fd = FD[f]
+        if of + du <= fd + 0.02: out.append((f, t0, of, du, g, fi, fo, pr, pan)); continue
+        X, t, o, rem, first = 1.5, t0, of, du, True
+        while rem > 1e-6:
+            seg = min(rem, fd - o); last = seg >= rem - 1e-6
+            out.append((f, t, o, seg, g, fi if first else X, fo if last else X, pr, pan))
+            if last: break
+            rem = rem - seg + X; t = t + seg - X; o = 0.0; first = False
+    seen = {}; res = []
+    for c in sorted(out, key=lambda c: c[1]):
+        f, t0, of, du = c[:4]
+        if du <= 4.6:
+            k = seen.get(f)
+            if k and t0 < k[3] - 0.5 and abs(of - k[1]) < 0.5:
+                n = k[2] + 1; of2 = (of + 2.7 * n) % max(0.1, FD[f] - du - 0.05); c = (f, t0, of2) + c[3:]; seen[f] = (t0, k[1], n, t0 + du)
+            else: seen[f] = (t0, of, 0, t0 + du)
+        res.append(c)
+    return res
+C[:] = fix(C)
+os.makedirs("out/conquer", exist_ok=True); json.dump(C, open("out/conquer/p2-cues.json", "w"))
+if os.environ.get("DUMP_ONLY") == "1": sys.exit(0)
 # ---------- render (SFX per batch -> stem, hemat memori) ----------
 os.makedirs("out/conquer/p2sfx", exist_ok=True)
 def cue(i, x):
