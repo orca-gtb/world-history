@@ -313,5 +313,5 @@ else:
     args += ["-filter_complex", ";".join(fil), "-map", "[out]", "-ar", "48000", "out/conquer/part2-audio.wav"]
 subprocess.run(args, check=True)
 if len(sys.argv) > 2:
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "out/conquer/part2-muted.mp4", "-i", "out/conquer/part2-audio.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", "out/bagration-part2-v3.mp4"], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "out/conquer/part2-muted.mp4", "-i", "out/conquer/part2-audio.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", "out/bagration-part2-v4.mp4"], check=True)
 print("ok", len(C), "cue SFX")
