@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Img, random, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, random, useCurrentFrame } from "remotion";
 import { C, F, clamp01 } from "../kit/theme";
 import { FilmGrain, Vignette } from "../v4/Film";
 import { COUNTRIES } from "../longform/mapdata";
@@ -7,6 +7,7 @@ import ops from "./ops-bobruisk.json";
 import base from "./basemap-bobruisk.json";
 import TL from "./pilot-timeline.json";
 import P2 from "./part2-timeline.json";
+import { Diorama } from "./Diorama";
 import { Arrow, Cam, Counter, DE, P, RED, UType, cl, io, keyed, len, makeProj, mixCam, mixP, off, path, rv, smooth, along } from "./mapkit";
 
 // BOBRUISK PILOT (±3:21). Timeline: pilot-timeline.json (dibaca juga oleh scripts/mix_pilot.py).
@@ -82,17 +83,15 @@ const uPos = (u: U, t: number) => keyed(u.keys, t, mixP);
 
 // ---------- still ----------
 const STILL = (P2.scenes as { t0: number; t1: number; kind: string; id: string }[]);
-const Still: React.FC<{ id: string; t: number }> = ({ id, t }) => {
+const QuoteOv: React.FC<{ t: number }> = ({ t }) => {
   const q = TL.quotes.find((x) => t >= x.t0 - 0.5 && t <= x.t1 + 0.5);
   return (
-    <AbsoluteFill style={{ background: "#111" }}>
-      <Img src={staticFile(`stills/bobruisk/${id}.jpg`)} style={{ position: "absolute", width: 1920, height: 1080 }} />
+    <AbsoluteFill>
       {q && (() => { const o = cl(t, q.t0, 0.5) * (1 - cl(t, q.t1 - 0.4, 0.4)); return (
         <AbsoluteFill style={{ justifyContent: "flex-end", padding: "0 120px 120px 120px", background: `linear-gradient(0deg, rgba(0,0,0,${0.65 * o}) 0%, rgba(0,0,0,0) 45%)` }}>
           <div style={{ opacity: o, fontFamily: F.ui, fontWeight: 600, fontSize: 58, lineHeight: 1.12, color: C.chalk, textShadow: "0 3px 14px rgba(0,0,0,0.9)" }}>{q.text}</div>
           <div style={{ opacity: o * rv(t, q.t0 + 0.8), fontFamily: F.type, fontSize: 22, letterSpacing: 3, color: "#d9d2c0", marginTop: 14 }}>{q.by.toUpperCase()}</div>
         </AbsoluteFill>); })()}
-      <div style={{ position: "absolute", right: 28, bottom: 22, padding: "4px 10px", background: "rgba(10,12,14,0.6)", fontFamily: F.type, fontSize: 15, letterSpacing: 2, color: "rgba(232,225,207,0.85)" }}>AI ILLUSTRATION</div>
     </AbsoluteFill>
   );
 };
@@ -318,7 +317,7 @@ export const Part2: React.FC = () => {
         </AbsoluteFill>
       )}
       {/* ================= STILL ================= */}
-      {seg.kind === "still" && <Still id={seg.id} t={t} />}
+      {seg.kind === "dio" && <Diorama id={seg.id} lt={tn - seg.t0} dur={seg.t1 - seg.t0} quote={["breakout", "aftermathA"].includes(seg.id) ? <QuoteOv t={t} /> : undefined} />}
       {seg.kind === "title" && <AbsoluteFill style={{ background: "#000", justifyContent: "center", alignItems: "center" }}>
         <div style={{ opacity: rv(tn, seg.t0 + 0.6, 1.0) * (1 - cl(tn, seg.t1 - 0.9, 0.8)), textAlign: "center" }}>
           <div style={{ fontFamily: F.ui, fontWeight: 700, fontSize: 120, letterSpacing: 8, color: C.chalk }}>BOBRUISK</div>

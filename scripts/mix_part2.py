@@ -106,11 +106,28 @@ add("el-fire-burning.mp3", 173.6, 12.0, 9.5, 4, 1.2, 1.5, None, 0.3)
 add("wind-blowing-ambience.mp3", 193.5, 25.0, 7.5, -18, 1.5, 3.0, None, 0)
 
 
+OLDTL = json.load(open(os.environ.get("P2_OLD", "research/bagration/part2-timeline-v2.json")))["anchors"]
+def tau_with(A, tn):
+    i = 0
+    for j in range(len(A)):
+        if A[j][0] <= tn: i = j
+        else: break
+    a = A[i]; b = A[i + 1] if i + 1 < len(A) else None
+    if not b or b[0] <= a[0]: return a[1]
+    return a[1] + (b[1] - a[1]) * (tn - a[0]) / (b[0] - a[0])
+def remap(lo, hi):  # rentang waktu v2 -> rentang waktu baru (lewat waktu pilot)
+    u0, u1 = tau_with(OLDTL, lo), tau_with(OLDTL, hi); out = []
+    for (t0, a0), (t1, a1) in zip(AN, AN[1:]):
+        if t1 > t0 and a1 > a0 and a0 < u1 and a1 > u0:
+            out.append((t0 + (max(u0, a0) - a0) * (t1 - t0) / (a1 - a0), t0 + (min(u1, a1) - a0) * (t1 - t0) / (a1 - a0)))
+    return out
+DG = [(a, b, dd) for lo, hi, dd in ((69.0, 72.5, -4), (104.0, 108.8, -4), (166.3, 170.3, -4), (217.5, 222.5, -4), (236.0, 244.5, -3)) for a, b in remap(lo, hi)]
+DG5 = remap(77.0, 89.5)
 for x in OLD:
     for tn in occ(x[1]):
         if E2["recap"] - 0.3 <= tn < E2["recap"] + 34.3: continue
-        dg = -11 if tn < 17.4 else (-5 if 77.0 < tn < 89.5 else 0)
-        for lo, hi, dd in ((69.0, 72.5, -4), (104.0, 108.8, -4), (166.3, 170.3, -4), (217.5, 222.5, -4), (236.0, 244.5, -3)):
+        dg = -11 if tn < 17.4 else (-5 if any(a < tn < b for a, b in DG5) else 0)
+        for lo, hi, dd in DG:
             if tn < hi and tn + x[3] > lo: dg += dd
         C.append((x[0], tn, x[2], x[3], x[4] + dg) + x[5:])
 
@@ -126,7 +143,7 @@ for s in SC:
         q += d; o = 0.0
     new("deep-cinematic-wind-hum.mp3", a, (a * 7) % 30, min(60, b - a), -21, 1.5, 1.5, None, 0)
 for a, b in zip(SC, SC[1:]):
-    if a["kind"] == "map" and b["kind"] == "still": new("cinematic-wind-swoosh.mp3", b["t0"] - 0.6, 0.0, 1.4, -18, 0.05, 0.4, None, 0)
+    if a["kind"] == "map" and b["kind"] == "dio": new("cinematic-wind-swoosh.mp3", b["t0"] - 0.6, 0.0, 1.4, -18, 0.05, 0.4, None, 0)
 # ---------- pembuka gelap, kartu ----------
 new("el-night-forest.mp3", 0.0, 0.0, 5.5, 3, 0.4, 2.5, None, 0)
 new("wind-blowing-ambience.mp3", E2["p2_9"] + 8.6, 25.0, 9.0, -18, 1.5, 3.0, None, 0)
@@ -157,6 +174,53 @@ new("distant-war-explosions.mp3", p("p2_7", 2.0), 0.0, 3.0, -17, 0.1, 1.0, "far"
 new("el-mg-distant.mp3", p("p2_7", 4.0), 4.7, 1.2, -18, 0.05, 0.4, "far", 0.4)
 new("wind-blowing-ambience.mp3", p("p2_8", -0.3), 3.0, 13.5, -17, 1.0, 1.5, None, 0)
 new("wind-blowing-ambience.mp3", p("p2_9", -0.3), 12.0, 9.0, -17, 1.0, 1.5, None, 0)
+
+# ---------- sisipan animasi (tanpa VO) + adegan diorama: waktu kejadian dari dio-events.json ----------
+DEV = json.load(open("src/conquer/dio-events.json"))
+SS = {x["id"]: (x["t0"], x["t1"]) for x in SC if x["kind"] == "dio"}
+def z(i): return SS[i][0]
+def zl(i): return SS[i][1] - SS[i][0]
+# Ninth Army di parit (B1): senja, kilatan jauh
+new("wind-blowing-ambience.mp3", z("trench"), 4.0, zl("trench"), -11, 1.2, 1.2, None, 0)
+new("el-battle-distant.mp3", z("trench"), 3.0, zl("trench"), 0, 1.5, 1.2, "far", 0)
+for i, q in enumerate(DEV["trench"]["flash"]): new("distant-war-explosions.mp3", z("trench") + q + 0.4, 0.0, 3.0, -15, 0.05, 1.0, "far", 0.4 - i * 0.2)
+new("el-gear-rattle.mp3", z("trench") + 4.0, 2.0, 5.0, -8, 0.6, 1.2, None, -0.3)
+# Katyusha di adegan VO a2A (barrageA) dan sisipan 'barrage'
+for i, q in enumerate(DEV["barrageA"]["salvo"]): new("el-katyusha.mp3", z("barrageA") + q - 0.2, 6.4 if i % 2 else 0.0, 3.4, -12, 0.03, 1.2, "mid", -0.3 + i * 0.4)
+for i, q in enumerate(DEV["barrage"]["salvo"]): new("el-katyusha.mp3", z("barrage") + q - 0.2, 6.4 if i % 2 else 0.0, 3.6, -1 - (i % 2) * 2, 0.03, 1.2, None, -0.45 + i * 0.22)
+for i, q in enumerate(DEV["barrage"]["gun"]): new("el-artillery-battery.mp3", z("barrage") + q - 0.05, 0.0, 2.2, -4, 0.0, 1.0, None, (-0.5, 0.4, -0.4, 0.5, -0.2)[i])
+for i, q in enumerate(DEV["barrage"]["impact"]): new("far-away-war-explosions.mp3", z("barrage") + q, 0.0, 3.0, -9, 0.05, 1.0, "far", 0.5)
+new("thunder-rumble.mp3", z("barrage"), 0.0, zl("barrage"), -11, 0.8, 1.5, 160, 0)
+# 9th Tank Corps menembus celah
+new("el-tanks-advance.mp3", z("armorB") - 0.4, 3.0, zl("armorB") + 0.4, 1, 0.8, 1.2, None, 0.1)
+new("el-gear-rattle.mp3", z("armorB") + 1.0, 0.5, 7.0, -4, 0.6, 1.0, None, -0.2)
+new("wind-blowing-ambience.mp3", z("armorB"), 20.0, zl("armorB"), -16, 1.0, 1.0, None, 0)
+# rawa: jalan balok
+new("wind-in-the-forest.mp3", z("marshB"), 6.0, zl("marshB"), -9, 1.0, 1.2, None, 0)
+new("el-footsteps-mud.mp3", z("marshB") + 0.5, 1.0, 11.0, 3, 0.6, 1.2, None, -0.2)
+new("el-gear-rattle.mp3", z("marshB") + 2.0, 4.0, 6.0, -6, 0.6, 1.0, None, 0.3)
+new("el-battle-distant.mp3", z("marshB"), 10.0, zl("marshB"), -4, 1.0, 1.2, "far", 0)
+# kantong: pesawat + bom
+new("el-fire-burning.mp3", z("pocketB"), 2.0, zl("pocketB"), 3, 1.0, 1.0, None, 0.3)
+for i, q in enumerate(DEV["pocketB"]["plane"]): new("el-aircraft-distant.mp3", z("pocketB") + q - 1.2, 2.0, 5.5, -1, 0.8, 1.5, "mid", -0.5 + i)
+for i, q in enumerate(DEV["pocketB"]["blast"]): new(("bomb-drop-impact.mp3", "explosion-in-battle.mp3", "war-field-explosion.mp3")[i % 3], z("pocketB") + q - (0.9 if i % 3 == 0 else 0.0), 0.0, 2.8, -7, 0.02, 1.0, "mid", ((i * 0.37) % 1.0) - 0.5)
+new("el-mg-distant.mp3", z("pocketB") + 1.2, 0.0, 1.6, -12, 0.05, 0.4, "far", 0.2)
+# benteng (Dulag 131): sunyi, angin dan dengung
+new("wind-blowing-ambience.mp3", z("citadel"), 30.0, zl("citadel"), -9, 2.0, 2.0, None, 0)
+new("deep-cinematic-wind-hum.mp3", z("citadel"), 5.0, zl("citadel"), -12, 2.5, 2.5, None, 0)
+# kota hancur (B3)
+new("wind-blowing-ambience.mp3", z("ruins"), 14.0, zl("ruins"), -11, 1.0, 1.2, None, 0)
+new("el-fire-burning.mp3", z("ruins"), 9.0, zl("ruins"), -2, 1.0, 1.2, None, 0.4)
+new("stone-debris-falling.mp3", z("ruins") + 3.0, 0.5, 2.5, -8, 0.05, 0.8, None, -0.3)
+new("el-footsteps-mud.mp3", z("ruins") + 0.8, 2.0, 10.0, -3, 0.6, 1.2, None, -0.3)
+# akhir Ninth Army (B4): barisan tawanan di horizon
+new("wind-blowing-ambience.mp3", z("aftermathB"), 40.0, zl("aftermathB"), -11, 1.0, 1.2, None, 0)
+new("big-army-crowd-marching.mp3", z("aftermathB") + 0.5, 0.0, 8.6, -12, 1.5, 2.0, "far", 0)
+new("big-army-crowd-marching.mp3", z("aftermathB") + 8.0, 0.0, 6.0, -13, 1.5, 2.0, "far", 0)
+new("el-fire-burning.mp3", z("aftermathB"), 15.0, zl("aftermathB"), -3, 1.0, 1.2, None, 0.3)
+# layar akhir: kolom tank ke barat
+new("el-tanks-advance.mp3", z("road"), 8.0, 16.0, -9, 1.5, 3.0, "far", -0.2)
+new("wind-blowing-ambience.mp3", z("road"), 45.0, zl("road"), -14, 1.5, 3.0, None, 0)
 
 # ---------- render (SFX per batch -> stem, hemat memori) ----------
 os.makedirs("out/conquer/p2sfx", exist_ok=True)
@@ -192,6 +256,8 @@ tt = np.arange(0, D, 0.1)
 db = np.interp([tau(x) for x in tt], [a for a, _ in lv_old], [b for _, b in lv_old])
 for lo, hi in ((E2["oob"], E2["oob"] + 17.0), (E2["recap"], E2["recap"] + 34.0)):
     db = np.where((tt >= lo) & (tt < hi), np.maximum(db, -19.0), db)
+for k in ("trench", "barrage", "armorB", "marshB", "pocketB", "citadel", "ruins", "aftermathB", "road"):
+    lo, hi = SS[k]; db = np.where((tt >= lo) & (tt < hi), np.maximum(db, -21.0 if k in ("barrage", "pocketB") else -18.0), db)
 db = np.where(tt > D - 9, db + (-60 - db) * np.clip((tt - (D - 9)) / 8.0, 0, 1), db)
 db = np.convolve(db, np.ones(10) / 10, mode="same")
 fade_in = np.clip(tt / 3.0, 0, 1)
@@ -214,5 +280,5 @@ else:
     args += ["-filter_complex", ";".join(fil), "-map", "[out]", "-ar", "48000", "out/conquer/part2-audio.wav"]
 subprocess.run(args, check=True)
 if len(sys.argv) > 2:
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "out/conquer/part2-muted.mp4", "-i", "out/conquer/part2-audio.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", "out/bagration-part2-v1.mp4"], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "out/conquer/part2-muted.mp4", "-i", "out/conquer/part2-audio.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", "out/bagration-part2-v3.mp4"], check=True)
 print("ok", len(C), "cue SFX")
