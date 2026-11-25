@@ -32,4 +32,9 @@ Konteks tetap untuk sesi Claude di repo ini. Pemilik: Nanda (Orca / Lone Orca). 
 ## Jurnal (data penting per video)
 - Folder `jurnal/` berisi entri per video (data, posisi di video, status D/K/I/?, sumber, kenapa penting, risiko). Kalau Nanda menyebut nama video dan bertanya kenapa suatu data penting, buka `jurnal/<video>.md` lebih dulu, lalu `longform/source-ledger.md` untuk detail sumber.
 - Rencana upload + metadata: `upload/UPLOAD-PLAN.md`.
-- Skill lokal repo: `.claude/skills/wtf-hook-akademi` (hook) dan `.claude/skills/art-of-storytelling` (naskah/cerita). Pakai untuk hook dan struktur sebelum menulis skrip baru.
+- Skill lokal repo (`.claude/skills/`) dipakai OTOMATIS, Nanda tidak perlu mengetik "/" (instruksi 25 Nov 2026):
+  - Hook: `wtf-hook-akademi` + `viral-hooks`. Naskah: `art-of-storytelling` + `storytelling` + `dumbify`.
+  - Teks layar/judul/deskripsi: `copywriting`, lalu `anti-ai-writing` sebagai filter terakhir.
+  - Animasi Remotion: `motion-design`. Rencana seri: `content-strategy`.
+  - `firecrawl-build-search` / `firecrawl-build-scrape` butuh API key Firecrawl (belum ada); sementara riset pakai WebSearch/WebFetch.
+  - Hook SessionStart (`.claude/hooks/session-start.sh`) mengingatkan aturan ini di tiap sesi.
