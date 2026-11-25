@@ -108,6 +108,7 @@ add("wind-blowing-ambience.mp3", 193.5, 25.0, 7.5, -18, 1.5, 3.0, None, 0)
 
 for x in OLD:
     for tn in occ(x[1]):
+        if E2["recap"] - 0.3 <= tn < E2["recap"] + 34.3: continue
         dg = -11 if tn < 17.4 else (-5 if 77.0 < tn < 89.5 else 0)
         for lo, hi, dd in ((69.0, 72.5, -4), (104.0, 108.8, -4), (166.3, 170.3, -4), (217.5, 222.5, -4), (236.0, 244.5, -3)):
             if tn < hi and tn + x[3] > lo: dg += dd
@@ -128,7 +129,16 @@ for a, b in zip(SC, SC[1:]):
     if a["kind"] == "map" and b["kind"] == "still": new("cinematic-wind-swoosh.mp3", b["t0"] - 0.6, 0.0, 1.4, -18, 0.05, 0.4, None, 0)
 # ---------- pembuka gelap, kartu ----------
 new("el-night-forest.mp3", 0.0, 0.0, 5.5, 3, 0.4, 2.5, None, 0)
-new("wind-blowing-ambience.mp3", E2["p2_9"] + 10.8, 25.0, 9.0, -18, 1.5, 3.0, None, 0)
+new("wind-blowing-ambience.mp3", E2["p2_9"] + 8.6, 25.0, 9.0, -18, 1.5, 3.0, None, 0)
+# ---------- rekap enam hari (tanpa narasi): soundscape sendiri ----------
+RC = E2["recap"]
+new("el-battle-distant.mp3", RC - 0.3, 0.0, 24.0, 4, 0.8, 1.2, "far", 0)
+new("el-battle-distant.mp3", RC + 23.7, 0.0, 11.0, 4, 0.8, 1.5, "far", 0)
+new("thunder-rumble.mp3", RC, 0.0, 34.0, -14, 1.0, 2.0, 160, 0)
+for i, dt in enumerate([1.0, 2.2, 3.1, 14.0, 15.1, 16.0, 22.5, 23.4, 29.0, 30.2]): new("explosion-in-battle.mp3" if i % 2 else "distant-war-explosions.mp3", RC + dt, 0.0, 2.8, -12, 0.0, 1.0, "far", ((i * 0.41) % 1.0) - 0.5)
+new("el-aircraft-distant.mp3", RC + 12.0, 0.0, 12.0, -11, 1.5, 2.0, "far", 0.1)
+new("el-tanks-advance.mp3", RC + 5.0, 4.0, 9.0, -14, 0.8, 1.5, "far", 0)
+new("el-footsteps-mud.mp3", RC + 8.0, 0.5, 10.0, -12, 0.6, 1.2, "mid", -0.2)
 # ---------- klip baru ----------
 p = lambda k, x=0.0: E2[k] + x
 new("el-tanks-advance.mp3", E2["p2_3_sil"][0] - 0.3, 4.0, 8.0, -16, 0.6, 1.2, "far", -0.2)
@@ -146,7 +156,7 @@ new("el-mg-distant.mp3", p("p2_7", 0.6), 0.0, 1.6, -17, 0.05, 0.4, "far", -0.3)
 new("distant-war-explosions.mp3", p("p2_7", 2.0), 0.0, 3.0, -17, 0.1, 1.0, "far", 0.3)
 new("el-mg-distant.mp3", p("p2_7", 4.0), 4.7, 1.2, -18, 0.05, 0.4, "far", 0.4)
 new("wind-blowing-ambience.mp3", p("p2_8", -0.3), 3.0, 13.5, -17, 1.0, 1.5, None, 0)
-new("wind-blowing-ambience.mp3", p("p2_9", -0.3), 12.0, 10.8, -17, 1.0, 1.5, None, 0)
+new("wind-blowing-ambience.mp3", p("p2_9", -0.3), 12.0, 9.0, -17, 1.0, 1.5, None, 0)
 
 # ---------- render (SFX per batch -> stem, hemat memori) ----------
 os.makedirs("out/conquer/p2sfx", exist_ok=True)
@@ -180,6 +190,8 @@ raw = subprocess.run(["ffmpeg", "-v", "error", "-stream_loop", "1", "-i", "asset
 mus = np.frombuffer(raw, np.float32).reshape(-1, 2).copy()
 tt = np.arange(0, D, 0.1)
 db = np.interp([tau(x) for x in tt], [a for a, _ in lv_old], [b for _, b in lv_old])
+for lo, hi in ((E2["oob"], E2["oob"] + 17.0), (E2["recap"], E2["recap"] + 34.0)):
+    db = np.where((tt >= lo) & (tt < hi), np.maximum(db, -19.0), db)
 db = np.where(tt > D - 9, db + (-60 - db) * np.clip((tt - (D - 9)) / 8.0, 0, 1), db)
 db = np.convolve(db, np.ones(10) / 10, mode="same")
 fade_in = np.clip(tt / 3.0, 0, 1)

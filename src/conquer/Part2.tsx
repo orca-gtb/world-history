@@ -120,8 +120,7 @@ const BEATS2: [number, number, string, string][] = [
   [E2.p2_7 + 0.1, E2.p2_7 + 6.6, "28 JUNE", "THE BREAKOUT HITS THE 356th RIFLE DIVISION"],
   [E2.p2_9 + 0.1, E2.p2_9_sil[0], "NORTH", "VITEBSK: LIII CORPS GONE"],
   [E2.p2_9_sil[0], E2.p2_9_sil[1] - 0.1, "SOUTH", "BOBRUISK: 9th ARMY BROKEN"],
-  [E2.p2_9_sil[1], E2.p2_9_sil[2] - 0.1, "CENTRE", "4th ARMY STILL MOVING WEST"],
-  [E2.p2_9_sil[2], E2.p2_9 + 10.0, "NEXT", "MINSK"],
+  [E2.p2_9_sil[1], E2.p2_9 + 8.2, "CENTRE", "4th ARMY STILL MOVING WEST"],
 ];
 const ARTY = Array.from({ length: 26 }, (_, i) => ({ u: random(`au${i}`), d: random(`ad${i}`) * 2.2 }));
 
@@ -140,9 +139,10 @@ export const Part2: React.FC = () => {
   const o26 = cl(t, 95, 0.8) * (1 - cl(t, E.ring, 0.6));
   const ring = io(cl(t, E.ring, 1.4)), fallen = cl(t, E.falls, 1.2);
   const dip = Math.max(0, ...P2.dips.map((b: number) => cl(tn, b - 0.8, 0.7) * (1 - cl(tn, b + 0.1, 0.7))));
-  const b2 = Math.max(0, ...BEATS2.map(([a, b]) => cl(tn, a, 0.35) * (1 - cl(tn, b - 0.35, 0.35))));
+  const recapW = cl(tn, E2.recap, 0.3) * (1 - cl(tn, E2.recap + 33.7, 0.3));
+  const b2 = Math.max(recapW, ...BEATS2.map(([a, b]) => cl(tn, a, 0.35) * (1 - cl(tn, b - 0.35, 0.35))));
   const date = [...DATES].reverse().find(([a]) => t >= a)![1];
-  const DATE_OV: [number, number, string][] = [[E2.p2_2, E2.p2_2 + 11.5, "23 JUNE 1944"], [E2.p2_3, E2.p2_3 + 13.6, "24–26 JUNE 1944"], [E2.p2_9, E2.p2_9 + 10.4, "28 JUNE – 2 JULY 1944"]];
+  const DATE_OV: [number, number, string][] = [[E2.p2_2, E2.p2_2 + 11.5, "23 JUNE 1944"], [E2.p2_3, E2.p2_3 + 13.6, "24–26 JUNE 1944"], [E2.p2_9, E2.p2_9 + 8.4, "28 JUNE – 2 JULY 1944"]];
   const dateShown = DATE_OV.find(([x, y]) => tn >= x && tn < y)?.[2] ?? date;
   const arrowsOn = 1 - cl(t, E.part_out, 2.0) * 0.6;
   // "serangan pertama dipukul mundur": panah pendek maju lalu mundur
@@ -248,8 +248,8 @@ export const Part2: React.FC = () => {
                     {ring(hq, w(E2.p2_6_sil[1], E2.p2_6 + 12.7), 70)}
                     {ring(pc, w(E2.p2_6 + 0.3, E2.p2_6_sil[1] - 0.2), 100)}
                     {tn > E2.p2_7 - 0.3 && tn < E2.p2_7 + 6.9 && <Counter p={off(along(BRK, 0.78), 10, -80)} side="SU" ech="XX" type="inf" name="356th RIFLE DIV" k={k} scale={0.85} opacity={w(E2.p2_7, E2.p2_7 + 6.6)} />}
-                    {tn > E2.p2_9 && tn < E2.p2_9 + 10.6 && (
-                      <g opacity={w(E2.p2_9_sil[0] - 2, E2.p2_9 + 10.5)}>
+                    {tn > E2.p2_9 && tn < E2.p2_9 + 8.6 && (
+                      <g opacity={w(E2.p2_9_sil[0] - 2, E2.p2_9 + 8.4)}>
                         <circle cx={vit[0]} cy={vit[1]} r={(20 + 6 * pulse) / cam.z} fill="none" stroke={RED} strokeWidth={4 / cam.z} />
                         <text x={vit[0] + 26 / cam.z} y={vit[1] + 6 / cam.z} fontFamily={F.ui} fontWeight={700} fontSize={26 / cam.z} fill="#1d2228" stroke="rgba(239,232,205,0.9)" strokeWidth={5 / cam.z} paintOrder="stroke">VITEBSK</text>
                       </g>
@@ -269,6 +269,32 @@ export const Part2: React.FC = () => {
               <div style={{ fontFamily: F.type, fontSize: 18, letterSpacing: 5, color: "#ff7a63" }}>{kick}</div>
               <div style={{ fontFamily: F.ui, fontWeight: 700, fontSize: 50, letterSpacing: 1.5, lineHeight: 1.0, color: C.chalk, marginTop: 6 }}>{head}</div>
             </div>); })}
+          {(() => { const o = cl(tn, E2.oob + 0.4, 0.6) * (1 - cl(tn, E2.oob + 16.4, 0.6)); if (o <= 0) return null; const row = (txt: string, i: number, c: string) => <div key={txt} style={{ fontFamily: F.ui, fontWeight: 600, fontSize: 31, lineHeight: 1.22, color: c, opacity: rv(tn, E2.oob + 1.2 + i * 0.45, 0.4) }}>{txt}</div>; return (
+            <div style={{ position: "absolute", left: 130, right: 130, top: 150, padding: "28px 40px 24px", background: "rgba(14,20,26,0.92)", borderTop: `6px solid ${C.gold}`, opacity: o }}>
+              <div style={{ fontFamily: F.type, fontSize: 24, letterSpacing: 8, color: C.gold, textAlign: "center" }}>ORDER OF BATTLE · BOBRUISK · 24 JUNE 1944</div>
+              <div style={{ display: "flex", gap: 56, marginTop: 22 }}>
+                <div style={{ flex: 1, borderLeft: "5px solid #8a929c", paddingLeft: 24 }}>
+                  <div style={{ fontFamily: F.type, fontSize: 20, letterSpacing: 5, color: "#b8c0c8", marginBottom: 10 }}>GERMAN NINTH ARMY · GEN. HANS JORDAN</div>
+                  {["XXXV Corps (5 divisions)", "XXXXI Panzer Corps", "LV Corps", "20th Panzer Division (about 56 tanks)", "707th, 134th and 296th Infantry Divisions", "Bobruisk garrison (Fester Platz)"].map((x, i) => row(x, i, C.chalk))}
+                </div>
+                <div style={{ flex: 1, borderLeft: `5px solid ${RED}`, paddingLeft: 24 }}>
+                  <div style={{ fontFamily: F.type, fontSize: 20, letterSpacing: 5, color: "#ff7a63", marginBottom: 10 }}>1st BELORUSSIAN FRONT · ROKOSSOVSKY</div>
+                  {["3rd Army (Gorbatov)", "48th Army (Romanenko)", "65th Army (Batov)", "28th Army", "Pliyev Group: 1st Mech + 4th Guards Cavalry Corps", "9th Tank Corps · 16th Air Army"].map((x, i) => row(x, i + 1, C.chalk))}
+                </div>
+              </div>
+              <div style={{ fontFamily: F.type, fontSize: 15, letterSpacing: 3, color: "#a9a290", marginTop: 22, textAlign: "center" }}>SELECTED FORMATIONS ONLY · SOURCE: WIKIPEDIA (BOBRUYSK OFFENSIVE, 9th ARMY)</div>
+            </div>); })()}
+          {recapW > 0.01 && (() => { const EV: [number, number, string, string][] = [[37.6, 59, "24 JUNE", "THE BARRAGE"], [60.4, 83, "24 JUNE", "THE NORTH BREAKS THROUGH"], [84.4, 100, "25–26 JUNE", "THE SOUTH CROSSES THE MARSH"], [101, 120.5, "27 JUNE", "THE POCKET CLOSES"], [121.75, 150, "28 JUNE", "THE BREAKOUT"], [150.5, 160.5, "29 JUNE", "BOBRUISK FALLS"]]; const prog = clamp01((t - 37.6) / 122.4); return (<>
+            <div style={{ position: "absolute", left: "50%", top: 44, transform: "translateX(-50%)", padding: "10px 30px", background: "rgba(14,20,26,0.85)", borderBottom: `4px solid ${C.gold}`, fontFamily: F.type, fontSize: 24, letterSpacing: 9, color: C.gold, opacity: recapW }}>SIX DAYS · 24–29 JUNE 1944</div>
+            {EV.map(([a, b, kick, head]) => { const o = cl(t, a, 0.5) * (1 - cl(t, b - 0.5, 0.5)) * recapW; if (o <= 0.01) return null; return (
+              <div key={a} style={{ position: "absolute", left: 48, bottom: 100, padding: "18px 26px", background: "rgba(14,20,26,0.88)", borderLeft: "6px solid #c8261c", opacity: o }}>
+                <div style={{ fontFamily: F.type, fontSize: 18, letterSpacing: 5, color: "#ff7a63" }}>{kick}</div>
+                <div style={{ fontFamily: F.ui, fontWeight: 700, fontSize: 48, lineHeight: 1.05, color: C.chalk, marginTop: 6 }}>{head}</div>
+              </div>); })}
+            <div style={{ position: "absolute", left: 48, right: 48, bottom: 56, height: 8, background: "rgba(14,20,26,0.7)", opacity: recapW }}>
+              <div style={{ width: `${prog * 100}%`, height: 8, background: RED }} />
+              {[0, 0.07, 0.35, 0.52, 0.69, 0.92].map((x, i) => <div key={i} style={{ position: "absolute", left: `${x * 100}%`, top: -6, width: 3, height: 20, background: C.chalk }} />)}
+            </div></>); })()}
           {BEATS2.map(([a, b, kick, head]) => { const o = cl(tn, a, 0.35) * (1 - cl(tn, b - 0.35, 0.35)); if (o <= 0) return null; return (
             <div key={a} style={{ position: "absolute", left: 48, bottom: 60, maxWidth: 1250, padding: "18px 26px", background: "rgba(14,20,26,0.86)", borderLeft: "6px solid #c8261c", opacity: o, transform: `translateY(${(1 - rv(tn, a, 0.5)) * 14}px)` }}>
               {kick && <div style={{ fontFamily: F.type, fontSize: 18, letterSpacing: 5, color: "#ff7a63" }}>{kick}</div>}

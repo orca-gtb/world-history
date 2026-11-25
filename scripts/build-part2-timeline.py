@@ -10,9 +10,9 @@ P="vo-bagration-p2/"; O="vo-bobruisk/"
 PS={"a1":2.0,"a2":32.5,"a3":58.0,"a4":79.0,"a5":99.0,"a6":122.5,"a7":146.0,"a8":164.5}
 vo=[]; an=[]; ST={}; cur=0.0
 def mark(tau): an.append([round(cur,3),round(tau,3)])
-def clip(name,key=None):
+def clip(name,key=None,to=None):
     global cur
-    d=dur(P+name+".mp3"); ST[key or name]=cur; vo.append({"file":P+name,"start":round(cur,3),"ss":0.0,"to":round(d,3),"dur":round(d,3)}); s=sil(P+name+".mp3")
+    d=dur(P+name+".mp3"); d=d if to is None else to; ST[key or name]=cur; vo.append({"file":P+name,"start":round(cur,3),"ss":0.0,"to":round(d,3),"dur":round(d,3)}); s=sil(P+name+".mp3")
     ST[(key or name)+"_sil"]=[round(cur+x,2) for x in s]; cur+=d; return d
 def pil(name,o0=0.0,o1=None,key=None):
     global cur
@@ -26,6 +26,8 @@ T_title=cur; cur+=5.7; mark(112.0); mark(4.4)
 cur+=0.5; mark(4.4)
 # ---- a1 (peta teater) ----
 ST["a1"]=cur; mark(4.4); a1=dur(O+"a1.mp3"); an.append([round(cur+10.35,3),12.35]); vo.append({"file":O+"a1","start":round(cur,3),"ss":0.0,"to":round(a1,3),"dur":round(a1,3)}); cur+=a1; mark(30.45)
+cur+=0.5; mark(30.45)
+ST["oob"]=cur; cur+=17.0; mark(30.45)
 cur+=2.05; mark(32.5)
 mark(32.5); pil("a2",0,9.85,"a2A"); mark(42.35)
 cur+=0.4; mark(42.35)
@@ -67,10 +69,13 @@ cur+=0.4; mark(173.79)
 clip("p2_8"); mark(173.79)
 cur+=0.3; B6=cur; mark(173.79); mark(174.2)
 cur+=0.05; mark(174.24)
-pil("a8",9.74,None,"a8B"); mark(197.65)
-cur+=1.6; B7=cur; mark(197.65); mark(190.6)
+pil("a8",9.74,29.30,"a8B"); mark(193.8)
+cur+=0.6; BR=cur; mark(193.8); mark(37.6)
+ST["recap"]=cur; cur+=34.0; mark(160.0)
+cur+=0.6; BC=cur; mark(160.0); mark(194.5)
+cur+=3.4; B7=cur; mark(197.9); mark(190.6)
 cur+=0.5; mark(190.6)
-clip("p2_9"); mark(190.6)
+clip("p2_9",to=8.15); mark(190.6)
 cur+=0.7; B8=cur; mark(190.6)
 cur+=6.0; TOTAL=round(cur,2); mark(190.6)
 def inv(tau,after):
@@ -90,9 +95,9 @@ sc(inv(84.4,B2),inv(112.7,B2),"map","IV-V"); sc(inv(112.7,B2),B3,"still","06_ger
 sc(B3,B4,"map","pocket"); sc(B4,B5,"map","VI")
 sc(B5,inv(144.8,B5),"still","07_german_retreat_breakout"); sc(inv(144.8,B5),inv(154.4,B5),"still","08_urban_battle")
 sc(inv(154.4,B5),inv(158.4,B5),"still","08b_urban_retreat_street"); sc(inv(158.4,B5),B6,"map","VII-VIII")
-sc(B6,inv(182.5,B6),"still","01_battlefield_aftermath"); sc(inv(182.5,B6),inv(194.5,B6),"map","VIII-end")
-sc(inv(194.5,B6),B7,"title",""); sc(B7,B8,"map","wide"); sc(B8,TOTAL,"end2","")
-dips=[]
+sc(B6,inv(182.5,B6),"still","01_battlefield_aftermath"); sc(inv(182.5,B6),BR,"map","VIII-end")
+sc(BR,BC,"map","recap"); sc(BC,B7,"title",""); sc(B7,B8,"map","wide"); sc(B8,TOTAL,"end2","")
+dips=[BR]
 for a,b in zip(S,S[1:]):
     if a["kind"]=="map" and b["kind"]=="map": continue
     dips.append(b["t0"])
