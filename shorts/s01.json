@@ -1,0 +1,111 @@
+{
+ "title": "300,000 Men Vanished in 14 Days (Operation Bagration)",
+ "tail": 1.4,
+ "items": [
+  {
+   "clip": "vo-bagration-p1/p1_0",
+   "sent": [
+    3
+   ],
+   "scene": "aftermathB",
+   "x": [
+    250,
+    760
+   ]
+  },
+  {
+   "clip": "vo-bagration-p1/p1_0",
+   "sent": [
+    0,
+    1
+   ],
+   "scene": "trench",
+   "x": [
+    520,
+    980
+   ]
+  },
+  {
+   "clip": "vo-bagration-p1/p1_0",
+   "sent": [
+    2
+   ],
+   "scene": "barrageA",
+   "x": [
+    150,
+    700
+   ]
+  },
+  {
+   "clip": "vo-bagration-p1/p1_0",
+   "sent": [
+    4,
+    5
+   ],
+   "scene": "road",
+   "x": [
+    1100,
+    700
+   ]
+  },
+  {
+   "clip": "vo-bagration-p1/p1_3",
+   "sent": [
+    0
+   ],
+   "scene": "armorA",
+   "x": [
+    300,
+    760
+   ]
+  },
+  {
+   "clip": "vo-bagration-p1/p1_3",
+   "sent": [
+    1
+   ],
+   "scene": "assault",
+   "x": [
+    250,
+    820
+   ]
+  },
+  {
+   "clip": "vo-bagration-p1/p1_3",
+   "sent": [
+    2
+   ],
+   "scene": "trench",
+   "x": [
+    880,
+    380
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "type": "hook",
+   "kick": "JUNE 1944",
+   "big": 300000,
+   "prefix": "\u2212",
+   "sub": "MEN LOST IN TWO WEEKS",
+   "t0": 0.15,
+   "t1": 3.9
+  },
+  {
+   "type": "bars",
+   "at_item": 5,
+   "at_word": "million",
+   "lead": -0.6,
+   "dur": 9.0,
+   "at2_word": "Facing"
+  },
+  {
+   "type": "end",
+   "text": "THE FULL STORY IS ON THE CHANNEL",
+   "sub": "OPERATION BAGRATION \u00b7 PART 1",
+   "end": true,
+   "dur": 2.6
+  }
+ ]
+}

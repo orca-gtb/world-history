@@ -567,7 +567,7 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
     </>);
   }
   return (
-    <svg width={1920} height={1080} style={{ position: "absolute" }}>
+    <svg width={1920} height={1080} style={{ position: "absolute", overflow: "visible" }}>
       <Defs L={L} />
       <g transform={`translate(${sx.toFixed(2)},${sy.toFixed(2)})`}>{body}</g>
       {ashN > 0 && <Ash t={lt} seed={`ash${base}`} n={ashN} fill={lk === "day" ? "rgba(70,64,58,0.5)" : "rgba(210,150,100,0.55)"} />}
@@ -599,13 +599,13 @@ const EndCard: React.FC<{ lt: number; dur: number }> = ({ lt, dur }) => {
   </div>);
 };
 
-export const Diorama: React.FC<{ id: string; lt: number; dur: number; quote?: React.ReactNode }> = ({ id, lt, dur, quote }) => (
+export const Diorama: React.FC<{ id: string; lt: number; dur: number; quote?: React.ReactNode; bare?: boolean }> = ({ id, lt, dur, quote, bare = false }) => (
   <AbsoluteFill style={{ background: "#000" }}>
     <Scene id={id} lt={lt} dur={dur} />
-    <Caps id={id} lt={lt} />
-    {id === "ruins" && <PopCard lt={lt} />}
-    {id === "road" && <EndCard lt={lt} dur={dur} />}
+    {!bare && <Caps id={id} lt={lt} />}
+    {!bare && id === "ruins" && <PopCard lt={lt} />}
+    {!bare && id === "road" && <EndCard lt={lt} dur={dur} />}
     {quote}
-    {id !== "road" && <div style={{ position: "absolute", right: 28, bottom: 22, padding: "4px 10px", background: "rgba(10,12,14,0.55)", fontFamily: F.type, fontSize: 14, letterSpacing: 2, color: "rgba(232,225,207,0.8)" }}>ILLUSTRATIVE RECONSTRUCTION</div>}
+    {!bare && id !== "road" && <div style={{ position: "absolute", right: 28, bottom: 22, padding: "4px 10px", background: "rgba(10,12,14,0.55)", fontFamily: F.type, fontSize: 14, letterSpacing: 2, color: "rgba(232,225,207,0.8)" }}>ILLUSTRATIVE RECONSTRUCTION</div>}
   </AbsoluteFill>
 );
