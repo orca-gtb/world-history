@@ -1,0 +1,3 @@
+import { build } from "esbuild"; import fs from "fs";
+await build({ entryPoints: ["src/ww2/vsheet.tsx"], bundle: true, platform: "node", format: "cjs", outfile: ".audit/vsheet.cjs", jsx: "automatic", logLevel: "error", external: ["react", "react-dom"], loader: { ".json": "json" }, plugins: [{ name: "stub", setup(b) { b.onResolve({ filter: /^@remotion\/fonts$/ }, () => ({ path: "x", namespace: "stub" })); b.onLoad({ filter: /.*/, namespace: "stub" }, () => ({ contents: "exports.loadFont=()=>Promise.resolve();" })); } }] });
+const { vsheet } = await import("../.audit/vsheet.cjs"); fs.writeFileSync(process.argv[2] + "/ww2-veh.svg", vsheet()); console.log("ok");

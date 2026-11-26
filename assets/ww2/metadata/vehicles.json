@@ -1,0 +1,363 @@
+{
+ "version": "1.0",
+ "rejected": [
+  {
+   "id": "gaz_63",
+   "reason": "produksi mulai 1948, bukan era 1944; diganti zis5_truck dan studebaker_us6"
+  }
+ ],
+ "vehicles": [
+  {
+   "unit_id": "m4_sherman",
+   "faction": "us",
+   "unit_type": "vehicles",
+   "name": "M4 Sherman",
+   "role": "medium tank",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/us/vehicles/m4_sherman.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "m3_halftrack",
+   "faction": "us",
+   "unit_type": "vehicles",
+   "name": "M3 Half-track",
+   "role": "troop transport",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/us/vehicles/m3_halftrack.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "jeep_willys",
+   "faction": "us",
+   "unit_type": "vehicles",
+   "name": "Jeep (Willys MB)",
+   "role": "utility vehicle",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/us/vehicles/jeep_willys.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "m2a1_howitzer",
+   "faction": "us",
+   "unit_type": "artillery",
+   "name": "M2A1 105 mm Howitzer",
+   "role": "field artillery",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/us/vehicles/m2a1_howitzer.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "p47_thunderbolt",
+   "faction": "us",
+   "unit_type": "aircraft",
+   "name": "P-47D Thunderbolt",
+   "role": "fighter-bomber",
+   "scale": 1,
+   "depth": 0.9,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/us/vehicles/p47_thunderbolt.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "panzer_iv_h",
+   "faction": "germany",
+   "unit_type": "vehicles",
+   "name": "Panzer IV Ausf. H",
+   "role": "medium tank",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/germany/vehicles/panzer_iv_h.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "sdkfz_251",
+   "faction": "germany",
+   "unit_type": "vehicles",
+   "name": "Sd.Kfz. 251/1",
+   "role": "armored half-track",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/germany/vehicles/sdkfz_251.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "kubelwagen",
+   "faction": "germany",
+   "unit_type": "vehicles",
+   "name": "Kübelwagen (Type 82)",
+   "role": "utility vehicle",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/germany/vehicles/kubelwagen.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "pak40",
+   "faction": "germany",
+   "unit_type": "artillery",
+   "name": "7.5 cm Pak 40",
+   "role": "anti-tank gun",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/germany/vehicles/pak40.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "bf109g",
+   "faction": "germany",
+   "unit_type": "aircraft",
+   "name": "Bf 109 G",
+   "role": "fighter",
+   "scale": 1,
+   "depth": 0.9,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/germany/vehicles/bf109g.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "t34_76",
+   "faction": "soviet",
+   "unit_type": "vehicles",
+   "name": "T-34 (model 1943)",
+   "role": "medium tank",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/soviet/vehicles/t34_76.svg"
+   },
+   "notes": "roda berputar lewat prop rot pada komponen T34 (Diorama)"
+  },
+  {
+   "unit_id": "su76m",
+   "faction": "soviet",
+   "unit_type": "vehicles",
+   "name": "SU-76M",
+   "role": "self-propelled gun",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/soviet/vehicles/su76m.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "zis5_truck",
+   "faction": "soviet",
+   "unit_type": "vehicles",
+   "name": "ZiS-5 (3-ton truck)",
+   "role": "supply truck",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/soviet/vehicles/zis5_truck.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "studebaker_us6",
+   "faction": "soviet",
+   "unit_type": "vehicles",
+   "name": "Studebaker US6 (Lend-Lease)",
+   "role": "supply truck",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/soviet/vehicles/studebaker_us6.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "zis3_gun",
+   "faction": "soviet",
+   "unit_type": "artillery",
+   "name": "ZiS-3 76 mm Field Gun",
+   "role": "field/anti-tank gun",
+   "scale": 1,
+   "depth": 0.5,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/soviet/vehicles/zis3_gun.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  },
+  {
+   "unit_id": "il2",
+   "faction": "soviet",
+   "unit_type": "aircraft",
+   "name": "Il-2 Shturmovik",
+   "role": "ground-attack aircraft",
+   "scale": 1,
+   "depth": 0.9,
+   "anchor": {
+    "x": 200,
+    "y": 205,
+    "cell": [
+     460,
+     230
+    ]
+   },
+   "facing": "right",
+   "asset_paths": {
+    "static": "assets/ww2/soviet/vehicles/il2.svg"
+   },
+   "notes": "statis; geser di engine, putar roda lewat transform"
+  }
+ ]
+}

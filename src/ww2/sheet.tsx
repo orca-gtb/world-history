@@ -1,4 +1,4 @@
-import React from "react";
+
 import { renderToStaticMarkup } from "react-dom/server";
 import { UNITS, type Faction } from "./units";
 import { ANIMS, type AnimId } from "./anim";

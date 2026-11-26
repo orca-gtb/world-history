@@ -86,7 +86,7 @@ const Soldier: React.FC<{ x: number; y: number; s: number; side: "SU" | "DE"; ph
 // T-34 model 1943 (76 mm F-34): 5 roda jalan besar (suspensi Christie, tanpa roda penyangga atas), glacis miring ±30°,
 // turret heksagonal dengan dua palka "telinga Mickey" + kubah komandan, tangki bahan bakar di fender belakang, laras menjorok ±1,4 m.
 // Skala ±2 cm per satuan. shot = detik sejak tembakan terakhir (undefined = belum menembak).
-const T34: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1; riders?: number; seed?: string; shot?: number }> = ({ x, y, s, fill, rot, dir = 1, riders = 0, seed = "t", shot }) => {
+export const T34: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1; riders?: number; seed?: string; shot?: number }> = ({ x, y, s, fill, rot, dir = 1, riders = 0, seed = "t", shot }) => {
   const rc = shot !== undefined ? 12 * Math.exp(-shot * 9) : 0;
   return (
     <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill}>
