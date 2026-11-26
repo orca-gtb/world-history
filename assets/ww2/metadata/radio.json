@@ -1,0 +1,313 @@
+{
+ "voices": [
+  {
+   "id": "us_01_initial_contact",
+   "nation": "us",
+   "category": "initial_contact",
+   "language": "en",
+   "voice": "American English, original voice (Voice Design)",
+   "text": "Able-One to Command, radio check. How do you read me? Over.",
+   "pronunciation_check": "n/a (English)",
+   "transmission_character": "FM SCR-300: jernih, tipis, desis rendah",
+   "duration_clean_s": 3.84,
+   "duration_radio_s": 5.29,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/us/us_01_initial_contact.wav",
+    "clean_mp3": "assets/ww2/radio/voices/us/us_01_initial_contact.mp3",
+    "radio_processed": "assets/ww2/radio/processed/us/us_01_initial_contact/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/us/us_01_initial_contact/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/us/us_01_initial_contact/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "us_02_enemy_spotted",
+   "nation": "us",
+   "category": "enemy_spotted",
+   "language": "en",
+   "voice": "American English, original voice (Voice Design)",
+   "text": "Command, this is Able-One. Enemy armor spotted ahead, three tanks moving north along the road. Over.",
+   "pronunciation_check": "n/a (English)",
+   "transmission_character": "FM SCR-300: jernih, tipis, desis rendah",
+   "duration_clean_s": 6.56,
+   "duration_radio_s": 8.01,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/us/us_02_enemy_spotted.wav",
+    "clean_mp3": "assets/ww2/radio/voices/us/us_02_enemy_spotted.mp3",
+    "radio_processed": "assets/ww2/radio/processed/us/us_02_enemy_spotted/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/us/us_02_enemy_spotted/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/us/us_02_enemy_spotted/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "us_03_request_reinforcement",
+   "nation": "us",
+   "category": "request_reinforcement",
+   "language": "en",
+   "voice": "American English, original voice (Voice Design)",
+   "text": "Able-One to Command. We are taking heavy fire. Requesting immediate reinforcement at grid four seven two six. Over.",
+   "pronunciation_check": "n/a (English)",
+   "transmission_character": "FM SCR-300: jernih, tipis, desis rendah",
+   "duration_clean_s": 7.44,
+   "duration_radio_s": 8.89,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/us/us_03_request_reinforcement.wav",
+    "clean_mp3": "assets/ww2/radio/voices/us/us_03_request_reinforcement.mp3",
+    "radio_processed": "assets/ww2/radio/processed/us/us_03_request_reinforcement/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/us/us_03_request_reinforcement/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/us/us_03_request_reinforcement/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "us_04_attack_order",
+   "nation": "us",
+   "category": "attack_order",
+   "language": "en",
+   "voice": "American English, original voice (Voice Design)",
+   "text": "Able-One, this is Command. Attack at zero six hundred. I repeat, attack at zero six hundred. Out.",
+   "pronunciation_check": "n/a (English)",
+   "transmission_character": "FM SCR-300: jernih, tipis, desis rendah",
+   "duration_clean_s": 7.2,
+   "duration_radio_s": 8.65,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/us/us_04_attack_order.wav",
+    "clean_mp3": "assets/ww2/radio/voices/us/us_04_attack_order.mp3",
+    "radio_processed": "assets/ww2/radio/processed/us/us_04_attack_order/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/us/us_04_attack_order/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/us/us_04_attack_order/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "us_05_status_report",
+   "nation": "us",
+   "category": "status_report",
+   "language": "en",
+   "voice": "American English, original voice (Voice Design)",
+   "text": "Command, Able-One. Position secured. Two wounded, no losses. Ammunition running low. Over.",
+   "pronunciation_check": "n/a (English)",
+   "transmission_character": "FM SCR-300: jernih, tipis, desis rendah",
+   "duration_clean_s": 6.64,
+   "duration_radio_s": 8.09,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/us/us_05_status_report.wav",
+    "clean_mp3": "assets/ww2/radio/voices/us/us_05_status_report.mp3",
+    "radio_processed": "assets/ww2/radio/processed/us/us_05_status_report/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/us/us_05_status_report/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/us/us_05_status_report/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "de_01_initial_contact",
+   "nation": "germany",
+   "category": "initial_contact",
+   "language": "de",
+   "voice": "German, original voice (Voice Design)",
+   "text": "Gefechtsstand, hier Falke Eins. Funkprobe. Wie hören Sie mich? Kommen.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+   "duration_clean_s": 4.8,
+   "duration_radio_s": 6.25,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/germany/de_01_initial_contact.wav",
+    "clean_mp3": "assets/ww2/radio/voices/germany/de_01_initial_contact.mp3",
+    "radio_processed": "assets/ww2/radio/processed/germany/de_01_initial_contact/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/germany/de_01_initial_contact/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/germany/de_01_initial_contact/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "de_02_enemy_spotted",
+   "nation": "germany",
+   "category": "enemy_spotted",
+   "language": "de",
+   "voice": "German, original voice (Voice Design)",
+   "text": "Gefechtsstand, hier Falke Eins. Feindliche Panzer gesichtet, drei Fahrzeuge, Richtung Norden auf der Straße. Kommen.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+   "duration_clean_s": 7.12,
+   "duration_radio_s": 8.57,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/germany/de_02_enemy_spotted.wav",
+    "clean_mp3": "assets/ww2/radio/voices/germany/de_02_enemy_spotted.mp3",
+    "radio_processed": "assets/ww2/radio/processed/germany/de_02_enemy_spotted/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/germany/de_02_enemy_spotted/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/germany/de_02_enemy_spotted/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "de_03_request_reinforcement",
+   "nation": "germany",
+   "category": "request_reinforcement",
+   "language": "de",
+   "voice": "German, original voice (Voice Design)",
+   "text": "Gefechtsstand, hier Falke Eins. Wir liegen unter starkem Feuer. Verstärkung im Planquadrat vier sieben zwei sechs anfordern. Kommen.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+   "duration_clean_s": 7.76,
+   "duration_radio_s": 9.21,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/germany/de_03_request_reinforcement.wav",
+    "clean_mp3": "assets/ww2/radio/voices/germany/de_03_request_reinforcement.mp3",
+    "radio_processed": "assets/ww2/radio/processed/germany/de_03_request_reinforcement/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/germany/de_03_request_reinforcement/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/germany/de_03_request_reinforcement/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "de_04_attack_order",
+   "nation": "germany",
+   "category": "attack_order",
+   "language": "de",
+   "voice": "German, original voice (Voice Design)",
+   "text": "Falke Eins, hier Gefechtsstand. Angriff um sechs Uhr null null. Ich wiederhole: Angriff um sechs Uhr. Ende.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+   "duration_clean_s": 7.2,
+   "duration_radio_s": 8.65,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/germany/de_04_attack_order.wav",
+    "clean_mp3": "assets/ww2/radio/voices/germany/de_04_attack_order.mp3",
+    "radio_processed": "assets/ww2/radio/processed/germany/de_04_attack_order/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/germany/de_04_attack_order/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/germany/de_04_attack_order/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "de_05_status_report",
+   "nation": "germany",
+   "category": "status_report",
+   "language": "de",
+   "voice": "German, original voice (Voice Design)",
+   "text": "Gefechtsstand, hier Falke Eins. Stellung gehalten. Zwei Verwundete, keine Gefallenen. Munition wird knapp. Kommen.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+   "duration_clean_s": 7.52,
+   "duration_radio_s": 8.97,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/germany/de_05_status_report.wav",
+    "clean_mp3": "assets/ww2/radio/voices/germany/de_05_status_report.mp3",
+    "radio_processed": "assets/ww2/radio/processed/germany/de_05_status_report/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/germany/de_05_status_report/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/germany/de_05_status_report/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "su_01_initial_contact",
+   "nation": "soviet",
+   "category": "initial_contact",
+   "language": "ru",
+   "voice": "Russian, original voice (Voice Design)",
+   "text": "Штаб, я Сокол-один. Проверка связи. Как слышите? Приём.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+   "duration_clean_s": 4.4,
+   "duration_radio_s": 5.85,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/soviet/su_01_initial_contact.wav",
+    "clean_mp3": "assets/ww2/radio/voices/soviet/su_01_initial_contact.mp3",
+    "radio_processed": "assets/ww2/radio/processed/soviet/su_01_initial_contact/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/soviet/su_01_initial_contact/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/soviet/su_01_initial_contact/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "su_02_enemy_spotted",
+   "nation": "soviet",
+   "category": "enemy_spotted",
+   "language": "ru",
+   "voice": "Russian, original voice (Voice Design)",
+   "text": "Штаб, я Сокол-один. Вижу танки противника, три машины, движутся на север по дороге. Приём.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+   "duration_clean_s": 6.48,
+   "duration_radio_s": 7.93,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/soviet/su_02_enemy_spotted.wav",
+    "clean_mp3": "assets/ww2/radio/voices/soviet/su_02_enemy_spotted.mp3",
+    "radio_processed": "assets/ww2/radio/processed/soviet/su_02_enemy_spotted/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/soviet/su_02_enemy_spotted/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/soviet/su_02_enemy_spotted/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "su_03_request_reinforcement",
+   "nation": "soviet",
+   "category": "request_reinforcement",
+   "language": "ru",
+   "voice": "Russian, original voice (Voice Design)",
+   "text": "Штаб, я Сокол-один. Попали под сильный огонь. Прошу подкрепление в квадрат четыре семь два шесть. Приём.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+   "duration_clean_s": 7.04,
+   "duration_radio_s": 8.49,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/soviet/su_03_request_reinforcement.wav",
+    "clean_mp3": "assets/ww2/radio/voices/soviet/su_03_request_reinforcement.mp3",
+    "radio_processed": "assets/ww2/radio/processed/soviet/su_03_request_reinforcement/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/soviet/su_03_request_reinforcement/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/soviet/su_03_request_reinforcement/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "su_04_attack_order",
+   "nation": "soviet",
+   "category": "attack_order",
+   "language": "ru",
+   "voice": "Russian, original voice (Voice Design)",
+   "text": "Сокол-один, я Штаб. В шесть ноль-ноль переходите в наступление. Повторяю: в шесть ноль-ноль в наступление. Приём.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+   "duration_clean_s": 7.68,
+   "duration_radio_s": 9.13,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/soviet/su_04_attack_order.wav",
+    "clean_mp3": "assets/ww2/radio/voices/soviet/su_04_attack_order.mp3",
+    "radio_processed": "assets/ww2/radio/processed/soviet/su_04_attack_order/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/soviet/su_04_attack_order/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/soviet/su_04_attack_order/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  },
+  {
+   "id": "su_05_status_report",
+   "nation": "soviet",
+   "category": "status_report",
+   "language": "ru",
+   "voice": "Russian, original voice (Voice Design)",
+   "text": "Штаб, я Сокол-один. Рубеж взят. Двое раненых, потерь нет. Боеприпасы на исходе. Приём.",
+   "pronunciation_check": "back-transcribed (ElevenLabs Scribe): matches script",
+   "transmission_character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+   "duration_clean_s": 6.64,
+   "duration_radio_s": 8.09,
+   "paths": {
+    "clean_master": "assets/ww2/radio/voices/soviet/su_05_status_report.wav",
+    "clean_mp3": "assets/ww2/radio/voices/soviet/su_05_status_report.mp3",
+    "radio_processed": "assets/ww2/radio/processed/soviet/su_05_status_report/radio_processed.wav",
+    "radio_with_static": "assets/ww2/radio/processed/soviet/su_05_status_report/radio_with_static.wav",
+    "preview_mp3": "assets/ww2/radio/processed/soviet/su_05_status_report/radio_processed.mp3"
+   },
+   "cloning_of_real_person": false
+  }
+ ],
+ "sfx": [
+  "radio_on",
+  "radio_tuning",
+  "static_burst",
+  "transmission_start",
+  "transmission_end",
+  "radio_off"
+ ],
+ "sfx_dir": "assets/ww2/radio/sfx"
+}

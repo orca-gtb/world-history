@@ -1,0 +1,152 @@
+[
+ {
+  "id": "us_01_initial_contact",
+  "nation": "us",
+  "character": "FM SCR-300: jernih, tipis, desis rendah",
+  "clean": "assets/ww2/radio/voices/us/us_01_initial_contact.wav",
+  "processed": "assets/ww2/radio/processed/us/us_01_initial_contact/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/us/us_01_initial_contact/radio_with_static.wav",
+  "duration_clean": 3.84,
+  "duration_radio": 5.29
+ },
+ {
+  "id": "us_02_enemy_spotted",
+  "nation": "us",
+  "character": "FM SCR-300: jernih, tipis, desis rendah",
+  "clean": "assets/ww2/radio/voices/us/us_02_enemy_spotted.wav",
+  "processed": "assets/ww2/radio/processed/us/us_02_enemy_spotted/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/us/us_02_enemy_spotted/radio_with_static.wav",
+  "duration_clean": 6.56,
+  "duration_radio": 8.01
+ },
+ {
+  "id": "us_03_request_reinforcement",
+  "nation": "us",
+  "character": "FM SCR-300: jernih, tipis, desis rendah",
+  "clean": "assets/ww2/radio/voices/us/us_03_request_reinforcement.wav",
+  "processed": "assets/ww2/radio/processed/us/us_03_request_reinforcement/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/us/us_03_request_reinforcement/radio_with_static.wav",
+  "duration_clean": 7.44,
+  "duration_radio": 8.89
+ },
+ {
+  "id": "us_04_attack_order",
+  "nation": "us",
+  "character": "FM SCR-300: jernih, tipis, desis rendah",
+  "clean": "assets/ww2/radio/voices/us/us_04_attack_order.wav",
+  "processed": "assets/ww2/radio/processed/us/us_04_attack_order/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/us/us_04_attack_order/radio_with_static.wav",
+  "duration_clean": 7.2,
+  "duration_radio": 8.65
+ },
+ {
+  "id": "us_05_status_report",
+  "nation": "us",
+  "character": "FM SCR-300: jernih, tipis, desis rendah",
+  "clean": "assets/ww2/radio/voices/us/us_05_status_report.wav",
+  "processed": "assets/ww2/radio/processed/us/us_05_status_report/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/us/us_05_status_report/radio_with_static.wav",
+  "duration_clean": 6.64,
+  "duration_radio": 8.09
+ },
+ {
+  "id": "de_01_initial_contact",
+  "nation": "germany",
+  "character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+  "clean": "assets/ww2/radio/voices/germany/de_01_initial_contact.wav",
+  "processed": "assets/ww2/radio/processed/germany/de_01_initial_contact/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/germany/de_01_initial_contact/radio_with_static.wav",
+  "duration_clean": 4.8,
+  "duration_radio": 6.25
+ },
+ {
+  "id": "de_02_enemy_spotted",
+  "nation": "germany",
+  "character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+  "clean": "assets/ww2/radio/voices/germany/de_02_enemy_spotted.wav",
+  "processed": "assets/ww2/radio/processed/germany/de_02_enemy_spotted/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/germany/de_02_enemy_spotted/radio_with_static.wav",
+  "duration_clean": 7.12,
+  "duration_radio": 8.57
+ },
+ {
+  "id": "de_03_request_reinforcement",
+  "nation": "germany",
+  "character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+  "clean": "assets/ww2/radio/voices/germany/de_03_request_reinforcement.wav",
+  "processed": "assets/ww2/radio/processed/germany/de_03_request_reinforcement/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/germany/de_03_request_reinforcement/radio_with_static.wav",
+  "duration_clean": 7.76,
+  "duration_radio": 9.21
+ },
+ {
+  "id": "de_04_attack_order",
+  "nation": "germany",
+  "character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+  "clean": "assets/ww2/radio/voices/germany/de_04_attack_order.wav",
+  "processed": "assets/ww2/radio/processed/germany/de_04_attack_order/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/germany/de_04_attack_order/radio_with_static.wav",
+  "duration_clean": 7.2,
+  "duration_radio": 8.65
+ },
+ {
+  "id": "de_05_status_report",
+  "nation": "germany",
+  "character": "AM Torn.Fu: lebih sempit, desis sedang, gigi gergaji halus",
+  "clean": "assets/ww2/radio/voices/germany/de_05_status_report.wav",
+  "processed": "assets/ww2/radio/processed/germany/de_05_status_report/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/germany/de_05_status_report/radio_with_static.wav",
+  "duration_clean": 7.52,
+  "duration_radio": 8.97
+ },
+ {
+  "id": "su_01_initial_contact",
+  "nation": "soviet",
+  "character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+  "clean": "assets/ww2/radio/voices/soviet/su_01_initial_contact.wav",
+  "processed": "assets/ww2/radio/processed/soviet/su_01_initial_contact/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/soviet/su_01_initial_contact/radio_with_static.wav",
+  "duration_clean": 4.4,
+  "duration_radio": 5.85
+ },
+ {
+  "id": "su_02_enemy_spotted",
+  "nation": "soviet",
+  "character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+  "clean": "assets/ww2/radio/voices/soviet/su_02_enemy_spotted.wav",
+  "processed": "assets/ww2/radio/processed/soviet/su_02_enemy_spotted/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/soviet/su_02_enemy_spotted/radio_with_static.wav",
+  "duration_clean": 6.48,
+  "duration_radio": 7.93
+ },
+ {
+  "id": "su_03_request_reinforcement",
+  "nation": "soviet",
+  "character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+  "clean": "assets/ww2/radio/voices/soviet/su_03_request_reinforcement.wav",
+  "processed": "assets/ww2/radio/processed/soviet/su_03_request_reinforcement/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/soviet/su_03_request_reinforcement/radio_with_static.wav",
+  "duration_clean": 7.04,
+  "duration_radio": 8.49
+ },
+ {
+  "id": "su_04_attack_order",
+  "nation": "soviet",
+  "character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+  "clean": "assets/ww2/radio/voices/soviet/su_04_attack_order.wav",
+  "processed": "assets/ww2/radio/processed/soviet/su_04_attack_order/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/soviet/su_04_attack_order/radio_with_static.wav",
+  "duration_clean": 7.68,
+  "duration_radio": 9.13
+ },
+ {
+  "id": "su_05_status_report",
+  "nation": "soviet",
+  "character": "AM 13-R: paling sempit, distorsi dan retak lebih banyak",
+  "clean": "assets/ww2/radio/voices/soviet/su_05_status_report.wav",
+  "processed": "assets/ww2/radio/processed/soviet/su_05_status_report/radio_processed.wav",
+  "with_static": "assets/ww2/radio/processed/soviet/su_05_status_report/radio_with_static.wav",
+  "duration_clean": 6.64,
+  "duration_radio": 8.09
+ }
+]
