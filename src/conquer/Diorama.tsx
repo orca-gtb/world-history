@@ -83,26 +83,29 @@ const Soldier: React.FC<{ x: number; y: number; s: number; side: "SU" | "DE"; ph
   );
 };
 
-// T-34 (76 mm, kubah heksagonal 1943): origin tengah bawah, menghadap kanan. shot = detik sejak tembakan terakhir (undefined = belum menembak).
+// T-34 model 1943 (76 mm F-34): 5 roda jalan besar (suspensi Christie, tanpa roda penyangga atas), glacis miring ±30°,
+// turret heksagonal dengan dua palka "telinga Mickey" + kubah komandan, tangki bahan bakar di fender belakang, laras menjorok ±1,4 m.
+// Skala ±2 cm per satuan. shot = detik sejak tembakan terakhir (undefined = belum menembak).
 const T34: React.FC<{ x: number; y: number; s: number; fill: string; rot: number; dir?: 1 | -1; riders?: number; seed?: string; shot?: number }> = ({ x, y, s, fill, rot, dir = 1, riders = 0, seed = "t", shot }) => {
-  const rc = shot !== undefined ? 14 * Math.exp(-shot * 9) : 0;
+  const rc = shot !== undefined ? 12 * Math.exp(-shot * 9) : 0;
   return (
     <g transform={`translate(${x},${y}) scale(${s * dir},${s})`} fill={fill}>
-      <ellipse cx={0} cy={2} rx={175} ry={9} fill="rgba(0,0,0,0.3)" />
-      <rect x={-152} y={-42} width={304} height={42} rx={21} />
-      <path d="M-150,-48 L-140,-68 L98,-68 L150,-42 L150,-34 L-152,-34 Z" />
-      <path d="M-44,-68 L-32,-98 L44,-100 L66,-84 L66,-68 Z" />
-      <rect x={-6} y={-108} width={22} height={10} rx={3} />
-      <g transform={`translate(${-rc},0)`}><rect x={62} y={-90} width={108} height={7} rx={2} /><rect x={150} y={-92} width={14} height={11} rx={2} /></g>
-      {[-112, -56, 0, 56, 112].map((wx, i) => (
+      <ellipse cx={0} cy={2} rx={170} ry={8} fill="rgba(0,0,0,0.3)" />
+      <path d="M-139,-38 L129,-38 A19,19 0 0 1 129,0 L-139,0 A19,19 0 0 1 -139,-38 Z" fill="#241f1a" />
+      <path d="M-152,-44 L-152,-61 L-62,-63 L68,-63 L98,-80 L114,-82 L148,-47 L148,-31 L-152,-31 Z" />
+      <rect x={-150} y={-47} width={298} height={3.5} />
+      <rect x={-146} y={-59} width={50} height={12} rx={5} />
+      <path d="M-34,-63 L-44,-78 L-26,-95 L32,-97 L56,-85 L62,-63 Z" />
+      <circle cx={-24} cy={-98} r={5.5} /><circle cx={20} cy={-100} r={5.5} /><rect x={-12} y={-104} width={18} height={8} rx={3} />
+      <g transform={`translate(${-rc},0)`}><rect x={70} y={-88} width={146} height={5} rx={1.5} /><rect x={56} y={-93} width={15} height={16} rx={3} /></g>
+      {[-139, 129].map((wx, i) => <circle key={`d${i}`} cx={wx} cy={-19} r={15} fill="#2f2b24" />)}
+      {[-108, -57, -6, 45, 96].map((wx, i) => (
         <g key={i} transform={`translate(${wx},-20) rotate(${(rot * 180) / Math.PI})`}>
-          <circle r={17} fill="#3a352c" />
-          <line x1={-15} y1={0} x2={15} y2={0} stroke={fill} strokeWidth={3} />
-          <line x1={0} y1={-15} x2={0} y2={15} stroke={fill} strokeWidth={3} />
-          <circle r={5} fill={fill} />
+          <circle r={19.5} fill="#3a352c" /><circle r={12} fill="none" stroke={fill} strokeWidth={2.5} />
+          <line x1={-11} y1={0} x2={11} y2={0} stroke={fill} strokeWidth={2.5} /><line x1={0} y1={-11} x2={0} y2={11} stroke={fill} strokeWidth={2.5} /><circle r={4} fill={fill} />
         </g>))}
-      {Array.from({ length: riders }, (_, i) => <Soldier key={i} x={-120 + i * 38} y={-66} s={0.82} side="SU" ph={0} pose="sit" fill={fill} rifle={R(`${seed}r${i}`) > 0.3} shadow={false} />)}
-      {shot !== undefined && shot < 0.6 && <Flash x={178 - rc} y={-88} q={shot} r={150} />}
+      {Array.from({ length: riders }, (_, i) => <Soldier key={i} x={-124 + i * 34} y={-63} s={0.82} side="SU" ph={0} pose="sit" fill={fill} rifle={R(`${seed}r${i}`) > 0.3} shadow={false} />)}
+      {shot !== undefined && shot < 0.6 && <Flash x={220 - rc} y={-86} q={shot} r={150} />}
     </g>
   );
 };
@@ -416,7 +419,7 @@ const Scene: React.FC<SP> = ({ lt, dur, id }) => {
         <Ground y={690} fill={L.mid2} seed="ag" amp={5} />
         {Array.from({ length: 14 }, (_, i) => <Soldier key={i} x={-100 + i * 150 + t * 70 + R(`am${i}`) * 60} y={700 + R(`amy${i}`) * 8} s={0.75} side="SU" ph={t * 9 + i} pose="run" fill={L.mid2} />)}
         {bl.map((q, i) => <Blast key={i} x={500 + i * 330} y={712} q={q} s={0.7} seed={`ab${i}`} fill={L.mid2} />)}
-        <Tracers t={t} seed="at" from={[2300, 640]} to={[400, 690]} n={7} />
+        <Tracers t={t} seed="at" from={[2300, 640]} to={[400, 690]} n={7} on={ev("assault", "mg").some((a) => lt >= a && lt < a + 1.0) ? 1 : 0} />
       </Lay>
       <Fog t={t} y={760} h={180} />
       <Lay d={0.95} pan={pan}>

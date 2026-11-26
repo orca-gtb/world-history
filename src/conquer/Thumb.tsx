@@ -4,7 +4,7 @@ import { C, F } from "../kit/theme";
 import { FilmGrain, Vignette } from "../v4/Film";
 import base from "./basemap-theatre.json";
 import FR from "../../research/bagration/front-22jun.json";
-import { Arrow, Counter, DE, P, RED, makeProj, path, smooth } from "./mapkit";
+import { Arrow, Counter, P, RED, makeProj, path, smooth } from "./mapkit";
 
 // COVER / THUMBNAIL Bagration Part 1 "The Trap": vektor dari data peta yang sama dengan videonya (bukan gambar AI).
 // Varian A = judul saja; B = judul + angka kerugian (untuk A/B test di Studio).
