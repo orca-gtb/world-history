@@ -1,0 +1,66 @@
+{
+ "version": "1.0",
+ "animations": [
+  {
+   "id": "idle",
+   "frames": 4,
+   "loop": true,
+   "fps": 4
+  },
+  {
+   "id": "walk",
+   "frames": 8,
+   "loop": true,
+   "fps": 10
+  },
+  {
+   "id": "run",
+   "frames": 8,
+   "loop": true,
+   "fps": 14
+  },
+  {
+   "id": "advance",
+   "frames": 8,
+   "loop": true,
+   "fps": 10
+  },
+  {
+   "id": "crouch",
+   "frames": 4,
+   "loop": true,
+   "fps": 4
+  },
+  {
+   "id": "aim",
+   "frames": 4,
+   "loop": true,
+   "fps": 4
+  },
+  {
+   "id": "fire",
+   "frames": 6,
+   "loop": true,
+   "fps": 12
+  },
+  {
+   "id": "reload",
+   "frames": 8,
+   "loop": false,
+   "fps": 8
+  },
+  {
+   "id": "hit",
+   "frames": 6,
+   "loop": false,
+   "fps": 12
+  },
+  {
+   "id": "fall",
+   "frames": 8,
+   "loop": false,
+   "fps": 10
+  }
+ ],
+ "note": "Pose dihitung dari parameter sendi (src/ww2/anim.ts poseOf), jadi engine bisa menghidupkan unit langsung dengan <UnitFigure spec anim u />, atau memakai sprite strip SVG di folder animations/."
+}

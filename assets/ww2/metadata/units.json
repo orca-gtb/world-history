@@ -1,0 +1,3296 @@
+{
+ "version": "1.0",
+ "period": "WWII 1944",
+ "facing": "right (+x), mirror with scale(-1,1)",
+ "units": [
+  {
+   "unit_id": "us_rifleman",
+   "faction": "us",
+   "unit_type": "rifleman",
+   "name": "Rifleman (M1 Garand)",
+   "kind": "infantry",
+   "role": "line infantry",
+   "weapon": "garand",
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "canteen",
+    "pack"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/infantry/us_rifleman.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_rifleman/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_rifleman/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_rifleman/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_rifleman/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_rifleman/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_rifleman/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_rifleman/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_rifleman/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_rifleman/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_rifleman/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_smg",
+   "faction": "us",
+   "unit_type": "smg_trooper",
+   "name": "SMG Trooper (Thompson M1A1)",
+   "kind": "infantry",
+   "role": "assault",
+   "weapon": "thompson",
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "canteen"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/infantry/us_smg.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_smg/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_smg/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_smg/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_smg/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_smg/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_smg/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_smg/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_smg/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_smg/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_smg/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_bar",
+   "faction": "us",
+   "unit_type": "bar_gunner",
+   "name": "BAR Gunner (M1918)",
+   "kind": "infantry",
+   "role": "automatic rifleman",
+   "weapon": "bar",
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "ammo"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/infantry/us_bar.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_bar/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_bar/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_bar/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_bar/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_bar/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_bar/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_bar/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_bar/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_bar/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_bar/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_mg_crew",
+   "faction": "us",
+   "unit_type": "mg_crew",
+   "name": "M1919 Machine Gun Crew",
+   "kind": "infantry",
+   "role": "machine gun",
+   "weapon": "m1919",
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "ammo"
+   ],
+   "stance": "deploy",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/infantry/us_mg_crew.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_mg_crew/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_mg_crew/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_mg_crew/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_mg_crew/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_mg_crew/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_mg_crew/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_mg_crew/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_mg_crew/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_mg_crew/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_mg_crew/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_bazooka",
+   "faction": "us",
+   "unit_type": "bazooka_team",
+   "name": "Bazooka Team (M1)",
+   "kind": "infantry",
+   "role": "anti-tank",
+   "weapon": "bazooka",
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "pack"
+   ],
+   "stance": "tube",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/infantry/us_bazooka.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_bazooka/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_bazooka/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_bazooka/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_bazooka/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_bazooka/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_bazooka/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_bazooka/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_bazooka/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_bazooka/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_bazooka/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_radio",
+   "faction": "us",
+   "unit_type": "radio_operator",
+   "name": "Radio Operator (SCR-300)",
+   "kind": "support",
+   "role": "communications",
+   "weapon": "garand",
+   "hat": "headset_m1",
+   "coat": "short",
+   "gear": [
+    "radio_us",
+    "webbing"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/support/us_radio.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_radio/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_radio/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_radio/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_radio/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_radio/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_radio/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_radio/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_radio/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_radio/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_radio/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_officer",
+   "faction": "us",
+   "unit_type": "field_officer",
+   "name": "Field Officer",
+   "kind": "support",
+   "role": "command",
+   "weapon": "pistol",
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "binoc",
+    "mapcase",
+    "holster",
+    "webbing"
+   ],
+   "stance": "pistol",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/support/us_officer.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_officer/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_officer/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_officer/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_officer/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_officer/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_officer/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_officer/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_officer/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_officer/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_officer/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "us_medic",
+   "faction": "us",
+   "unit_type": "medic",
+   "name": "Medic",
+   "kind": "support",
+   "role": "medical",
+   "weapon": null,
+   "hat": "m1",
+   "coat": "short",
+   "gear": [
+    "medic",
+    "webbing",
+    "canteen"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/us/support/us_medic.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/us/animations/us_medic/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/us/animations/us_medic/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/us/animations/us_medic/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/us/animations/us_medic/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/us/animations/us_medic/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/us/animations/us_medic/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/us/animations/us_medic/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/us/animations/us_medic/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/us/animations/us_medic/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/us/animations/us_medic/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_rifleman",
+   "faction": "germany",
+   "unit_type": "rifleman",
+   "name": "Rifleman (Kar98k)",
+   "kind": "infantry",
+   "role": "line infantry",
+   "weapon": "kar98k",
+   "hat": "stahlhelm",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "gasmask",
+    "shovel"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/infantry/de_rifleman.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_rifleman/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_rifleman/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_rifleman/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_rifleman/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_rifleman/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_rifleman/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_rifleman/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_rifleman/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_rifleman/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_rifleman/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_smg",
+   "faction": "germany",
+   "unit_type": "smg_trooper",
+   "name": "SMG Trooper (MP 40)",
+   "kind": "infantry",
+   "role": "assault",
+   "weapon": "mp40",
+   "hat": "stahlhelm",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "gasmask"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/infantry/de_smg.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_smg/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_smg/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_smg/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_smg/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_smg/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_smg/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_smg/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_smg/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_smg/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_smg/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_mg",
+   "faction": "germany",
+   "unit_type": "mg_gunner",
+   "name": "MG 34/42 Gunner",
+   "kind": "infantry",
+   "role": "machine gun",
+   "weapon": "mg42",
+   "hat": "stahlhelm",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "ammo"
+   ],
+   "stance": "deploy",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/infantry/de_mg.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_mg/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_mg/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_mg/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_mg/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_mg/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_mg/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_mg/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_mg/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_mg/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_mg/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_panzerfaust",
+   "faction": "germany",
+   "unit_type": "panzerfaust_soldier",
+   "name": "Panzerfaust Soldier",
+   "kind": "infantry",
+   "role": "anti-tank",
+   "weapon": "panzerfaust",
+   "hat": "stahlhelm",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "gasmask"
+   ],
+   "stance": "tube",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/infantry/de_panzerfaust.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_panzerfaust/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_radio",
+   "faction": "germany",
+   "unit_type": "radio_operator",
+   "name": "Radio Operator (Funker)",
+   "kind": "support",
+   "role": "communications",
+   "weapon": "kar98k",
+   "hat": "stahlhelm",
+   "coat": "short",
+   "gear": [
+    "radio_de",
+    "webbing"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/support/de_radio.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_radio/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_radio/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_radio/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_radio/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_radio/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_radio/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_radio/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_radio/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_radio/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_radio/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_officer",
+   "faction": "germany",
+   "unit_type": "officer",
+   "name": "Officer",
+   "kind": "support",
+   "role": "command",
+   "weapon": "pistol",
+   "hat": "peaked_de",
+   "coat": "greatcoat",
+   "gear": [
+    "binoc",
+    "holster",
+    "mapcase"
+   ],
+   "stance": "pistol",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/support/de_officer.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_officer/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_officer/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_officer/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_officer/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_officer/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_officer/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_officer/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_officer/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_officer/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_officer/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "de_grenadier",
+   "faction": "germany",
+   "unit_type": "grenadier",
+   "name": "Grenadier",
+   "kind": "infantry",
+   "role": "infantry",
+   "weapon": "kar98k",
+   "hat": "stahlhelm",
+   "coat": "short",
+   "gear": [
+    "grenades",
+    "webbing",
+    "gasmask"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/germany/infantry/de_grenadier.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/germany/animations/de_grenadier/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/germany/animations/de_grenadier/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/germany/animations/de_grenadier/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/germany/animations/de_grenadier/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/germany/animations/de_grenadier/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/germany/animations/de_grenadier/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/germany/animations/de_grenadier/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/germany/animations/de_grenadier/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/germany/animations/de_grenadier/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/germany/animations/de_grenadier/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_rifleman",
+   "faction": "soviet",
+   "unit_type": "rifleman",
+   "name": "Rifleman (Mosin–Nagant)",
+   "kind": "infantry",
+   "role": "line infantry",
+   "weapon": "mosin",
+   "hat": "ssh40",
+   "coat": "short",
+   "gear": [
+    "skatka",
+    "webbing",
+    "canteen"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/infantry/su_rifleman.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_rifleman/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_smg",
+   "faction": "soviet",
+   "unit_type": "smg_trooper",
+   "name": "SMG Trooper (PPSh-41)",
+   "kind": "infantry",
+   "role": "assault",
+   "weapon": "ppsh",
+   "hat": "ssh40",
+   "coat": "short",
+   "gear": [
+    "skatka",
+    "webbing",
+    "shovel"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/infantry/su_smg.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_smg/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_smg/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_smg/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_smg/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_smg/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_smg/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_smg/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_smg/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_smg/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_smg/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_dp",
+   "faction": "soviet",
+   "unit_type": "dp_gunner",
+   "name": "DP-27 Gunner",
+   "kind": "infantry",
+   "role": "light machine gun",
+   "weapon": "dp27",
+   "hat": "ssh40",
+   "coat": "short",
+   "gear": [
+    "webbing",
+    "ammo"
+   ],
+   "stance": "deploy",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/infantry/su_dp.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_dp/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_dp/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_dp/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_dp/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_dp/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_dp/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_dp/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_dp/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_dp/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_dp/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_ptrd",
+   "faction": "soviet",
+   "unit_type": "ptrd_rifleman",
+   "name": "PTRD Anti-Tank Rifleman",
+   "kind": "infantry",
+   "role": "anti-tank",
+   "weapon": "ptrd",
+   "hat": "ssh40",
+   "coat": "short",
+   "gear": [
+    "skatka",
+    "webbing"
+   ],
+   "stance": "deploy",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/infantry/su_ptrd.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_ptrd/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_radio",
+   "faction": "soviet",
+   "unit_type": "radio_operator",
+   "name": "Radio Operator (radist)",
+   "kind": "support",
+   "role": "communications",
+   "weapon": "mosin",
+   "hat": "ssh40",
+   "coat": "short",
+   "gear": [
+    "radio_su",
+    "webbing"
+   ],
+   "stance": "std",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/support/su_radio.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_radio/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_radio/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_radio/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_radio/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_radio/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_radio/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_radio/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_radio/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_radio/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_radio/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_officer",
+   "faction": "soviet",
+   "unit_type": "officer",
+   "name": "Officer",
+   "kind": "support",
+   "role": "command",
+   "weapon": "pistol",
+   "hat": "peaked_su",
+   "coat": "greatcoat",
+   "gear": [
+    "binoc",
+    "holster",
+    "mapcase"
+   ],
+   "stance": "pistol",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/support/su_officer.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_officer/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_officer/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_officer/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_officer/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_officer/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_officer/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_officer/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_officer/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_officer/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_officer/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  },
+  {
+   "unit_id": "su_political",
+   "faction": "soviet",
+   "unit_type": "political_officer",
+   "name": "Political Officer (zampolit)",
+   "kind": "support",
+   "role": "political",
+   "weapon": "pistol",
+   "hat": "peaked_su",
+   "coat": "greatcoat",
+   "gear": [
+    "mapcase",
+    "holster",
+    "skatka"
+   ],
+   "stance": "pistol",
+   "animation_set": [
+    "idle",
+    "walk",
+    "run",
+    "advance",
+    "crouch",
+    "aim",
+    "fire",
+    "reload",
+    "hit",
+    "fall"
+   ],
+   "scale_reference": {
+    "unit_px": 1,
+    "height_px": 172,
+    "note": "1 satuan ≈ 1 cm; tinggi berdiri ±172"
+   },
+   "scale": 1,
+   "depth": 0.5,
+   "layer_depth_hint": "foreground 0.8–1.0, midground 0.4–0.7, background 0.0–0.3",
+   "anchor": {
+    "x": 118,
+    "y": 246,
+    "cell": [
+     300,
+     270
+    ]
+   },
+   "asset_paths": {
+    "static": "assets/ww2/soviet/support/su_political.svg",
+    "animations": {
+     "idle": {
+      "path": "assets/ww2/soviet/animations/su_political/idle.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "walk": {
+      "path": "assets/ww2/soviet/animations/su_political/walk.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "run": {
+      "path": "assets/ww2/soviet/animations/su_political/run.svg",
+      "frames": 8,
+      "fps": 14,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "advance": {
+      "path": "assets/ww2/soviet/animations/su_political/advance.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "crouch": {
+      "path": "assets/ww2/soviet/animations/su_political/crouch.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "aim": {
+      "path": "assets/ww2/soviet/animations/su_political/aim.svg",
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fire": {
+      "path": "assets/ww2/soviet/animations/su_political/fire.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": true,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "reload": {
+      "path": "assets/ww2/soviet/animations/su_political/reload.svg",
+      "frames": 8,
+      "fps": 8,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "hit": {
+      "path": "assets/ww2/soviet/animations/su_political/hit.svg",
+      "frames": 6,
+      "fps": 12,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     },
+     "fall": {
+      "path": "assets/ww2/soviet/animations/su_political/fall.svg",
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "cell": [
+       300,
+       270
+      ]
+     }
+    }
+   }
+  }
+ ]
+}
